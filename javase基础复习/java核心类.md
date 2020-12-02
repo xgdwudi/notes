@@ -129,6 +129,53 @@ var s = String.join(", ", names);
 ```
 #### 包装类型
 
+#### JavaBean
+
+> JavaBean主要用来传递数据，即把一组数据组合成一个JavaBean便于传输。此外，JavaBean可以方便地被IDE工具分析，生成读写属性的代码，主要用在图形界面的可视化设计中。
+
+枚举JavaBean属性
+
+要枚举一个JavaBean的所有属性，可以直接使用Java核心库提供的Introspector：
+
+https://static.bookstack.cn/projects/liaoxuefeng-java/eacdf03a21b1e284a7cee289618e2c1d.png
+
+#### 枚举类
+
+- 为了让编译器能自动检查某个值在枚举的集合内，并且，不同用途的枚举需要不同的类型来标记，不能混用，我们可以使用enum来定义枚举类
+
+>> enum的比较
+
+- 使用enum定义的枚举类是一种引用类型。前面我们讲到，引用类型比较，要使用equals()方法，如果使用==比较，它比较的是两个引用类型的变量是否是同一个对象。因此，引用类型比较，要始终使用equals()方法，但enum类型可以例外。
+
+>> enum类型
+- 定义的enum类型总是继承自java.lang.Enum，且无法被继承；
+- 只能定义出enum的实例，而无法通过new操作符创建enum的实例；
+- 定义的每个实例都是引用类型的唯一实例；
+- 可以将enum类型用于switch语句。
+
+#### name()
+```
+String s = Weekday.SUN.name(); // "SUN"
+```
+
+#### ordinal()
+
+```
+int n = Weekday.MON.ordinal(); // 1
+```
+
+#### switch
+
+最后，枚举类可以应用在switch语句中。因为枚举类天生具有类型信息和有限个枚举常量，所以比int、String类型更适合用在switch语句中：
+> https://static.bookstack.cn/projects/liaoxuefeng-java/d362ab28c3ac3784c3d5ee4c92f15610.png
+
+### BigInteger
+
+- https://www.bookstack.cn/read/liaoxuefeng-java/82dd600b6a334efc.md
+
+### BigDecimal
+-  https://www.bookstack.cn/read/liaoxuefeng-java/bd578a1fe800a7e1.md
+
 
 
 
