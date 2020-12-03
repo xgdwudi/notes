@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+        <title>圣诞节雪花飘落特效2</title>
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/christmassnow.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('body').christmassnow({
+                    snowflaketype: 23, // 1 to 25 types of flakes are available change the number from 1 to 25. each one contain different images.
+                    snowflakesize: 2, //snowflakesize is 1 then it get the size of the image as random , if the snowflakesize is 2 means size of the image as custom
+                    snowflakedirection: 1, // 1 means default no wind (top to bottom), 2 means random, 3 means left to right and 4 means  right to left
+                    snownumberofflakes: 4, // number of flakes is user option
+                    snowflakespeed: 10, // falling speed of flake 10 sec is default
+                    flakeheightandwidth: 15 // if you are mention that option flakesize is 2 then this flakeheightandwidth should work values are in pixels 16*16.
+                });
+            });
+        </script>
+        <style type="text/css">
+            #web_bg{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  min-width: 1000px;
+  z-index:-10;
+  zoom: 1;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-position: center 0;
+}
+        </style>
+    </head>
+    <body>
+<div id="web_bg" style="background-image: url('assets/background.jpg');"></div>
+      <div class="drop">
+        </div>
+<div style="text-align:center;clear:both"><div>
+<div style="position:absolute;align:center;width:100%;top:45%;z-index:1000000;">
+<center><a href="http://www.tangyulu.com" style="color:white;font-size:30px;text-decoration:none;">雨路sugar</a></center>
+</div>
+
+</body>
+</html>
