@@ -43,3 +43,42 @@ https://www.bookstack.cn/read/liaoxuefeng-java/f56aa3f63d7528ab.md
 
 # 操作Zip
 
+ZipInputStream可以读取zip格式的流，ZipOutputStream可以把多份数据写入zip包；
+
+配合FileInputStream和FileOutputStream就可以读写zip文件。
+
+https://www.bookstack.cn/read/liaoxuefeng-java/21583ae46ec82403.md
+
+# 读取classpath资源
+
+把资源存储在classpath中可以避免文件路径依赖；
+
+Class对象的getResourceAsStream()可以从classpath中读取指定资源；
+
+根据classpath读取资源时，需要检查返回的InputStream是否为null。
+
+# 序列化
+
+序列化是指把一个Java对象变成二进制内容，本质上就是一个byte[]数组。
+
+https://www.bookstack.cn/read/liaoxuefeng-java/0feb9ad7ce69141a.md
+
+我们来看看如何把一个Java对象序列化。
+
+一个Java对象要能序列化，必须实现一个特殊的java.io.Serializable接口
+
+Serializable接口没有定义任何方法，它是一个空接口。我们把这样的空接口称为“标记接口”（Marker Interface），实现了标记接口的类仅仅是给自身贴了个“标记”，并没有增加任何方法。
+
+可序列化的Java对象必须实现java.io.Serializable接口，类似Serializable这样的空接口被称为“标记接口”（Marker Interface）；
+
+反序列化时不调用构造方法，可设置serialVersionUID作为版本号（非必需）；
+
+Java的序列化机制仅适用于Java，如果需要与其它语言交换数据，必须使用通用的序列化方法，例如JSON。
+
+# Reader
+
+https://www.bookstack.cn/read/liaoxuefeng-java/a16feb4b4fbf188b.md
+
+# Writer
+
+https://www.bookstack.cn/read/liaoxuefeng-java/6f305d5ef136e6a6.md
