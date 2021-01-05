@@ -15,13 +15,14 @@ public class Clostack {
     public static void main(String[] args) {
         StackDemo num = new StackDemo(10);
         StackDemo opers = new StackDemo(10);
-        String rec = "9+0*0-0";
+        String rec = "90+1*1-10";
         int index = 0;  // rec指针位置
         int num1;  // 数栈取出得第一个数字
         int num2; // 数栈取出得第二个数字
         int sum;   // 两者的乘机
         int oper;  //符号栈取出的符号
         char ch = ' ';  // 扫描出的rec
+        String stc="";
         while (true) {
             ch = rec.charAt(index);
 // 判度是否为运算符
@@ -46,7 +47,20 @@ public class Clostack {
                 }
 
             }else {
-                num.push(ch-'0');
+                stc +=ch;
+//                到了末尾
+                if(index>=rec.length()-1){
+                    num.push(Integer.parseInt(stc));
+                    stc="";
+                }else{
+                    System.out.println(index);
+                    int adds=index+1;
+                    if(num.isoper(rec.charAt(adds))){
+                        num.push(Integer.parseInt(stc));
+                        stc="";
+                    }
+                }
+//                num.push(ch-'0');
             }
             index++;
             if(index>=rec.length()){
