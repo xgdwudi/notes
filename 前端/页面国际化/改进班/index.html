@@ -1,0 +1,23 @@
+<head>  
+ <meta charset="UTF-8">  
+ <meta name="viewport"  
+  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">  
+ <title>国际化样例</title>  
+</head>  
+<body>  
+    <div class="input-group-addon" style="border:0;width: 20%;"><i data-locale="i18n_langge" style="font-weight:bold;">语言：</i>
+    </div>
+    <i data-locale="i18n_adds" style="font-weight:bold;">张三</i>
+    <select class="form-control select2"id="langge" onchange="loadProperties('./languages/')">
+            <option value="zh"  >中文</option>
+            <option value="en"  >English</option>
+            <option value="ar" >English</option>
+    </select>
+  
+<script type="application/javascript" src="js/jquery-3.5.1.js"></script>  
+<script type="application/javascript" src="js/jquery.i18n.properties.js"></script>  
+<script type="application/javascript" src="js/language.js"></script>  
+  
+</body>  
+</html>
