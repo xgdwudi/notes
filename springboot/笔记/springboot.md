@@ -51,4 +51,82 @@
 ![@ConfigurationProperties](../images/Snipaste_2021-02-28_22-14-09.png)
 @ConfigurationProperties 只有这个组件是容器中的组件，才能使用容器提供的功能
 
-https://www.bilibili.com/video/BV1gW411W76m?p=11&spm_id_from=pageDriver
+![@ConfigurationProperties和@Value的区别](../images/Snipaste_2021-03-01_09-58-52.png)
+
+配置文件注入值，数据校验
+![数据校验](../images/Snipaste_2021-03-01_09-54-24.png)
+
+加载指定的配置文件
+![加载指定的配置文件](../images/Snipaste_2021-03-01_10-02-11.png)
+
+@importResource
+：导入Spring的配置文件，让配置文件里面的内容生效
+Spring boot 里面没有Spring的配置文件，我们自己编写的配置文件，也不能自动识别；
+想让Spring的配置文件生效，加载进来，@importResource标注在一个配置类上
+![](../images/Snipaste_2021-03-01_19-59-41.png)
+![](../images/Snipaste_2021-03-01_20-00-31.png)
+![](../images/Snipaste_2021-03-01_20-02-14.png)
+
+配置文件占位符
+![](../images/Snipaste_2021-03-01_20-05-39.png)
+![](../images/Snipaste_2021-03-01_20-07-08.png)
+
+### profile
+![](../images/Snipaste_2021-03-01_20-08-00.png)
+![](../images/Snipaste_2021-03-01_20-13-11.png)
+![](../images/Snipaste_2021-03-01_20-13-37.png)
+
+### 配置文件加载位置
+![](../images/Snipaste_2021-03-01_20-20-04.png)
+![](../images/Snipaste_2021-03-01_20-36-17.png)
+
+### 外部文件加载配置
+![](../images/Snipaste_2021-03-01_20-39-40.png)
+![](../images/Snipaste_2021-03-01_20-47-53.png)
+java -jar asjdjahsdjha.jar --server.port=8085
+
+### 自动配置园丽
+
+![](../images/Snipaste_2021-03-01_20-49-21.png)
+
+1. springboot启动的时候加载主配置类，开启自动配置的功能@EnableAutoConfiguration
+2. @EnableAutoConfiguration 作用：
+     利用AutoConfigurationImportSelector 给容器中导入一些组件
+     查看selectImports(AnnotationMetadata annotationMetadata)便知道导入哪些内容，
+     	List<String> configurations = getCandidateConfigurations(annotationMetadata, attributes); 获取候选的配置
+       
+
+```
+          SpringFactoriesLoader.loadFactoryNames(getSpringFactoriesLoaderFactoryClass(),
+				getBeanClassLoader());
+                从properties中获取到 EnableAutoConfiguration.class类的值
+
+                	Enumeration<URL> urls = classLoader.getResources(FACTORIES_RESOURCE_LOCATION);
+                  获取类路径（META-INF/spring.factories）下的所有资源
+```
+
+ ![](../images/Snipaste_2021-03-01_21-08-38.png)
+ ![](../images/Snipaste_2021-03-01_21-12-32.png)
+ ![](../images/Snipaste_2021-03-01_21-17-54.png)
+ ![](../images/Snipaste_2021-03-01_21-25-21.png)
+ ![](../images/Snipaste_2021-03-01_21-26-30.png)
+### @Conditional  待研究
+![](../images/Snipaste_2021-03-01_21-31-23.png)
+自动配置类在一定条件下才能生效
+![](../images/Snipaste_2021-03-01_21-36-54.png)
+![](../images/Snipaste_2021-03-01_21-37-39.png)
+
+## 日志
+![](../images/Snipaste_2021-03-01_21-42-24.png)
+![](../images/Snipaste_2021-03-01_21-47-44.png)
+
+### SLF4J使用
+![](../images/Snipaste_2021-03-01_21-52-27.png)
+
+- 每一个日志的实现框架都有自己的配置文件。使用slf4j以后，配置文件还是写成日志实现框架的配置文件
+
+![](../images/Snipaste_2021-03-01_22-04-34.png)
+![asdasdads](../images/legacy.png)
+![asdasdads](../images/Snipaste_2021-03-01_22-11-48.png)
+
+https://www.bilibili.com/video/BV1gW411W76m?p=24&spm_id_from=pageDriver
