@@ -75,6 +75,11 @@
        3.  sql92标准
            1.  等值连接 select name,boyname from boys,beauty where beauty.boyfriend_id = boys.id 为表起别名，提高语句的简洁度，区分多个重名字段 当起别名后，不能使用原来的表名去限定![](../images/Snipaste_2021-03-08_22-41-28.png) ![](../images/Snipaste_2021-03-09_14-11-20.png)
            2.  非等值连接
+           3.  自连接 ![](../images/Snipaste_2021-03-09_20-30-00.png)
+       4. sql99
+          1. ![](../images/Snipaste_2021-03-09_21-03-58.png)
+          2. 内连接 ![](../images/Snipaste_2021-03-09_21-13-41.png)
+          3. ![](../images/Snipaste_2021-03-09_21-21-47.png)
 6. DML 语言  Data 操作单词 Language 增删改语言
 7. DDL 语言  Data define Language   定义库表语言
 8. DTL 语言  Data transaction Control 事务控制语言
