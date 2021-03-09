@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    <bean id="user" class="com.atguigu.User"/>-->
+    <!--    配置User对象的创建-->
+<!--    <bean id="user" class="com.atguigu.User">-->
+<!--&lt;!&ndash;        使用property 完成属性注入-->
+<!--   name : 要注入的属性名称-->
+<!--   value :要注入的属性的值-->
+<!--&ndash;&gt;-->
+<!--        &lt;!&ndash; 依赖注入&ndash;&gt;-->
+<!--        <property name="name" value="zhangsan"></property>-->
+<!--    </bean>-->
+
+    <bean id="user" class="com.atguigu.User">
+        <constructor-arg name="name" value="zhansan"></constructor-arg>
+    </bean>
+
+</beans>

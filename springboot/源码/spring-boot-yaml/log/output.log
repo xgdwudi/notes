@@ -1,0 +1,13 @@
+22:11:39.971 [main] INFO  c.atguigu.SpringBootYamlApplication - Starting SpringBootYamlApplication using Java 1.8.0_202 on LAPTOP-9LPKFKQR with PID 21144 (D:\学习笔记\learning-notes\springboot\源码\spring-boot-yaml\target\classes started by xu in D:\学习笔记\learning-notes\springboot\源码\spring-boot-yaml)
+22:11:39.974 [main] INFO  c.atguigu.SpringBootYamlApplication - The following profiles are active: prod
+22:11:40.013 [main] WARN  o.s.b.c.config.ConfigDataEnvironment - Property 'spring.profiles' imported from location 'class path resource [application-prod.properties]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application-prod.properties] - 2:17]
+22:11:40.639 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8089 (http)
+22:11:40.646 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8089"]
+22:11:40.646 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+22:11:40.646 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.43]
+22:11:40.719 [main] INFO  o.a.c.c.C.[.[localhost].[/bdbs] - Initializing Spring embedded WebApplicationContext
+22:11:40.720 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 705 ms
+22:11:40.823 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+22:11:40.925 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8089"]
+22:11:40.938 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8089 (http) with context path '/bdbs'
+22:11:40.945 [main] INFO  c.atguigu.SpringBootYamlApplication - Started SpringBootYamlApplication in 1.436 seconds (JVM running for 2.422)

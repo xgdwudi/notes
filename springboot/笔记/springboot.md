@@ -130,3 +130,26 @@ java -jar asjdjahsdjha.jar --server.port=8085
 ![asdasdads](../images/Snipaste_2021-03-01_22-11-48.png)
 
 https://www.bilibili.com/video/BV1gW411W76m?p=24&spm_id_from=pageDriver
+
+![](../images/Snipaste_2021-03-02_21-32-58.png)
+![](../images/Snipaste_2021-03-02_21-38-16.png)
+![](../images/Snipaste_2021-03-02_21-49-22.png)
+![](../images/Snipaste_2021-03-02_21-58-16.png)
+
+
+## web开发
+
+![](../images/Snipaste_2021-03-02_22-46-09.png)
+![](../images/Snipaste_2021-03-02_22-44-45.png)
+
+### 模板引擎
+![](../images/Snipaste_2021-03-02_22-48-24.png)
+
+https://www.bilibili.com/video/BV1gW411W76m?p=31&spm_id_from=pageDriver
+
+## 创建springapplication 对象
+![](../images/Snipaste_2021-03-04_21-14-50.png)
+
+### 运行run方法
+![](../images/Snipaste_2021-03-04_21-16-25.png)
+
