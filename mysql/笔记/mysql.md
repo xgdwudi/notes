@@ -80,6 +80,7 @@
           1. ![](../images/Snipaste_2021-03-09_21-03-58.png)
           2. 内连接 ![](../images/Snipaste_2021-03-09_21-13-41.png)
           3. ![](../images/Snipaste_2021-03-09_21-21-47.png)
+    24. 子查询
 6. DML 语言  Data 操作单词 Language 增删改语言
 7. DDL 语言  Data define Language   定义库表语言
 8. DTL 语言  Data transaction Control 事务控制语言
