@@ -68,7 +68,7 @@
    21.  分组函数  功能用作统计使用，又称为聚合函数或者统计函数或组函数  sum求和 avg平均值 max最大值 min最小值 count计算个数
         1.   ps: <br/> ![](../images/Snipaste_2021-03-08_21-26-01.png) ![](../images/Snipaste_2021-03-08_21-37-13.png) ![](../images/Snipaste_2021-03-08_21-40-16.png) ![](../images/Snipaste_2021-03-08_21-44-20.png)
    22. 分组查询
-       1.  ![](../images/Snipaste_2021-03-08_21-56-44.png) ![](../images/Snipaste_2021-03-08_21-58-54.png) ![](../images/Snipaste_2021-03-08_22-05-25.png) ![](../images/Snipaste_2021-03-08_22-13-08.png) ![](../images/Snipaste_2021-03-08_22-14-02.png) ![](../images/Snipaste_2021-03-08_22-22-07.png)
+       1.  ![](../images/Snipaste_2021-03-08_21-56-44.png) ![](../images/Snipaste_2021-03-08_21-58-54.png) ![](../images/Snipaste_2021-03-08_22-05-25.png) ![](../images/Snipaste_2021-03-08_22-13-08.png) ![](../images/ Snipaste_2021-03-08_22-14-02.png) ![](../images/Snipaste_2021-03-08_22-22-07.png)
    23. 连接查询 多表查询
        1.  笛卡尔乘积现象： 表1 有m行 表2 有 n行 结果=m*n行 发生原因：没有有效的连接条件  如何避免： 添加有效的连接条件
        2.  ![](../images/Snipaste_2021-03-08_22-36-32.png)
@@ -80,8 +80,11 @@
           1. ![](../images/Snipaste_2021-03-09_21-03-58.png)
           2. 内连接 ![](../images/Snipaste_2021-03-09_21-13-41.png)
           3. ![](../images/Snipaste_2021-03-09_21-21-47.png)
-    24. 子查询
-6. DML 语言  Data 操作单词 Language 增删改语言
+          4. 交叉链接
+    24.  子查询 ![](../images/Snipaste_2021-03-10_21-32-56.png) ![](../images/Snipaste_2021-03-10_21-36-39.png) ![](../images/Snipaste_2021-03-10_22-13-52.png)  exists(相关子查询)是否存在 返回 1（true） 或者 0(false)  ![](../images/Snipaste_2021-03-10_22-24-41.png)
+    25.  分页查询 ![](../images/Snipaste_2021-03-10_22-32-10.png)
+    26.  https://www.bilibili.com/video/BV1xW411u7ax?p=96&spm_id_from=pageDriver
+6. DML 语言  Data 操作单词 Language 增删改语言 
 7. DDL 语言  Data define Language   定义库表语言
 8. DTL 语言  Data transaction Control 事务控制语言
 
