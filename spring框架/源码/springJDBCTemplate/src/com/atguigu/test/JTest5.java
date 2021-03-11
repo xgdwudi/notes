@@ -29,4 +29,12 @@ public class JTest5 {
     public void adds(){
         tAccountService.asd();
     }
+
+
+    public static void main(String[] args) {
+        String key = "123";
+        int h;
+        int i = (48690 >>> 16);
+        System.out.println(i);
+    }
 }
