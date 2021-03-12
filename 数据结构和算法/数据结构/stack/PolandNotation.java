@@ -15,8 +15,7 @@ import java.util.Stack;
 public class PolandNotation {
 
     public static void main(String[] args) {
-
-        String zzbds = "1+((2+3)* 4  )- 5";
+        String zzbds = "1+( 2 * 3)-5";
         List<String> arraylists = arraylists(zzbds);
         System.out.println(arraylists);
         List<String> strings = ZzZhZz(arraylists);

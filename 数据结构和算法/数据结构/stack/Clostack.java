@@ -15,7 +15,7 @@ public class Clostack {
     public static void main(String[] args) {
         StackDemo num = new StackDemo(10);
         StackDemo opers = new StackDemo(10);
-        String rec = "90+1*1-10";
+        String rec = "2*(2-110)";
         int index = 0;  // rec指针位置
         int num1;  // 数栈取出得第一个数字
         int num2; // 数栈取出得第二个数字
