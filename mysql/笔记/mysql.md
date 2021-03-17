@@ -85,7 +85,37 @@
     25.  分页查询 ![](../images/Snipaste_2021-03-10_22-32-10.png)
     26.  https://www.bilibili.com/video/BV1xW411u7ax?p=96&spm_id_from=pageDriver
 6. DML 语言  Data 操作单词 Language 增删改语言 
+   1. insert的两种方式 ![](../images/Snipaste_2021-03-15_22-35-40.png) ![](../images/Snipaste_2021-03-15_22-39-22.png) 
+   2. update ![](../images/Snipaste_2021-03-15_22-45-09.png)
+   3. 删除语句 ![](../images/Snipaste_2021-03-15_22-49-20.png)
+   4. https://www.bilibili.com/video/BV1xW411u7ax?p=107&spm_id_from=pageDriver
 7. DDL 语言  Data define Language   定义库表语言
+   1. 建库语法：create database if not exists(如果没有存在) 库名
+   2. 库的修改： 
+   3. 更改库的字符集 ALTER DATABASE books character set gdk;
+   4. 库的删除 drop database if exists books 
+   5.  表的管理
+       1.  表的创建 create table 表名(类名 列的类型 【（长度）约束】，【（长度）约束】) 
+       2.  表的修改：
+           1.  修改列名 ALTER TABLE book CHANGE COLUMN publishdata（旧的列名） pubdate（新的列名） datatime（新的类型）
+           2.  修改列的类型或约束  ALTER TABLE book MODIFY pubdate TIMESTEAP
+           3.  添加新列 ALTER TABLE book ADD COLUMN adds datatime
+           4.  删除列  ALTER TABLE book DROP COLUMN annual
+           5.  修改biao名  ALTER TABLE author RENAME TO book_author
+           6.  ![](../images/Snipaste_2021-03-17_22-13-51.png)
+       3. 表的删除 DROP TABLE book-author
+       4. 表的复制  
+          1. 复制表的结构 CREATE TABLE copy（新表） LIKE author(复制的表)
+          2. 复制表的机构外加数据  CREATE TABLE copy2 select * from author;
+          3. 只复制部分数据  CREATE TABLE copy3 select id,au_name from author where nation = '';
+          4. 只复制部分表字段结构： CREATE TABLE copy4 select id , au_name from author where 0; (0为false,1为true)
+       5. 表的创建
+       6. 常见的数据类型
+          1. int bigint varchar datatime double  text blob(较长的二进制数据)
+          2. 如何设置有符号和无符号  ![](../images/Snipaste_2021-03-17_22-44-36.png)
+             1. CREATE TABLE tab_int(t1 INT,t2 INT UNSIGNED)  UNSIGNED 无符号约束
+             2. 如果不设置长度，会有默认的长度int(7) ZEROFILL约束会自动将整型转为无符号，并对不够7位的进行长度补齐![](../images/Snipaste_2021-03-17_22-50-27.png)
+             3. https://www.bilibili.com/video/BV1xW411u7ax?p=120&spm_id_from=pageDriver
 8. DTL 语言  Data transaction Control 事务控制语言
 
 
