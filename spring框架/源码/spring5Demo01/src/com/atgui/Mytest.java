@@ -32,4 +32,16 @@ public class Mytest {
         UserController userController = annotationConfigApplicationContext.getBean("userController", UserController.class);
         userController.test();
     }
+
+    @Test
+    public void asdasd()  {
+        try {
+            int i = 1/0;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        System.out.println("asdasd");
+    }
+
 }
