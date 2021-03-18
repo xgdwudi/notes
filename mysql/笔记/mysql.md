@@ -116,6 +116,45 @@
              1. CREATE TABLE tab_int(t1 INT,t2 INT UNSIGNED)  UNSIGNED 无符号约束
              2. 如果不设置长度，会有默认的长度int(7) ZEROFILL约束会自动将整型转为无符号，并对不够7位的进行长度补齐![](../images/Snipaste_2021-03-17_22-50-27.png)
              3. https://www.bilibili.com/video/BV1xW411u7ax?p=120&spm_id_from=pageDriver
+          3. ![](../images/Snipaste_2021-03-18_20-44-12.png)
+          4. ![](../images/Snipaste_2021-03-18_20-51-04.png)
+          5. ![](../images/Snipaste_2021-03-18_20-49-52.png)
+          6. 字符型 
+             1. 简短的文本 char varchar 
+             2. 较长的文本 blod text
+             3. 枚举类型 ![](../images/Snipaste_2021-03-18_20-58-40.png) ![](../images/Snipaste_2021-03-18_20-59-19.png) ![](../images/Snipaste_2021-03-18_21-01-06.png) ![](../images/Snipaste_2021-03-18_21-02-49.png) ![](../images/Snipaste_2021-03-18_21-03-41.png)
+          7. 日期型
+             1. date 日期
+             2. time 时间
+             3. year 年
+             4. datetime 
+             5. timestamp
+             6. ![](../images/Snipaste_2021-03-18_21-05-08.png)
+             7. ![](../images/Snipaste_2021-03-18_21-08-11.png)
+             8. ![](../images/Snipaste_2021-03-18_21-26-23.png)
+          8. 常见约束
+             1. 限制，用于限制行或者列的数据，为了保证表中数据的可靠性
+             2. 六大约束
+                1. NOT NULL ：非空，用于保证该字段不能为空
+                2. DEFAULT：默认：用于保证该字段有默认值
+                3. PRIMARY KEY：主键 用于保证该字段的值具有唯一性，不能为空
+                4. UNIOUE：用于保证该字段的值具有唯一性，但可以为空
+                5. CHECK:检查约束【mysql不支持】加条件
+                6. FOREIGN KEY： 外键约束 用于限制两个表的关系，用于保证该字段的值必须来源于主表的关联字段，在从表中添加外键约束，用于引用主表中列的值
+                7. ![](../images/Snipaste_2021-03-18_21-42-14.png)
+                8. ![](../images/Snipaste_2021-03-18_21-43-29.png)
+                9. ![](../images/Snipaste_2021-03-18_21-48-14.png)
+                10. ![](../images/Snipaste_2021-03-18_21-49-59.png)
+                11. ![](../images/Snipaste_2021-03-18_21-53-51.png)
+                12. ![](../images/Snipaste_2021-03-18_21-55-19.png)
+                13. ![](../images/Snipaste_2021-03-18_21-57-30.png)
+                14. ![](../images/Snipaste_2021-03-18_22-02-51.png)
+                15. ![](../images/Snipaste_2021-03-18_22-05-57.png)
+             3. 修改表时添加约束
+                1. ![](../images/Snipaste_2021-03-18_22-09-07.png) 
+                2. ![](../images/Snipaste_2021-03-18_22-10-11.png)
+                3. ![](../images/Snipaste_2021-03-18_22-12-08.png)
+                4. https://www.bilibili.com/video/BV1xW411u7ax?p=132&spm_id_from=pageDriver
 8. DTL 语言  Data transaction Control 事务控制语言
 
 
