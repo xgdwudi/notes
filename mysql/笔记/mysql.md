@@ -155,6 +155,98 @@
                 2. ![](../images/Snipaste_2021-03-18_22-10-11.png)
                 3. ![](../images/Snipaste_2021-03-18_22-12-08.png)
                 4. https://www.bilibili.com/video/BV1xW411u7ax?p=132&spm_id_from=pageDriver
+             4. 标识列
+                1. 称为自增长列   可以不用手动的输入值，系统提供给默认的序列值
+                2. 创建表时设置标识列
+                   1. create table tab_identity( id int primary key auto increment,name varchar(20))
+                   2. 查询修改自增的偏移值、及其修改值 ![](../images/Snipaste_2021-03-20_11-05-22.png)
+                   3. ![](../images/Snipaste_2021-03-20_11-09-27.png)
+                   4. ![](../images/Snipaste_2021-03-20_11-11-23.png)
 8. DTL 语言  Data transaction Control 事务控制语言
+   1. 事务 一个或一组语句组成执行单元，这个执行单元要么全部执行，要么全部不执行
+   2. 存储引擎   数据不同的存储技术 ![](../images/Snipaste_2021-03-20_11-20-05.png)
+   3. ![](../images/Snipaste_2021-03-20_11-24-24.png)
+   4. 事务的创建 
+      1. 隐式的事务：事务没有明显的开启和结束的标志 比如delete insert update
+      2. 显式事务：具有明显的开启和结束的标志
+         1. 前提： 先设置自动提交功能为禁用
+            1. set autocommit = 0; 只针对当前事务有限
+         2. 开启事务![](../images/Snipaste_2021-03-20_11-30-14.png)
+   5. ![](../images/Snipaste_2021-03-20_11-37-46.png)
+   6. ![](../images/Snipaste_2021-03-20_11-38-17.png) 设置隔离级别 ![](../images/Snipaste_2021-03-20_11-44-47.png)
+   7. ![](../images/Snipaste_2021-03-21_17-48-58.png) ![](../images/Snipaste_2021-03-21_17-51-52.png) ![](../images/Snipaste_2021-03-21_17-54-25.png)
+9. 视图
+   1.  虚拟表，和普通表一样使用 ，是通过表动态生成的数据，(mysql5.1中出现的新特性)
+   2.  ![](../images/Snipaste_2021-03-21_18-02-08.png)
+   3.  创建视图 create view 视图名 as 查询语句
+   4.  修改视图 ![](../images/Snipaste_2021-03-21_18-10-52.png)
+   5.  删除视图  drop view 视图名，视图名,.....;
+   6.  查看视图  show create view 视图名；   desc 视图名；
+   7.  ![](../images/Snipaste_2021-03-21_18-21-32.png)
+10. ![](../images/Snipaste_2021-03-21_18-55-48.png)
+    1.  级联删除   ![](../images/Snipaste_2021-03-21_19-03-31.png)
+    2.  级联置空 ![](../images/Snipaste_2021-03-21_19-04-51.png)
+11. 变量
+    1.  系统变量 （变量是由系统提供的，不是用户定义，属于服务器层面） 使用语法：![](../images/Snipaste_2021-03-21_20-46-12.png)
+        1.  全局变量
+        2.  会话变量
+    2.  自定义变量 变量是用户是用户自定义的
+        1.  用户变量
+            1.  声明 并初始化
+                1.  ![](../images/Snipaste_2021-03-21_21-03-33.png)
+                2. 查看（查看用户变量的值）
+        2.  局部变量 作用域：仅仅在定义它的begin end中有效 应用在begin end 中 的第一句话
+            1.  ![](../images/Snipaste_2021-03-21_21-08-06.png)
+            2.  使用 
+                1.  select 局部变量名；
+            3. ![](../images/Snipaste_2021-03-21_21-11-59.png)
+12. 存储过程和函数
+    1.  存储过程和函数 ： 类似于java中的方法
+        1. 好处 提高代码的重用性
+        2. 简化操作
+    2.  存储过程：一组预先定义好的sql语句的集合，理解成批处理语句
+        1. 好处 提高代码的重用性
+           1. 简化操作  
+           2. 减少了编译次数并且减少了和数据库服务器的连接次数，提高了效率
+        2. 语法
+           1. 创建语法
+              1. CREATE　PROCEDURE 存储过程名(参数列表)BEGIN 存储过程体（一组合法的SQL语句）  END
+              2. 注意 参数列表包含三部分
+                 1. 参数模式 参数名 参数类型
+                 2. ps：in  stuname VARCHAR(20)
+                 3. 参数模式： in该参数可以作为入口（该参数需要调用方传入值）   ou该参数可以作为出口（该参数可以作为返回值）    inout（该参数既需要传入值有需要传出值）
+              3. 如果存储过程体仅仅只有一句话，BEGIN END可以省略
+              4. 存储过程体的每条SQL语句的结尾要求必须加分号；
+              5. 存储过程的结尾可以使用 DELIMITER 重新设置 
+              6. 语法： DELIMITER　结束标记 ps:DELIMITER　$
+              7. 调用： call 存储过程名(实参列表);
+                 1. ps: ![](../images/Snipaste_2021-03-21_21-40-38.png)
+              8. 创建带in模式参数的存储过程
+                 1. create procedure map2(in beatutyname varchar(20)) begin end
+                 2. ![](../images/Snipaste_2021-03-21_21-44-59.png)
+                 3. ![](../images/Snipaste_2021-03-21_21-50-28.png)
+              9. 带out模式的存储过程
+                 1.  ![](../images/Snipaste_2021-03-21_21-54-45.png)
+                 2.  ![](../images/Snipaste_2021-03-21_21-57-46.png)
+              10. 带inout 模式参数的存储过程
+                  1.   ![](../images/Snipaste_2021-03-21_22-01-33.png)
+              11. 删除存储过程
+                  1.  drop procedure 存储过程名 
+              12. 查看存储过程的结构  show create porcedure 存储过程名;
+                  1.  存储过程不能修改（navcat好像可以修改）
+                  2.  ![](../images/Snipaste_2021-03-21_22-17-05.png)
+   3. 函数
+      1. ![](../images/Snipaste_2021-03-21_22-22-03.png)
+      2. 创建语法
+         1. CREATE FUNCTION 函数名(参数列表)RETURNS 返回类型    BEGIN 函数体  END
+            1. 注意：  函数列表包含两部分   参数名   参数类型 
+            2. 函数体：肯定会有return语句，如果没有会报错  弱国return 语句没有放在函数体最后也不会报错，但不建议   return 值
+            3. 当函数体中只有一句话时可以去省略
+            4. ![](../images/Snipaste_2021-03-21_22-28-37.png)
+         2. 调用语法
+            1. select 函数名(参数列表);
+            2. https://www.bilibili.com/video/BV1xW411u7ax?p=167&spm_id_from=pageDriver
+       
+
 
 
