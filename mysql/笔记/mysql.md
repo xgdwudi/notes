@@ -246,6 +246,26 @@
          2. 调用语法
             1. select 函数名(参数列表);
             2. https://www.bilibili.com/video/BV1xW411u7ax?p=167&spm_id_from=pageDriver
+            3. ![](../images/Snipaste_2021-03-22_22-51-04.png)
+            4. ![](../images/Snipaste_2021-03-22_22-57-08.png)
+         3. 查看函数
+            1. show create function 函数名;
+         4. 删除函数
+            1. DROP function 函数名;
+   4. 流程控制结构
+      1. 顺序结构 ：程序从上往下依次进行
+      2. 分支结构 ： 程序从两条或多条路劲中选择一条去执行
+      3. 循环结构： 程序在满足一定条件的基础上，重复执行一段代码
+      4. ![](../images/Snipaste_2021-03-22_23-05-58.png)
+      5. ![](../images/Snipaste_2021-03-22_23-11-20.png)
+      6. ![](../images/Snipaste_2021-03-22_23-16-56.png)
+      7. 循环结构
+         1. ![](../images/Snipaste_2021-03-22_23-21-46.png)
+         2. ![](../images/Snipaste_2021-03-22_23-23-21.png)
+         3. ![](../images/Snipaste_2021-03-22_23-24-35.png)
+         4. ![](../images/Snipaste_2021-03-22_23-26-31.png)
+         5. https://www.bilibili.com/video/BV1xW411u7ax?p=175&spm_id_from=pageDriver
+1
        
 
 
