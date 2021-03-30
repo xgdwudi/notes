@@ -119,3 +119,14 @@ https://www.bilibili.com/video/BV1KW411u7vy?spm_id_from=333.788.b_636f6d6d656e74
          10. 对于在条件查询中 索引条件顺序不一致的时候，mysql底层的sql优化器 会对sql进行最优优化，进而达到最好的效果![](../images/Snipaste_2021-03-27_21-14-36.png)  ![](../images/Snipaste_2021-03-27_21-12-06.png)  但最好，怎么写怎么用，节省转换时间
          11. ![](../images/Snipaste_2021-03-27_21-19-32.png)
          12. https://www.bilibili.com/video/BV1KW411u7vy?p=44&spm_id_from=pageDriver
+8. 批量数据插入脚本
+   1. ![](../images/Snipaste_2021-03-29_10-08-45.png)
+   2. ![](../images/Snipaste_2021-03-29_10-24-22.png)
+   3. ![](../images/Snipaste_2021-03-29_10-24-58.png)
+9. Show Profile
+   1.  ![](../images/Snipaste_2021-03-29_10-28-49.png)
+   2.  ![](../images/Snipaste_2021-03-29_14-12-52.png)
+   3.  ![](../images/Snipaste_2021-03-29_14-26-54.png)
+10. mysql 锁的机制 ![](../images/Snipaste_2021-03-30_10-30-20.png)
+    1.  ![](../images/Snipaste_2021-03-30_10-31-31.png)
+    2.  ![](../images/Snipaste_2021-03-30_10-31-55.png)
