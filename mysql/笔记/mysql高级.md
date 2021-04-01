@@ -130,3 +130,47 @@ https://www.bilibili.com/video/BV1KW411u7vy?spm_id_from=333.788.b_636f6d6d656e74
 10. mysql 锁的机制 ![](../images/Snipaste_2021-03-30_10-30-20.png)
     1.  ![](../images/Snipaste_2021-03-30_10-31-31.png)
     2.  ![](../images/Snipaste_2021-03-30_10-31-55.png)
+    3.  ![](../images/Snipaste_2021-03-31_13-38-26.png)
+    4.  解锁  unlock tables;
+    5.  读锁 ![](../images/Snipaste_2021-03-31_14-43-21.png)
+    6.  ![](../images/Snipaste_2021-03-31_14-44-25.png)
+    7.  ![](../images/Snipaste_2021-03-31_14-45-04.png)
+    8.  ![](../images/Snipaste_2021-03-31_14-49-16.png)
+    9.  表锁分析
+        1.  ![](../images/Snipaste_2021-03-31_14-54-45.png)
+        2.  ![](../images/Snipaste_2021-03-31_14-56-49.png)
+    10. 行锁
+        1.  ![](../images/Snipaste_2021-03-31_14-58-47.png)
+        2.  ![](../images/Snipaste_2021-03-31_15-14-52.png)
+        3.  索引失效导致行锁便表锁
+        4.  间隙锁所导致的危害
+            1. ![](../images/Snipaste_2021-03-31_17-13-19.png)
+            2. ![](../images/Snipaste_2021-03-31_17-15-20.png)
+        5. ![](../images/Snipaste_2021-03-31_17-16-55.png) 
+        6. 行锁分析
+           1. ![](../images/Snipaste_2021-03-31_17-21-16.png)
+           2. ![](../images/Snipaste_2021-03-31_17-23-18.png)
+           3. ![](../images/Snipaste_2021-03-31_17-24-09.png)
+           4. ![](../images/Snipaste_2021-03-31_17-25-18.png)
+           5. ![](../images/Snipaste_2021-03-31_17-26-42.png)
+     11. 页锁  ![](../images/Snipaste_2021-03-31_17-27-46.png)
+ 11. 主从复制
+     1.  ![](../images/Snipaste_2021-03-31_17-32-16.png)
+     2.   ![](../images/Snipaste_2021-03-31_17-31-49.png)
+     3.   一主一丛配置
+          1.   要求
+               1. mysql版本一致且后台以服务运行
+               2. 主机都配置在【mysqlid】节点下，都是小写
+          2. 主机修改my.ini 配置文件
+             1. ![](../images/Snipaste_2021-03-31_17-41-31.png)
+             2. ![](../images/Snipaste_2021-03-31_17-42-13.png)
+          3. 从机修改my.cof 配置文件 
+             1. ![](../images/Snipaste_2021-03-31_17-43-11.png)
+          4. ![](../images/Snipaste_2021-03-31_17-45-56.png)
+          5. 主机下授权
+             1. ![](../images/Snipaste_2021-03-31_17-47-38.png)
+          6. 在从机下配置需要复制的主机
+             1. ![](../images/Snipaste_2021-03-31_17-52-52.png)
+             2. ![](../images/Snipaste_2021-03-31_17-53-48.png)
+          7. 停止主从服务
+             1. ![](../images/Snipaste_2021-03-31_17-56-35.png)
