@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/javase基础复习/java并发编程/源码/comitcase/com.itcase.iml" filepath="$PROJECT_DIR$/javase基础复习/java并发编程/源码/comitcase/com.itcase.iml" />
       <module fileurl="file://$PROJECT_DIR$/learning-notes.iml" filepath="$PROJECT_DIR$/learning-notes.iml" />
     </modules>
   </component>
