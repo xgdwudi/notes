@@ -2,6 +2,7 @@ package com.itcase;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -74,3 +75,64 @@ class Number{
 
     }
 }
+
+class test{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        System.out.println(lengths(name));
+    }
+    static int lengths(String str){
+        int i = str.lastIndexOf(" ");
+        String substring = str.substring(i+1);
+        return  substring.length();
+    }
+}
+
+class test1{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        String names =  sc.nextLine();
+        System.out.println(lengths(name,names));
+    }
+    static int lengths(String str,String names){
+//        String[] split = str.split(names);
+//        for (String s : split) {
+//            String[] split1 = s.split(names.toUpperCase());
+//        }
+        String replace = str.replace(names.toLowerCase(), "").replace(names.toUpperCase(),"");
+//        String substring = str.substring(i+1);
+        return  str.length()-replace.length();
+    }
+}
+
+class test2{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int i1 = sc.nextInt();
+        List hashSet= new ArrayList();
+        for (int i = 0; i < i1; i++) {
+            int i4 = sc.nextInt();
+            if(hashSet.contains(i4)){
+                continue;
+            }
+            hashSet.add(i4);
+        }
+        Collections.sort(hashSet);
+        for (int i = 0; i < hashSet.size(); i++) {
+            System.out.println(hashSet.get(i));
+        }
+    }
+    static int lengths(String str,String names){
+//        String[] split = str.split(names);
+//        for (String s : split) {
+//            String[] split1 = s.split(names.toUpperCase());
+//        }
+        String replace = str.replace(names.toLowerCase(), "").replace(names.toUpperCase(),"");
+//        String substring = str.substring(i+1);
+        return  str.length()-replace.length();
+    }
+}
+
+

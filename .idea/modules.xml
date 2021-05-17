@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/javase基础复习/java并发编程/源码/comitcase/com.itcase.iml" filepath="$PROJECT_DIR$/javase基础复习/java并发编程/源码/comitcase/com.itcase.iml" />
       <module fileurl="file://$PROJECT_DIR$/learning-notes.iml" filepath="$PROJECT_DIR$/learning-notes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybaitsplus/mybaitsplus.iml" filepath="$PROJECT_DIR$/mybaitsplus/mybaitsplus.iml" />
     </modules>
   </component>
 </project>
