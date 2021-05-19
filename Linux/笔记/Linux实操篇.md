@@ -36,4 +36,123 @@
 
 ![image-20210518234548012](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210518234548012.png)
 
-![image-20210518234901280](C:%5CUsers%5C86155%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210518234901280.png)
+![image-20210518234901280](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210518234901280.png)
+
+## 3. 用户管理
+
+### 基本介绍
+
+![image-20210519193115949](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519193115949.png)
+
+![image-20210519193138050](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519193138050.png)
+
+Linux的用户至少要归属于一个组
+
+- 添加用户 useradd  [选项] 用户名
+- cd 表示切换目录
+- pwd 查看目录
+- passwd  用户名     修改密码
+- userdel 用户名   删除用户
+
+![image-20210519195259446](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519195259446.png)
+
+![image-20210519200841559](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519200841559.png)
+
+一般会保留家目录：在删除用户时，一般不会将其删除，为了保留其在家目录中的数据
+
+### 查询用户的信息
+
+id   用户 
+
+![image-20210519201149603](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519201149603.png)
+
+### 切换用户
+
+![image-20210519201216335](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519201216335.png)
+
+![image-20210519201754919](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519201754919.png)
+
+### 用户组
+
+![image-20210519201925031](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519201925031.png)
+
+![image-20210519202026245](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519202026245.png)
+
+![image-20210519202049982](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519202353055.png)
+
+![image-20210519202523430](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519202523430.png)
+
+![image-20210519202740217](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519202740217.png)
+
+- 用户配置文件（用户信息）/etc/passwd
+- 组配置文件    /etc/group
+- 口令配置文件（密码和登录信息，是加密的） /etc/shadow
+
+![image-20210519203053355](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519203053355.png)
+
+/etc/passwd 文件
+
+![image-20210519203230647](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519203230647.png)
+
+/etc/group 文件
+
+![image-20210519203504022](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519203504022.png)
+
+## 实用指令
+
+### 指定运行级别
+
+7个运行级别
+
+- 0.关机
+- 1.单用户（找回丢失密码）
+- 2.多用户无网络服务
+- 3.多用户有网络服务
+- 4.保留
+- 5.图形界面
+- 6.重启
+
+![image-20210519203839062](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519203839062.png)
+
+![image-20210519204047664](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519204047664.png)
+
+> 如何找回root密码，如果我们不小心，忘记root密码
+>
+> 思路：进入到单用户模式，然后修改root密码，因为进入单用户模式，
+>
+> root用户不需要密码就可以登陆
+>
+> - 开机-》 在引导时输入 回车键 -》 看到一个界面输入e -> 看到一个新的界面，选中第二行（编辑内核）e-> 在这行最后输入  1 ，在输入回车键=》再次输入b,这时就会进入但用会界面
+> - 这时就可以使用passwd 指令来修改密码 
+
+### 帮助指令
+
+介绍：![image-20210519211242784](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211242784.png)
+
+![image-20210519211312352](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211312352.png)
+
+### 文件目录类
+
+![image-20210519211457462](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211457462.png)
+
+![image-20210519211521317](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211521317.png)
+
+![image-20210519211528273](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211528273.png)
+
+![image-20210519211550789](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211550789.png)
+
+![image-20210519211608824](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211608824.png)
+
+![image-20210519211617507](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211617507.png)
+
+![image-20210519211625325](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211625325.png)
+
+![image-20210519211641325](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211641325.png)
+
+![image-20210519213046369](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519213046369.png)
+
+![image-20210519214027853](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519214027853.png)
+
+![image-20210519214940550](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519214940550.png)
+
+https://www.bilibili.com/video/BV1dW411M7xL?p=27&spm_id_from=pageDriver
