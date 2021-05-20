@@ -139,13 +139,23 @@ id   用户
 
 ![image-20210519211528273](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211528273.png)
 
+rmdir
+
 ![image-20210519211550789](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211550789.png)
+
+touch
 
 ![image-20210519211608824](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211608824.png)
 
+cp
+
 ![image-20210519211617507](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211617507.png)
 
+rm
+
 ![image-20210519211625325](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211625325.png)
+
+MV
 
 ![image-20210519211641325](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519211641325.png)
 
@@ -155,4 +165,104 @@ id   用户
 
 ![image-20210519214940550](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210519214940550.png)
 
-https://www.bilibili.com/video/BV1dW411M7xL?p=27&spm_id_from=pageDriver
+cat
+
+![image-20210520205018210](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520205018210.png)
+
+more
+
+![image-20210520205055804](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520205055804.png)
+
+![image-20210520205300898](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520205300898.png)
+
+Less指令 
+
+![image-20210520205349124](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520205349124.png)
+
+![image-20210520211943745](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520211943745.png)
+
+![image-20210520212803936](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520212803936.png)
+
+![image-20210520213041568](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520213041568.png)
+
+![image-20210520213352258](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520213352258.png)
+
+![image-20210520213400651](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520213400651.png)
+
+![image-20210520213653408](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520213653408.png)
+
+![image-20210520214917075](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520214917075.png)
+
+![image-20210520215537054](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520215537054.png)
+
+![image-20210520215849576](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520215849576.png)
+
+#### 时间日期类
+
+![image-20210520220002138](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520220002138.png)
+
+![image-20210520220245063](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520220245063.png)
+
+![image-20210520220321227](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520220321227.png)
+
+cal 2020
+
+![image-20210520220446893](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520220446893.png)
+
+### 搜索查找类
+
+![image-20210520220803247](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520220803247.png)
+
+![image-20210520221247070](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520221247070.png)
+
+![image-20210520221417274](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520221417274.png)
+
+![image-20210520221636744](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520221636744.png)![image-20210520221737007](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520221737007.png)
+
+如果单位为k则为小写：
+
+![image-20210520222007943](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520222007943.png)
+
+![image-20210520222041709](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520222041709.png)
+
+![image-20210520222427623](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520222427623.png)
+
+![image-20210520222445571](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520222445571.png)
+
+![image-20210520223026291](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520223026291.png)
+
+## 解压缩和压缩指令
+
+![image-20210520223139369](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520223139369.png)
+
+![image-20210520223401855](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520223401855.png)
+
+![image-20210520223443490](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520223443490.png)
+
+#### 第二种
+
+![image-20210520223458401](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520223458401.png)
+
+![image-20210520224349595](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520224349595.png)
+
+![image-20210520224531082](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520224531082.png)
+
+tar:
+
+![image-20210520224624831](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520224624831.png)
+
+![image-20210520225956679](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520225956679.png)
+
+![image-20210520230255649](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520230255649.png)
+
+![image-20210520230445061](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520230445061.png)
+
+## 组管理和权限管理（难点）
+
+
+
+![image-20210520230924586](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520230924586.png)
+
+![image-20210520230938568](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20210520230938568.png)
+
+https://www.bilibili.com/video/BV1dW411M7xL?p=35&spm_id_from=pageDriver
