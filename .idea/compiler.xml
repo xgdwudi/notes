@@ -6,17 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="com.itcase" />
         <module name="mybaitsplus" />
+        <module name="demo" />
+        <module name="com.itcase" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="com.itcase" target="1.5" />
+      <module name="demo" target="1.8" />
       <module name="mybaitsplus" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
       <module name="mybaitsplus" options="-parameters" />
     </option>
   </component>
