@@ -1761,5 +1761,644 @@ DarchetypeArtifactId=jcstress-java-test-archetype -DarchetypeVersion=0.5-
 DgroupId=cn.itcast -DartifactId=ordering -Dversion=1.0
 ```
 
+经验证会出现指令重排问题，会颠倒顺序，如下图。
+
+![image-20220112175430370](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112175430370.png)
+
+## volatile
+
+volatile的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
+
+- 对volatile变量的写指令后会加入写屏障
+- 对volatile变量的读指令前会加入读屏障
+
+### 如何保证可见性
+
+- 写屏障（sfence）保证在该屏障之前的，对共享变量的改动，都同步到主存当中
+
+- ```
+  public void actor2（I_Result r）{
+  	num=2；
+  	ready=true；//ready是volatile赋值带写屏障
+   	//写屏障
+  }
+  ```
+
+- 而读屏障（lfence）保证在该屏障之后，对共享变量的读取，加载的是主存中最新数据
+
+```java
+public void actor1（I_Result r）{
+//读屏障
+//ready是volatile读取值带读屏障if（ready）{
+r.r1=num+num；
+}else{
+r.r1=1；
+}
+```
+
+![image-20220112180748628](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112180748628.png)
+
+### 保证有序性
+
+- 写屏障会确保指令重排序时，不会将写屏障之前的代码排在写屏障之后
+
+- ```java
+  public void actor2（I_Resultr）{
+  num=2；
+  ready=true；//ready是volatile赋值带写屏障I
+  /|
+  }
+  ```
+
+- 读屏障会确保指令重排序时，不会将读屏障之后的代码排在读屏障之前
+
+- ```java
+  public void actorl（I_Result r）{
+      // 读屏障
+  //ready是volatile读取值带读屏障if（ready）{
+  	r.r1=num+num；
+  }else{
+  	r.r1=1；
+  }
+  ```
+
+  ![image-20220112181714305](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112181714305.png)
+
+还是那句话，不能解决指令交错：
+
+- 写屏障仅仅是保证之后的读能够读到最新的结果，但不能保证读跑到它前面去
+- 而有序性的保证也只是保证了本线程内相关代码不被重排序
+
+![image-20220112181802771](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112181802771.png)
+
+### double-checked locking 问题
+
+以著名的double-checked locking单例模式为例
+
+![image-20220112182142600](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112182142600.png)
+
+以上的实现特点是：
+
+- 懒惰实例化
+- 首次使用getlnstance（）才使用synchronized加锁，后续使用时无需加锁
+- 有隐含的，但很关键的一点：第一个if使用了INSTANCE变量，是在同步块之外
+
+但在多线程环境下，上面的代码是有问题的，getlnstance方法对应的字节码为：
+
+![image-20220112183011109](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112183011109.png)
+
+其中
+
+- 17表示创建对象，将对象引用入栈//new Singleton
+- 20表示复制一份对象引用//引用地址
+- 21表示利用一个对象引用，调用构造方法/∥根据引用地址调用
+- 24表示利用一个对象引用，赋值给 static INSTANCE
+
+也许jvm会优化为：先执行24，再执行21。如果两个线程tl，t2按如下时间序列执行：
+
+![image-20220112183428608](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112183428608.png)
+
+关键在于0：getstatic这行代码在monitor控制之外，它就像之前举例中不守规则的人，可以越过monitor读取INSTANCE变量的值
+
+这时tl还未完全将构造方法执行完毕，如果在构造方法中要执行很多初始化操作，那么t2拿到的是将是一个未初始化完毕的单例
+
+对INSTANCE使用volatile修饰即可，可以禁用指令重排，但要注意在JDK5以上的版本的volatile才会真正有效
+
+**解决方案**
+
+![image-20220112184029243](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184029243.png)
+
+### happens-before 
+
+happens-before 规定了对共享变量的写操作对其它线程的读操作可见，它是可见性与有序性的一套规则总结，抛开以下happens-before规则，JMM并不能保证一个线程对共享变量的写，对于其它线程对该共享变量的读可见
+
+- 线程解锁m之前对变量的写，对于接下来对m加锁的其它线程对该变量的读可见
+
+![image-20220112184533480](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184533480.png)
+
+- 线程对volatile变量的写，对接下来其它线程对该变量的读可见
+
+![image-20220112184649578](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184649578.png)
+
+- 线程start 前对变量的写，对该线程开始后对该变量的读可见
+
+![image-20220112184743439](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184743439.png)
+
+- 线程结束前对变量的写，对其它线程得知它结束后的读可见（比如其它线程调用tl.isAlive）或tl.join0等待它结束）
+- ![image-20220112184830271](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184830271.png)
+
+- 线程tl打断t2（interrupt）前对变量的写，对于其他线程得知t2被打断后对变量的读可见（通过t2.interrupted 或t2.isInterrupted）
+
+![image-20220112184907193](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184907193.png)
+
+- 对变量默认值（0，false，null）的写，对其它线程对该变量的读可见
+- 具有传递性，如果xhb->y并且yhb->z那么有xhb->z，配合volatile的防指令重排，有下面的例子
+
+![image-20220112185035252](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112185035252.png)
 
 
+
+
+
+![image-20220112185527974](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112185527974.png)
+
+加入readResovle(),序列化时会返回创建的单例对象 
+
+  ![image-20220112185558054](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112185558054.png)
+
+**小结**
+
+![image-20220112191924332](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112191924332.png)
+
+# 共享模型之无锁
+
+## CAS与volatile
+
+### CAS
+
+前面看到的AtomicInteger的解决方法，内部并没有用锁来保护共享变量的线程安全。那么它是如何实现的呢？
+
+![image-20220113115440350](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113115440350.png)
+
+其中的关键是compareAndSet，它的简称就是CAS（也有Compare And Swap的说法），它必须是原子操作。
+
+![image-20220113115641575](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113115641575.png)
+
+注意
+其实CAS的底层是lock cmpxchg指令（X86架构），在单核CPU和多核CPU下都能够保证【比较交换】的原子性。
+
+- 在多核状态下，某个核执行到带lock的指令时，CPU会让总线锁住，当这个核把此指令执行完毕，再开启总线。这个过程中不会被线程的调度机制所打断，保证了多个线程对内存操作的准确性，是原子的。
+
+### volatile
+
+获取共享变量时，为了保证该变量的可见性，需要使用volatile修饰。
+
+它可以用来修饰成员变量和静态成员变量，他可以避免线程从自己的工作缓存中查找变量的值，必须到主存中获取它的值，线程操作volatile 变量都是直接操作主存。即一个线程对volatile 变量的修改，对另一个线程可见。
+
+注意
+volatile仅仅保证了共享变量的可见性，让其它线程能够看到最新值，但不能解决指令交错问题（不能保证原子性）
+
+CAS必须借助volatile才能读取到共享变量的最新值来实现【比较并交换】的效果
+
+### 为什么无锁效率高
+
+- 无锁情况下，即使重试失败，线程始终在高速运行，没有停歇，而synchronized会让线程在没有获得锁的时候，发生上下文切换，进入阻塞。打个比喻
+- 线程就好像高速跑道上的赛车，高速运行时，速度超快，一旦发生上下文切换，就好比赛车要减速、熄火，等被唤醒又得重新打火、启动、加速..恢复到高速运行，代价比较大
+- 但无锁情况下，因为线程要保持运行，需要额外CPU的支持，CPU在这里就好比高速跑道，没有额外的跑道，线程想高速运行也无从谈起，虽然不会进入阻塞，但由于没有分到时间片，仍然会进入可运行状态，还是会导致上下文切换。
+
+### CAS的特点
+
+结合CAS和volatile可以实现无锁并发，适用于线程数少、多核CPU的场景下。
+
+- CAS是基于乐观锁的思想：最乐观的估计，不怕别的线程来修改共享变量，就算改了也没关系，我吃亏点再重试呗。
+- synchronized是基于悲观锁的思想：最悲观的估计，得防着其它线程来修改共享变量，我上了锁你们都别想改，我改完了解开锁，你们才有机会。
+- CAS体现的是无锁并发、无阻塞并发，请仔细体会这两句话的意思
+  - 因为没有使用 synchronized，所以线程不会陷入阻塞，这是效率提升的因素之一
+  - 但如果竞争激烈，可以想到重试必然频繁发生，反而效率会受影响
+
+## 原子整数
+
+J.U.C并发包提供了：
+
+- AtomicBoolean
+- AtomicInteger
+- AtomicLong
+
+![image-20220113122859706](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113122859706.png)
+
+![image-20220113123405386](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113123405386.png)
+
+![image-20220113123927603](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113123927603.png)
+
+## 原子引用
+
+为什么需要原子引用类型？
+
+- AtomicReference
+- AtomicMarkableReference
+- AtomicStampedReference
+
+![image-20220113124639427](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113124639427.png)
+
+### A-B-A问题
+
+![image-20220113124950745](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113124950745.png)
+
+![image-20220113125009051](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113125009051.png)
+
+简述；其他线程将值由A->B再有其他线程改为B->A，而现在这个线程无法感知AtomicReference的共享值的变化，其实对业务造成不了影响，
+
+主线程仅能判断出共享变量的值与最初值A是否相同，不能感知到这种从A改为B又改回A的清况，如果主线程希望：
+
+只要有其它线程【动过了】共享变量，那么自己的cas就算失败，这时，仅比较值是不够的，需要再加一个版本号
+
+![image-20220113125601374](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113125601374.png)
+
+AtomicStampedReference可以给原子引用加上版本号，追踪原子引用整个的变化过程，如：
+		A->B->A->c，通过AtomicStampedReference，我们可以知道，引用变量中途被更改了几次。
+		但是有时候，并不关心引用变量更改了几次，只是单纯的关心是否更改过，所以就有了AtomicMarkableReference
+
+![image-20220113130743885](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113130743885.png)
+
+## 原子数组
+
+- AtomicIntegerArray
+- AtomicLongAray
+- AtomicRefergnceArray
+
+![image-20220113134125804](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134125804.png)
+
+![image-20220113134145375](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134145375.png)
+
+
+
+![image-20220113134359901](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134359901.png)
+
+
+
+## 字段更新器
+
+- AtomicReferenceFieldUpdater//域字段
+- AtomicIntegerFieldUpdater
+- AtomicLongFieldUpdater
+
+利用字段更新器，可以针对对象的某个域（Field）进行原子操作，只能配合volatile修饰的字段使用，否则会出现异常
+
+![image-20220113134546869](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134546869.png)
+
+![image-20220113134917048](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134917048.png)
+
+## 原子累加器
+
+![image-20220113135502856](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113135502856.png)
+
+
+
+![image-20220113135844416](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113135844416.png)
+
+
+
+性能提升的原因很简单，就是在有竞争时，设置多个累加单元，Therad-0累加Cell[]，而Thread-1累加Cell[1]..最后将结果汇总。这样它们在累加时操作的不同的Cell变量，因此减少了CAS重试失败，从而提高性能。
+
+### LongAdder
+
+LongAdder是并发大师@author Doug Lea（大哥李）的作品，设计的非常精巧
+
+LongAdder类有几个关键域
+
+![image-20220113140333361](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113140333361.png)
+
+CAS锁
+
+![image-20220113140656680](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113140656680.png)
+
+
+
+### 原理之伪共享
+
+其中Cell即为累加单元
+
+![image-20220113141318105](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113141318105.png)
+
+得从缓存说起
+
+缓存与内存的速度比较
+
+![image-20220113141429670](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113141429670.png)
+
+![image-20220113141458266](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113141458266.png)
+
+因为CPU与内存的速度差异很大，需要靠预读数据至缓存来提升效率。
+
+而缓存以缓存行为单位，每个缓存行对应着一块内存，一般是64byte（8个long）
+
+缓存的加入会造成数据副本的产生，即同一份数据会缓存在不同核心的缓存行中
+
+CPU要保证数据的一致性，如果某个CPU核心更改了数据，其它CPU核心对应的整个缓存行必须失效
+
+
+
+![image-20220113141837282](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113141837282.png)
+
+因为Cell是数组形式，在内存中是连续存储的，一个Cell为24字节（16字节的对象头和8字节的value），因此缓存行可以存下2个的Cell对象。这样问题来了：
+
+- Core-0要修改Cell[o]
+- Core-1要修改Cell[1]
+
+无论谁修改成功，都会导致对方Core的缓存行失效，比如Core-0中ce1l[e]=6eee，Cell[1]=8eee要累加Ce11[e]=6ee1，Ce11[1]=8eee，这时会让Core-1的缓存行失效
+
+@sun.misc.Contenfled用来解决这个问题，它的原理是在使用此注解的对象或字段的前后各增加128字节大小的padding，从而让CPU将对象预读至缓存时占用不同的缓存行，这样，不会造成对方缓存行的失效
+
+![image-20220113142326887](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113142326887.png)
+
+### add方法源码解读
+
+![image-20220113180947863](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113180947863.png)
+
+### longAccumulate(long x,longBinaryOperator,boolean wasUncountened);解读
+
+![image-20220113181713545](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113181713545.png)
+
+
+
+## Unsafe
+
+**概述**
+		Unsafe对象提供了非常底层的，操作内存、线程的方法，Unsafe对象不能直接调用，只能通过反射获得
+
+```
+public class Test6 {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+        Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
+        theUnsafe.setAccessible(true);
+        Unsafe unsafe = (Unsafe) theUnsafe.get(null);
+        System.out.println(unsafe);
+
+//      1. 获取属性的偏移地址
+        long idOffect = unsafe.objectFieldOffset(Student.class.getDeclaredField("id"));
+        long nameOffect = unsafe.objectFieldOffset(Student.class.getDeclaredField("name"));
+        Student student = new Student();
+//       2.执行cas操作
+        unsafe.compareAndSwapInt(student, idOffect, 0, 1);
+        unsafe.compareAndSwapObject(student, nameOffect, null, "张三");
+        System.out.println(student);
+    }
+}
+
+@Data
+class Student {
+    volatile int id;
+    volatile String name;
+}
+```
+
+# 共享模型之不可变
+
+- 不可变类的使用
+- 不可变类设计
+- 无状态类设计
+
+## 日期转换的问题
+
+**问题提出**
+
+下面的代码在运行时，由于SimpleDateFormat不是线程安全的
+
+```
+package com.wudidemiao.test;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+
+/**
+ * @author wudidemiaoa
+ * @date 2022/1/13
+ * @apiNote
+ */
+@Slf4j(topic = "c.Test7")
+public class Test7 {
+    public static void main(String[] args) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        for (int i = 0; i < 10; i++) {
+            new Thread(()->{
+                try {
+                    log.debug("{}",dateTimeFormatter.parse("1951-04-21"));
+                }catch (Exception e){
+                    log.error("{}",e);
+                }
+            }).start();
+        }
+    }
+
+    static void test(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        for (int i = 0; i < 10; i++) {
+            new Thread(()->{
+                try {
+                    log.debug("{}",simpleDateFormat.parse("1951-04-21"));
+                }catch (Exception e){
+                    log.error("{}",e);
+                }
+            }).start();
+        }
+    }
+}
+
+```
+
+## 不可变类的设计
+
+另一个大家更为熟悉的String类也是不可变的，以它为例，说明一下不可变设计的要素
+
+![image-20220113193053109](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113193053109.png)
+
+**final的使用**
+
+发现该类、类中所有属性都是final的
+
+- 属性用final修饰保证了该属性是只读的，不能修改
+- 类用final修饰保证了该类中的方法不能被覆盖，防止子类无意间破坏不可变性
+
+**保护性拷贝**
+
+但有同学会说，使用字符串时，也有一些跟修改相关的方法啊，比如substring等，那么下面就看一看这些方法是如何实现的，就以substring为例：
+
+![image-20220113193500091](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113193500091.png)
+
+发现其内部是调用String的构造方法创建了一个新字符串，再进入这个构造看看，是否对final char]value做出了修改：
+
+![image-20220113194236787](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113194236787.png)
+
+结果发现也没有，构造新字符串对象时，会生成新的char[]value，对内容进行复制。这种通过创建副本对象来避免共享的手段称之为【保护性拷贝（defensive copy）】
+
+## 享元模式
+
+### 简介
+
+**定义**
+
+英文名称：Flyweight pattern.当需要重用数量有限的同一类对象时
+
+```
+wikipedia：（最小化内存的使用，对已创建对象的共享）
+A flyweight is an object that minimizes memory usage by sharing as much data as possible with other similar
+objects
+```
+
+**出自**
+		"Gang of Four"design patterns
+		**归类**
+		Structual patterns
+
+### 体现
+
+**包装类**
+在JDK中Boolean，Byte，Short，Integer，Long，Character等包装类提供了valueOf方法，例如Long的valueOf会缓存-128~127之间的Long对象，在这个范围之间会重用对象，大于这个范围，才会新建Long对象：
+
+```
+    public static Long valueOf(long l) {
+        final int offset = 128;
+        if (l >= -128 && l <= 127) { // will cache
+            return LongCache.cache[(int)l + offset];
+        }
+        return new Long(l);
+    }
+```
+
+**注意：**
+
+​	Byte，Short，Long 缓存的范围都是-128~127
+
+​	Character缓存的范围是0~127
+
+​	Integer的默认范围是-128~127，最小值不能变，但最大值可以通过调整虚拟机参数-
+
+​	Djava.lang.Integer.IntegerCache.high来改变
+
+​	Boolean 缓存了 TRUE和FALSE
+
+### String串池
+
+### BigDecimal BigInteger
+
+**注意**这些类的单个方法是线程安全的，多个方法组合可能会出现线程安全问题。
+
+### DIY数据库连接池
+
+例如：一个线上商城应用，QPS达到数干，如果每次都重新创建和关闭数据库连接，性能会受到极大影响。这时预先创建好一批连接，放入连接池。一次请求到达后，从连接池获取连接，使用完毕后再还回连接池，这样既节约了连接的创建和关闭时间，也实现了连接的重用，不至于让庞大的连接数压垮数据库。
+
+```java
+public class Test8 {
+    public static void main(String[] args) {
+        Pool pool = new Pool(2);
+        for (int i = 0; i < 5; i++) {
+            new Thread(()->{
+                Connection borrow = pool.borrow();
+                 try {
+                     TimeUnit.SECONDS.sleep(1);
+                 }catch (InterruptedException e){
+                    e.printStackTrace();
+                 }finally {
+                     pool.free(borrow);
+                 }
+            }).start();
+        }
+    }
+}
+
+@Slf4j(topic = "c.Pool")
+class Pool {
+    //    1. 连接池大小
+    private final int poolSize;
+
+    //   2.连接对象的数组
+    private Connection[] connections;
+
+    //    3.连接状态数组，0 表示繁忙  1表示正常
+    private AtomicIntegerArray states;
+
+    //    构造
+    public Pool(int poolSize) {
+        this.poolSize = poolSize;
+        this.connections = new Connection[poolSize];
+        this.states = new AtomicIntegerArray(new int[poolSize]);
+        for (int i = 0; i < poolSize; i++) {
+            connections[i] = new MockConnection("连接池-"+i);
+        }
+    }
+
+    //    取连接的方法
+    public Connection borrow() {
+        while (true) {
+            for (int i = 0; i < poolSize; i++) {
+//                获取空闲连接
+                if (states.get(i) == 0) {
+                    if (states.compareAndSet(i, 0, 1)) {
+                        log.debug("获取{}", connections[i]);
+                        return connections[i];
+                    }
+                }
+            }
+
+//            如果没有空闲连接了,当前线程进入等待
+            synchronized (this) {
+                try {
+                    log.debug("等待。。。");
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    //    归还连接
+    public void free(Connection con) {
+        for (int i = 0; i < poolSize; i++) {
+            if (connections[i] == con) {
+                states.set(i, 0);
+                synchronized (this) {
+                    log.debug("归还{}", con);
+                    this.notifyAll();
+                }
+                break;
+            }
+        }
+    }
+}
+
+
+class MockConnection implements Connection {
+    private String name;
+
+    public MockConnection(String name) {
+        this.name = name;
+    }
+```
+
+以上实现没有考虑：
+
+- 连接的动态增长与收缩
+- 连接保活（可用性检测）
+- 等待超时处理
+- 分布式hash
+
+对于关系型数据库，有比较成熟的连接池实现，例如c3p0，druid等
+
+对于更通用的对象池，可以考虑使用apache commons pool，例如redis连接池可以参考jedis中关于连接池的实现
+
+## final原理
+
+### 设置final变量的原理
+
+理解了volatile原理，再对比final的实现就比较简单了
+
+![image-20220113212200374](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113212200374.png)
+
+字节码
+
+![image-20220113212216033](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113212216033.png)
+
+发现final变量的赋值也会通过putfield 指令来完成，同样在这条指令之后也会加入写屏障，保证在其它线程读到它的值时不会出现为0的情况
+
+### 获取final变量的原理
+
+加上final之后，是从常量池中复制元素到栈中，
+
+去掉final之后，加上static之后，是从静态常量池中引用的，
+
+### 无状态
+
+在web阶段学习时，设计Servlet时为了保证其线程安全，都会有这样的建议，不要为Servlet设置成员变量，这种没有任何成员变量的类是线程安全的
+
+因为成员变量保存的数据也可以称为状态信息，因此没有成员变量就称之为【无状态】
+
+
+
+# 并发工具类
+
+### 自定义线程池
+
+![image-20220113215136638](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113215136638.png)

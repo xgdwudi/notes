@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f357852e-a68f-409d-bc31-ff49b149c00a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../MongoDB/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../MongoDB/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../redis/笔记/redis.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JUC_Study/src/main/java/com/wudidemiao/test/Test5.java" beforeDir="false" afterPath="$PROJECT_DIR$/JUC_Study/src/main/java/com/wudidemiao/test/Test5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JUC_Study/target/classes/com/wudidemiao/test/Test5.class" beforeDir="false" afterPath="$PROJECT_DIR$/JUC_Study/target/classes/com/wudidemiao/test/Test5.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -51,7 +55,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -65,59 +69,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test5">
-    <configuration name="AsynchronousModeTest4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.AsynchronousModeTest4" />
-      <module name="JUC_Study" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wudidemiao.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DeamonTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.DeamonTest" />
-      <module name="JUC_Study" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wudidemiao.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReentrantLockTest5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.ReentrantLockTest5" />
-      <module name="JUC_Study" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wudidemiao.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SynchronousMode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.SynchronousMode" />
-      <module name="JUC_Study" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wudidemiao.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Test9">
     <configuration name="Test5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.Test5" />
       <module name="JUC_Study" />
@@ -131,13 +83,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.Test6" />
+      <module name="JUC_Study" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wudidemiao.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.Test7" />
+      <module name="JUC_Study" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wudidemiao.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test8" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.Test8" />
+      <module name="JUC_Study" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wudidemiao.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test9" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.test.Test9" />
+      <module name="JUC_Study" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wudidemiao.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test9" />
+        <item itemvalue="Application.Test8" />
+        <item itemvalue="Application.Test7" />
+        <item itemvalue="Application.Test6" />
         <item itemvalue="Application.Test5" />
-        <item itemvalue="Application.ReentrantLockTest5" />
-        <item itemvalue="Application.AsynchronousModeTest4" />
-        <item itemvalue="Application.SynchronousMode" />
-        <item itemvalue="Application.DeamonTest" />
       </list>
     </recent_temporary>
   </component>
@@ -157,6 +161,9 @@
       <workItem from="1641781602809" duration="3195000" />
       <workItem from="1641868445236" duration="13328000" />
       <workItem from="1641962334652" duration="633000" />
+      <workItem from="1641980948690" duration="843000" />
+      <workItem from="1641985472424" duration="1038000" />
+      <workItem from="1642048653552" duration="9012000" />
     </task>
     <servers />
   </component>

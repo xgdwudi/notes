@@ -2,7 +2,6 @@ package com.wudidemiao.test;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Objects;
 
 @Slf4j(topic = "c.Test5")
 public class Test5 {
