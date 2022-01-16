@@ -3,7 +3,6 @@ package com.wudidemiao.test;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -42,7 +41,7 @@ public class Test9 {
     }
 
     public static void main(String[] args) throws Exception {
-        new MouseListener()
+//        new MouseListener()
     }
 
     public static void captureScreens(String fileName, String folder) throws Exception {

@@ -2399,6 +2399,1512 @@ class MockConnection implements Connection {
 
 # 并发工具类
 
-### 自定义线程池
+## 自定义线程池
 
 ![image-20220113215136638](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113215136638.png)
+
+#### 步奏一：自定义拒绝策略
+
+```java
+@FunctionalInterface
+        // 拒绝策略
+interface RejectPolicy<T> {
+    void reject(BlockingQueue<T> queue, T task);
+}
+```
+
+```java
+package com.wudidemiao.test;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+
+/**
+ *  根据策略模式实现
+ * @author wudidemiaoa
+ * @date 2022/1/14
+ * @apiNote
+ */
+@Slf4j(topic = "c.ThreadPools")
+public class ThreadPools {
+    public static void main(String[] args) {
+        ThreadPool threadPool = new ThreadPool(1, 1000, TimeUnit.MILLISECONDS, 1,((queue, task) -> {
+//           1.  死等
+//            queue.put(task);
+//                2.带超时等待
+//            boolean offer = queue.offer(task, 500, TimeUnit.MILLISECONDS);
+//            log.debug(""+offer);
+//                3. 放弃任务执行
+//            log.debug("放弃task{}任务",task);
+//                4.抛出异常
+//            throw new RuntimeException("任务执行失败，"+task);
+//                5.让调用者自己去执行任务
+            task.run();
+        }));
+        for (int i = 0; i < 4; i++) {
+            int k = i;
+            threadPool.execute(() -> {
+                try {
+                    Thread.sleep(2000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                log.debug("{}", k);
+            });
+        }
+    }
+}
+
+@Slf4j(topic = "c.ThreadPool")
+class ThreadPool {
+    //    任务队列
+    private BlockingQueues<Runnable> taskQueue;
+
+    //    线程集合
+    private HashSet<Worker> workers = new HashSet<>();
+
+    //    核心线程数
+    private int coreSize;
+
+    //    获取任务的超时时间
+    private long timeOut;
+
+    //    时间单位
+    private TimeUnit timeUnit;
+
+//    拒绝策略
+    private RejectPolicy<Runnable> rejectPolicy;
+
+    //    执行任务
+    public void execute(Runnable task) {
+//        当任务数没有超过coreSize直接教给workers对象执行
+//        如果任务数超过coreSize时，加入任务队列
+        synchronized (workers) {
+            if (workers.size() < coreSize) {
+                Worker worker = new Worker(task);
+                log.debug("新增worker{}", task);
+                workers.add(worker);
+                worker.start();
+            } else {
+                log.debug("加入任务队列{}", task);
+//                1.死等
+//                2.带超时等待
+//                3. 放弃任务执行
+//                4.抛出异常
+//                5.让调用者自己去执行任务
+//                taskQueue.put(task);
+//                taskQueue.offer(task,timeOut,timeUnit);
+                taskQueue.tryPut(rejectPolicy,task);
+            }
+        }
+    }
+
+    public ThreadPool(int coreSize, long timeOut, TimeUnit timeUnit, int queueCapcity,RejectPolicy<Runnable> rejectPolicy) {
+        this.taskQueue = new BlockingQueues(queueCapcity);
+        this.coreSize = coreSize;
+        this.timeOut = timeOut;
+        this.timeUnit = timeUnit;
+        this.rejectPolicy = rejectPolicy;
+    }
+
+    class Worker extends Thread {
+        private Runnable task;
+
+        public Worker(Runnable task) {
+            this.task = task;
+        }
+
+        //        执行任务
+        @Override
+        public void run() {
+//          1.  当task不为空,直接执行
+//            2. task执行完毕后，在从任务队列中添加任务并执行
+//            while (task != null || (task = taskQueue.take()) != null) {
+//            加上超时时间
+            while (task != null || (task = taskQueue.poll(timeOut, timeUnit)) != null) {
+                try {
+                    log.debug("正在执行。。。{}", task);
+                    task.run();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    task = null;
+                }
+            }
+
+            synchronized (workers) {
+                log.debug("worker被移除{}", this);
+                workers.remove(this);
+            }
+
+        }
+    }
+}
+@Slf4j(topic = "c.BlockingQueues")
+class BlockingQueues<T> {
+    //    1.任务队列
+    private Deque<T> queue = new ArrayDeque<>();
+
+    //    2. 锁
+    private ReentrantLock lock = new ReentrantLock();
+
+    //    3. 生产者条件变量
+    private Condition fullWaitSet = lock.newCondition();
+
+    //    4.消费者条件变量
+    private Condition emptyWaitSet = lock.newCondition();
+
+    //    5. 容量
+    private int capcity;
+
+    public BlockingQueues(int queueCapcity) {
+        this.capcity = queueCapcity;
+    }
+
+    //    带超时的阻塞获取
+    public T poll(long timeout, TimeUnit unit) {
+        lock.lock();
+        try {
+//            将超时时间统一转换为纳秒
+            long nanos = unit.toNanos(timeout);
+            while (queue.isEmpty()) {
+                try {
+//                    返回的是剩余时间
+                    if (nanos <= 0) {
+                        return null;
+                    }
+                    nanos = emptyWaitSet.awaitNanos(nanos);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            T t = queue.removeFirst();
+            fullWaitSet.signal();
+            return t;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    //    阻塞获取
+    public T take() {
+        lock.lock();
+        try {
+            while (queue.isEmpty()) {
+                try {
+                    emptyWaitSet.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            T t = queue.removeFirst();
+            fullWaitSet.signal();
+            return t;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    //    阻塞添加
+    public void put(T element) {
+        lock.lock();
+        try {
+            while (queue.size() == capcity) {
+                try {
+                    log.debug("等待加入任务队列。。。{}",element);
+                    fullWaitSet.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            log.debug("加入任务队列。。。{}",element);
+            queue.addLast(element);
+            emptyWaitSet.signal();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+//    带超时时间的阻塞添加
+    public boolean offer(T element,long timeOut,TimeUnit timeUnit){
+        lock.lock();
+        try {
+            long nanos = timeUnit.toNanos(timeOut);
+            while (queue.size() == capcity) {
+                try {
+                    log.debug("等待加入任务队列。。。{}",element);
+                    if(nanos<=0){
+                        return false;
+                    }
+                    nanos = fullWaitSet.awaitNanos(nanos);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            log.debug("加入任务队列。。。{}",element);
+            queue.addLast(element);
+            emptyWaitSet.signal();
+            return true;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public int size() {
+        lock.lock();
+        try {
+            return queue.size();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void tryPut(RejectPolicy<T> rejectPolicy, T task) {
+       lock.lock();
+       try {
+//            判断队列是否已满
+           if(queue.size()==capcity){
+               rejectPolicy.reject(this,task);
+           }else {
+               log.debug("加入任务队列。。。{}",task);
+               queue.addLast(task);
+               emptyWaitSet.signal();
+           }
+       }finally {
+           lock.unlock();
+       }
+    }
+}
+
+@FunctionalInterface
+        // 拒绝策略
+interface RejectPolicy<T> {
+    void reject(BlockingQueues<T> queue, T task);
+}
+
+```
+
+## ThreadPoolExecutor
+
+![image-20220114130018034](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114130018034.png)
+
+### 线程池状态
+
+ThreadPoolExecutor使用int的高3位来表示线程池状态，低29位表示线程数量
+
+
+
+![image-20220114130220179](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114130220179.png)
+
+从数字上比较，TERMINATED> TIDYING>STOP> SHUTDOWN> RUNNING
+
+这些信息存储在一个原子变量ct中，目的是将线程池状态与线程个数合二为一，这样就可以用一次cas原子操作进行赋值
+
+![image-20220114130723043](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114130723043.png)
+
+### 构造方法
+
+```
+    public ThreadPoolExecutor(int corePoolSize,
+                              int maximumPoolSize,
+                              long keepAliveTime,
+                              TimeUnit unit,
+                              BlockingQueue<Runnable> workQueue,
+                              ThreadFactory threadFactory,
+                              RejectedExecutionHandler handler) {
+```
+
+- corePoolSize 核心线程数目（最多保留的线程数）
+- maximumPoolSize 最大线程数目
+- keepAlive Time 生存时间-针对救急线程
+- unit时间单位-针对救急线程
+- workQueue阻塞队列
+- threadFactory 线程工厂-可以为线程创建时起个好名字
+- handler 拒绝策略
+
+工作方式
+
+![image-20220114132727673](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114132727673.png)
+
+![image-20220114132117512](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114132117512.png)44+4444444444444444444444
+
+- 线程池中刚开始没有线程，当一个任务提交给线程池后，线程池会创建一个新线程来执行任务。
+- 当线程数达到corePoolSize并没有线程空闲，这时再加入任务，新加的任务会被加入workQueue队列排队，直到有空闲的线程。
+- 如果队列选择了有界队列，那么任务超过了队列大小时，会创建 maximumPoolSize-corePoolSize数目的线程来救急。
+- 如果线程到达maximumPoolSize仍然有新任务这时会执行拒绝策略。拒绝策略jdk提供了4种实现，其它著名框架也提供了实现
+  - AbortPolicy 让调用者抛出RejectedExecutionException 异常，这是默认策略
+  - CallerRunsPolicy让调用者运行任务
+  - DiscardPolicy 放弃本次任务
+  - DiscardOldestPolicy放弃队列中最早的任务，本任务取而代之
+  - Dubbo 的实现，在抛出RejectedExecutionException 异常之前会记录日志，并dump线程栈信息，方便定位问题
+  - Netty的实现，是创建一个新线程来执行任务
+  - ActiveMQ的实现，带超时等待（60s）尝试放久队列，类似我们之前自定义的拒绝策略
+  - PinPoint的实现，它使用了一个拒绝策略链，会逐一尝试策略链中每种拒绝策略
+- 当高峰过去后，超过corePoolSize的救急线程如果一段时间没有任务做，需要结束节省资源，这个时间由keepAlive Time 和unit 来控制。
+
+![image-20220114133111805](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114133111805.png)
+
+根据这个构造方法，JDK  Executors类中提供了众多工厂方法来创建各种用途的线程池
+
+### newFixedThreadPool
+
+```java
+    public static ExecutorService newFixedThreadPool(int nThreads) {
+        return new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>());
+    }
+```
+
+特点
+
+- 核心线程数=最大线程数（没有救急线程被创建），因此也无需超时时间
+
+- 阻塞队列是无界的，可以放任意数量的任务
+
+  评价
+  适用于任务量已知，相对耗时的任务
+
+定义线程名称，在线程工厂中
+
+![image-20220114134758181](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114134758181.png)
+
+### newCachedThreadPool
+
+```
+    public static ExecutorService newCachedThreadPool() {
+        return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                                      60L, TimeUnit.SECONDS,
+                                      new SynchronousQueue<Runnable>());
+    }
+```
+
+特点
+
+- 核心线程数是0，最大线程数是Integer.MAX_VALUE，救急线程的空闲生存时间是60s，意味着
+
+  - 全部都是救急线程（60s后可以回收）
+  - 救急线程可以无限创建
+
+- 队列采用了SynchronousQueue实现特点是，它没有容量，没有线程来取是放不进去的（一手交钱、一手交货）
+
+  评价
+
+  整个线程池表现为线程数会根据任务量不断增长，没有上限，当任务执行完毕，空闲1分钟后释放线
+
+  适合任务数比较密集，但每个任务执行时间较短的情况
+
+### newSingleThreadExecutor
+
+```java
+    public static ExecutorService newSingleThreadExecutor() {
+        return new FinalizableDelegatedExecutorService
+            (new ThreadPoolExecutor(1, 1,
+                                    0L, TimeUnit.MILLISECONDS,
+                                    new LinkedBlockingQueue<Runnable>()));
+    }
+```
+
+使用场景
+		希望多个任务排队执行。线程数固定为1，任务数多于1时，会放入无界队列排队。任务执行完毕，这唯一的线程也不会被释放。
+区别：
+
+- 自己创建一个单线程串行执行任务，如果任务执行失败而终止那么没有任何补救措施，而线程池还会新建一个线程，保证池的正常工作
+- Executors.newSingle ThreadExecutor）线程个数始终为1，不能修改
+  - FinalizableDelegatedExecutorService 应用的是装饰器模式，只对外暴露了ExecutorService接口，因此不能调用ThreadPoolExecutor中特有的方法
+- Executors.newFixedThreadPool（1）初始时为1，以后还可以修改
+  - 对外暴露的是ThreadPoolExecutor对象，可以强转后调用 setCorePoolSize 等方法进行修改
+
+### 提交任务
+
+![image-20220114140439435](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114140439435.png)
+
+### 关闭线程池
+
+#### **shutdown**
+
+![image-20220114191647833](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191647833.png)
+
+![image-20220114191701897](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191701897.png)
+
+#### shutdownNow
+
+![image-20220114191821752](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191821752.png)
+
+![image-20220114191837201](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191837201.png)
+
+#### 其他方法
+
+![image-20220114191938656](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191938656.png)
+
+## 异步模式之工作模式
+
+让有限的工作线程（Worker Thread）来轮流异步处理无限多的任务。也可以将其归类为分工模式，它的典型实现就是线程池，也体现了经典设计模式中的享元模式。
+
+例如，海底捞的服务员（线程），轮流处理每位客人的点餐（任务），如果为每位客人都配一名专属的服务员，那么成本就太高了（对比另一种多线程设计模式：Thread-Per-Message）
+
+注意，不同任务类型应该使用不同的线程池，这样能够避免饥饿，并能提升效率
+
+例如，如果一个餐馆的工人既要招呼客人（任务类型A），又要到后厨做菜（任务类型B）显然效率不咋地，分成服务员（线程池A）与厨师（线程池B）更为合理，当然你能想到更细致的分工
+
+### 饥饿现象
+
+固定大小线程池会有饥饿现象I
+
+- 两个工人是同一个线程池中的两个线程
+- 他们要做的事情是：为客人点餐和到后厨做菜，这是两个阶段的工作
+  - 客人点餐：必须先点完餐，等菜做好，上菜，在此期间处理点餐的工人必须等待
+  - 后厨做菜：没啥说的，做就是了
+- 比如工人A处理了点餐任务，接下来它要等着工人B把菜做好，然后上菜，他俩也配合的蛮好
+- 但现在同时来了两个客人，这个时候工人A和工人B都去处理点餐了，这时没人做饭了，饥饿
+
+### 创建多少线程池合适
+
+- 过小会导致程序不能充分地利用系统资源、容易导致饥饿
+- 过大会导致更多的线程上下文切换，占用更多内存
+
+**CPU密集型运算**
+
+通常采用cpu核数+1能够实现最优的CPU利用率，+1是保证当线程由于页缺失故障（操作系统）或其它原因导致暂停时，额外的这个线程就能顶上去，保证CPU时钟周期不被浪费
+		**I/O密集型运算**
+		CPU不总是处于繁忙状态，例如，当你执行业务计算时，这时候会使用CPU资源，但当你执行I0操作时、远程RPC调用时，包括进行数据库操作时，这时候CPU就闲下来了，你可以利用多线程提高它的利用率。
+
+经验公式如下
+
+线程数=核数*期望cPU利用率*总时间（cPU计算时间+等待时间）/CPU计算时间
+
+例如4核CPU计算时间是50%，其它等待时间是50%，期望cpu被100%利用，套用公式
+
+4* 100% * 10%/50%=8例如4核CPU计算时间是10%，其它等待时间是90%，期望cpu被100%利用，套用公式
+
+4 * 180% * 180%/16%=40
+
+### 任务调度线程池
+
+在[任务调度线程池】功能加入之前，可以使用java.util.Timer来实现定时功能，Timer的优点在于简单易用，但由于所有任务都是由同一个线程来调度，因此所有任务都是串行执行的，同一时间只能有一个任务在执行，前一个任务的延迟或异常都将会影响到之后的任务。
+
+
+
+```java
+package com.wudidemiao.test;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.*;
+
+/**
+ * @author wudidemiaoa
+ * @date 2022/1/14
+ * @apiNote
+ */
+@Slf4j(topic = "c.Test10")
+public class Test10 {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        ScheduledExecutorService pool = Executors.newScheduledThreadPool(1);
+        Future<Boolean> start = pool.submit(() -> {
+            log.debug("start");
+            int i = 1 / 0;
+            return true;
+        });
+        // 处理异常
+        // 主动加trycatch块区处理异常
+        start.get();
+    }
+
+    public static void test03() {
+        ScheduledExecutorService pool = Executors.newScheduledThreadPool(1);
+//        pool.scheduleAtFixedRate(()->{
+//            log.debug("running");
+//            try {
+//                TimeUnit.SECONDS.sleep(2);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        },1,1,TimeUnit.SECONDS);
+
+        pool.scheduleWithFixedDelay(() -> {
+            log.debug("running");
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, 1, 1, TimeUnit.SECONDS);
+    }
+
+    public static void test02() {
+        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(1);
+        scheduledThreadPool.schedule(() -> {
+            log.debug("task1");
+//            try {
+//                TimeUnit.SECONDS.sleep(1);
+//                     int i = 1 / 0;
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+
+        }, 1, TimeUnit.SECONDS);
+
+        scheduledThreadPool.schedule(() -> {
+            log.debug("task2");
+        }, 1, TimeUnit.SECONDS);
+    }
+
+    public static void test01() {
+        Timer timer = new Timer();
+        TimerTask timerTask01 = new TimerTask() {
+            @Override
+            public void run() {
+//                try {
+                log.debug("TimerTask01");
+//                    sleep(1);
+                int i = 1 / 0;
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        };
+        TimerTask timerTask02 = new TimerTask() {
+            @Override
+            public void run() {
+                log.debug("TimerTask02");
+            }
+        };
+        log.debug("start..");
+        timer.schedule(timerTask01, 1000);
+        timer.schedule(timerTask02, 1000);
+    }
+}
+
+```
+
+![image-20220114210023810](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114210023810.png)
+
+### Tomcat线程池
+
+Tomcat 在哪里用到了线程池呢
+
+![image-20220115103014554](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103014554.png)
+
+- Limitatch 用来限流，可以控制最大连接个数，类似J.U.C中的Semaphore后面再讲
+- Acceptor只负责【接收新的socket连接】
+- Poller 只负责监听 socket channel是否有【可读的/O事件】
+- 一旦可读，封装一个任务对象（socketProcessor），提交给Executor 线程池处理
+- Executor线程池中的工作线程最终负责【处理请求】
+
+Tomcat线程池扩展了ThreadPoolExecutor，行为稍有不同
+
+- 如果总线程数达到maximumPoolSize
+  - 这时不会立刻抛RejectedExecutionException异常
+  - 而是再次尝试将任务放入队列(机会只有一次)，如果还失败，才抛出RejectedExecutionException异常
+
+![image-20220115103635962](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103635962.png)
+
+![image-20220115103833993](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103833993.png)
+
+![image-20220115103914571](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103914571.png)
+
+![image-20220115103955445](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103955445.png)
+
+![image-20220115104848588](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115104848588.png)
+
+### Fork/join
+
+**1）概念**
+
+Fork/Join是JDK1.7加入的新的线程池实现，它体现的是一种分治思想，适用于能够进行任务拆分的cpu密
+
+所谓的任务拆分，是将一个大任务拆分为算法上相同的小任务，直至不能拆分可以直接求解。跟递归相关的一些计算，如归并排序、斐波那契数列、都可以用分治思想进行求解
+
+Fork/Join在分治的基础上加入了多线程，可以把每个任务的分解和合并交给不同的线程来完成，进一步提升了运算效率
+
+Fork/Join 默认会创建与cpu核心数大小相同的线程池
+
+**2）使用**
+
+提交给Fork/Join 线程池的任务需要继承 RecursiveTask（有返回值）或RecursiveAction（没有返回值），例如下面定义了一个对1~n之间的整数求和的任务
+
+```java
+package com.wudidemiao.test;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
+import java.util.concurrent.RecursiveTask;
+
+/**
+ * @author wudidemiaoa
+ * @date 2022/1/15
+ * @apiNote
+ */
+@Slf4j(topic = "c.Test11")
+public class Test11 {
+    public static void main(String[] args) {
+        ForkJoinPool pool = new ForkJoinPool(4);
+        Integer invoke = pool.invoke(new MyTask(5));
+        System.out.println(invoke);
+    }
+}
+
+// 无返回值
+//class MyTask extends RecursiveAction {
+//有返回值  1-n之间整数的和
+class MyTask extends RecursiveTask<Integer> {
+
+    private int n;
+
+    public MyTask(int n) {
+        this.n = n;
+    }
+
+    @Override
+    protected Integer compute() {
+        if (n == 1) {
+            return 1;
+        }
+        MyTask myTask = new MyTask(n - 1);
+        ForkJoinTask<Integer> fork = myTask.fork();
+        return n + fork.join();
+    }
+}
+```
+
+可以拆分任务来优化此代码
+
+## JUC(重点)
+
+### AQS原理
+
+全称是AbsfractQueuedSynchronizer，是阻塞式锁和相关的同步器工具的框架特点：
+
+- 用state属性来表示资源的状态（分独占模式和共享模式），子类需要定义如何维护这个状态，控制如何获取锁和释放锁
+  - getState-获取state状态
+  - setState-设置state状态
+  - compareAndSetState-乐观锁机制设置state状态
+  - 独占模式是只有一个线程能够访问资源，而共享模式可以允许多个线程访问资源
+- 提供了基于FIFO的等待队列，类似于Monitor的EntryList
+- 条件变量来实现等待、唤醒机制，支持多个条件变量，类似于Monitor的WaitSet
+
+子类主要实现这样一些方法（默认抛出UnsupportedOperationException）
+
+- tryAcquire
+- tryRelease
+- tryAcquireshared
+- tryReleaseShared
+- isHeldExclusively
+
+![image-20220115112636112](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115112636112.png)
+
+```java
+package com.wudidemiao.aqs;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+
+/**
+ * @author wudidemiaoa
+ * @date 2022/1/15
+ * @apiNote
+ */
+@Slf4j(topic = "c.Test1")
+public class Test1 {
+    public static void main(String[] args) {
+        MyLock myLock = new MyLock();
+        new Thread(() -> {
+            myLock.lock();
+            try {
+                log.debug("加锁成功");
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                log.debug("接锁成功");
+                myLock.unlock();
+            }
+        }).start();
+        new Thread(() -> {
+            myLock.lock();
+            try {
+                log.debug("加锁成功。。");
+            } finally {
+                log.debug("接锁成功。。。");
+                myLock.unlock();
+            }
+        }).start();
+    }
+}
+
+// 自定义锁（不可重入锁）
+class MyLock implements Lock {
+
+    //    独占锁
+    class MySync extends AbstractQueuedSynchronizer {
+        //        尝试获取锁
+        @Override
+        protected boolean tryAcquire(int arg) {
+            if (compareAndSetState(0, 1)) {
+//                加上锁，设置owner为当前线程
+                setExclusiveOwnerThread(Thread.currentThread());
+                return true;
+            }
+            return false;
+        }
+
+        //尝试释放锁
+        @Override
+        protected boolean tryRelease(int arg) {
+//                加上锁，设置owner为当前线程
+            setExclusiveOwnerThread(null);
+            setState(0);
+            return true;
+        }
+
+        //是否持有独占锁
+        @Override
+        protected boolean isHeldExclusively() {
+            return getState() == 1;
+        }
+
+        public Condition newCondition() {
+            return new ConditionObject();
+        }
+    }
+
+    public MySync mySync = new MySync();
+
+    @Override // 加锁，如不成功则静茹等待队列
+    public void lock() {
+        mySync.acquire(1);
+    }
+
+    @Override // 可打断
+    public void lockInterruptibly() throws InterruptedException {
+        mySync.acquireInterruptibly(1);
+    }
+
+    @Override // 尝试加锁，加锁不成公失败
+    public boolean tryLock() {
+        return mySync.tryAcquire(1);
+    }
+
+    @Override  // 尝试加锁，可超时
+    public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
+        return mySync.tryAcquireNanos(1, unit.toNanos(time));
+    }
+
+    @Override  // jiesuo
+    public void unlock() {
+        mySync.release(0);
+    }
+
+    @Override  // 成员变量
+    public Condition newCondition() {
+        return mySync.newCondition();
+    }
+}
+
+```
+
+### ReentrantLock
+
+![image-20220115114936608](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115114936608.png)
+
+#### 非公平锁实现原理
+
+**加锁解锁流程**
+
+先从构造器开始看，默认为非公平锁实现
+
+```java
+    /**
+     * Creates an instance of {@code ReentrantLock}.
+     * This is equivalent to using {@code ReentrantLock(false)}.
+     */
+    public ReentrantLock() {
+        sync = new NonfairSync();
+    }
+```
+
+NonfairSync继承自AQS
+		没有竞争时
+
+![image-20220115115210442](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115115210442.png)
+
+第一个竞争出现时
+
+![image-20220115115519400](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115115519400.png)
+
+Thread-1执行了
+
+1. CAS尝试将state由0改为1，结果失败T
+2. 进入tryAcquire逻辑，这时state已经是1，结果仍然失败
+3. 接下来进入addWaiter逻辑，构造Node队列
+   - 图中黄色三角表示该Node的waitStatus状态，其中0为默认正常状态
+   - Node的创建是懒惰的
+   - 其中第一个Node称为Dummy（哑元）或哨兵，用来占位，并不关联线程
+
+![image-20220115115856120](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115115856120.png)
+
+当前线程进入acquireQueued逻辑
+
+1. acquireQueued 会在一个死循环中不断尝试获得锁，失败后进入park阻塞
+2. 如果自己是紧邻着head（排第二位），那么再次tryAcquire尝试获取锁，当然这时state仍为1，失败
+3. 进入shouldParkAfterFailedAcquire逻辑，将前驱node，即head的 waitStatus改为-1，这次返回false
+
+![image-20220115120224681](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115120224681.png)
+
+再次有多个线程经历上述过程竞争失败，变成这个样子
+
+
+
+![image-20220115120513407](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115120513407.png)
+
+Thread-0释放锁，进入tryRelease流程，如果成功
+
+- 设置 exclusiveOwnerThread为null
+-  astate=0
+
+![image-20220115120600112](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115120600112.png)
+
+当前队列不为nul，并且head的waitStatus=-1，进入unparkSuccessor流程
+
+找到队列中离head最近的一个Node（没取消的），unpark恢复其运行，本例中即为Thread-1
+
+回到Thread-1的 acquireQueued流程
+
+![image-20220115121049524](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115121049524.png)
+
+如果加锁成功（没有竞争），会设置
+
+- exclusiveOwnerThread为Thread-1，state=1
+- head 指向刚刚 Thread-1所在的Node，该Node 清空Thread
+- 原本的head因为从链表断开，而可被垃圾回收
+
+如果这时候有其它线程来竞争（非公平的体现），例如这时有Thread-4来了
+
+![image-20220115121417473](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115121417473.png)
+
+如果不巧又被Thread-4占了先
+
+- Thread-4被设置为exclusiveOwnerThread，state=1
+- Thread-1再次进入arquireQueued 流程，获取锁失败，重新进入park阻塞
+
+#### 可重入原理
+
+![image-20220115121850588](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115121850588.png)
+
+![image-20220115121927174](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115121927174.png)
+
+#### 可打断原理
+
+##### 不可打断模式
+
+在此模式下，即使它被打断，仍会驻留在AQS队列中，等获得锁后方能继续运行（是继续运行！只是打断标记被设置为true）
+
+![image-20220115122612275](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115122612275.png)
+
+![image-20220115122634920](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115122634920.png)
+
+![image-20220115122955502](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115122955502.png)
+
+##### 可打断模式
+
+![image-20220115123042737](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115123042737.png)
+
+![image-20220115123115726](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115123115726.png)
+
+#### 非公平锁实现原理
+
+![image-20220115123803007](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115123803007.png)
+
+![image-20220115123824093](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115123824093.png)
+
+#### 条件变量实现原理
+
+每个条件变量其实就对应着一个等待队列，其实现类是ConditionObject 
+
+##### await 流程
+
+开始Thread-0持有锁，调用await，进入ConditionObject的 addConditionWaiter流程
+
+创建新的Node状态为-2（Node.CONDITION），关联Thread-0，加入等待队列尾部
+
+![image-20220115124156867](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115124156867.png)
+
+接下来进入AQS的fullyRelease流程，释放同步器上的锁
+
+![image-20220115124707613](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115124707613.png)
+
+unparkAQS队列中的下一个节点，竞争锁，假设没有其他竞争线程，那么Thread-1竞争成功
+
+![image-20220115124727633](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115124727633.png)
+
+signal流程
+
+假设Thread-1要来唤醒 Thread-0
+
+![image-20220115124917382](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115124917382.png)
+
+进入ConditionObject的doSignal流程，取得等待队列中第一个Node，即Thread-0所在Node
+
+![image-20220115125112955](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115125112955.png)
+
+执行transferForSignal 流程，将该Node加入AQS队列尾部，将Thread-0的waitStatus改为0，Thread-3的waitStatus改为-1
+
+![image-20220115130140538](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115130140538.png)
+
+Thread-1释放锁，进入unlock流程，略
+
+### 读写锁
+
+#### ReentrantReadWriteLock
+
+当读操作远远高于写操作时，这时候使用读写锁让读-读可以并发，提高性能。
+
+类似于数据库中的select.…from..lock in share mode
+
+提供一个数据容器类内部分别使用读锁保护数据的read（）方法，写锁保护数据的write（）方法
+
+```java
+package com.wudidemiao.aqs;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+/**
+ * @author wudidemiaoa
+ * @date 2022/1/15
+ * @apiNote
+ */
+@Slf4j(topic = "c.Test2")
+public class Test2 {
+    public static void main(String[] args) throws InterruptedException {
+        DataContainer dataContainer = new DataContainer();
+        new Thread(()->{
+            dataContainer.write();
+        },"t1").start();
+        new Thread(()->{
+            dataContainer.write();
+        },"t2").start();
+    }
+}
+
+@Slf4j(topic = "c.Test2")
+class DataContainer {
+    private Object data;
+
+    private ReentrantReadWriteLock rw = new ReentrantReadWriteLock();
+
+    private ReentrantReadWriteLock.ReadLock readLock = rw.readLock();
+
+    private ReentrantReadWriteLock.WriteLock writeLock = rw.writeLock();
+
+    public Object read() {
+        log.debug("读suo");
+        readLock.lock();
+        try {
+            Thread.sleep(1000);
+            log.debug("读取");
+            return data;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            log.debug("shifang读suo");
+            readLock.unlock();
+        }
+        return null;
+    }
+
+    public void write() {
+        log.debug("写suo");
+        writeLock.lock();
+        try {
+            Thread.sleep(1000);
+            log.debug("写入");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            log.debug("shifang写suo");
+            writeLock.unlock();
+        }
+    }
+}
+```
+
+注意事项
+
+- 读锁不支持条件变量
+- 重入时升级不支持：即持有读锁的情况下去获取写锁，会导致获取写锁永久等待
+- 重入时降级支持：即持有写锁的情况下去获取读锁
+
+
+
+![image-20220115173630414](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115173630414.png)
+
+#### 缓存更新策略
+
+更新时，是先清缓存还是先更新数据库
+
+先清缓存
+
+![image-20220115175245439](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115175245439.png)
+
+先更新数据库
+
+![image-20220115175536545](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115175536545.png)
+
+注意
+
+- 以上实现体现的是读写锁的应用，保证缓存和数据库的一致性，但有下面的问题没有考虑
+- 适合读多写少，如果写操作比较频繁，以上实现性能低
+- 没有考虑缓存容量·没有考虑缓存过期
+- 只适合单机
+- 并发性还是低，目前只会用一把锁
+- 更新方法太过简单粗暴，清空了所有key（考虑按类型分区或重新设计key）
+
+#### 读写锁原理
+
+读写锁角的是同一个Sycn同步器，因此等待队列、state等也是同一个
+
+**tl w.lock，t2 r.lock**
+
+1）tl成功上锁，流程与ReentrantLock加锁相比没有特殊之处，不同是写锁状态占了state的低16位，而读锁使用的是state的高16位
+
+![image-20220115181842835](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115181842835.png)
+
+
+
+2）t2执行rlock，这时进入读锁的sync.acquireShared（1）流程，首先会进入tryAcquireShared 流程。如果有写锁占据，那么tryAcquireShared返回-1表示失败tryAcquireShared返回值表示
+
+- -1表示失败
+- 0表示成功，但后继节点不会继续唤醒
+- 正数表示成功，而且数值是还有几个后继节点需要唤醒，读写锁返回1
+
+![image-20220115183743989](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115183743989.png)
+
+3）这时会进入sync.doAcquireShared（1）流程，首先也是调用addWaiter添加节点，不同之处在于节点被设置为Node.SHARED模式而非Node.EXCLUSIVE模式，注意此时t2仍处于活跃状态
+
+![image-20220115183953200](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115183953200.png)
+
+4）t2会看看自己的节点是不是老二，如果是，还会再次调用tryAcquireShared（1）来尝试获取锁
+
+5）如果没有成功，在doAcquireShared内for（；）循环一次，把前驱节点的waitStatus改为-1，再for（；）循环一次尝试tryAcquireShared（1）如果还不成功，那么在parkAndCheckInterruptO处park
+
+![image-20220115185256378](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115185256378.png)
+
+![image-20220115184057128](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115184057128.png)
+
+
+
+**t3r.lock，t4w.lock**
+
+这种状态下，假设又有t3加读锁和t4加写锁，这期间tl仍然持有锁，就变成了下面的样子
+
+![image-20220115185347820](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115185347820.png)
+
+**t1w.unlock**
+
+这时会走到写锁的sync.release（1）流程，调用sync.tryRelease（1）成功，变成下面的样子
+
+![image-20220115185541578](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115185541578.png)
+
+接下来执行唤醒流程sync.unparkSuccessor，即让老二恢复运行，这时t2在doAcquireShared 内 parkAndCheckInterrupt）处恢复运行
+
+这回再来一次for（；；）执行tryAcquireShared成功则让读锁计数加一
+
+![image-20220115190344145](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115190344145.png)
+
+这时t2已经恢复运行，接下来t2调用setHeadAndPropagate（node，1），它原本所在节点被置为头节点
+
+![image-20220115190434454](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115190434454.png)
+
+事情还没完，在setHeadAndPropagate方法内还会检查下一个节点是否是shared，如果是则调用doReleaseShared0将head的状态从-1改为0并唤醒老二，这时3在doAcquireShared 内 parkAndCheckInterruptO处恢复运行
+
+![image-20220115191100112](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115191100112.png)
+
+这回再来一次for（；）执行tryAcquireShared成功则让读锁计数加一
+
+![image-20220115191142771](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115191142771.png)
+
+这时t3已经恢复运行，接下来t3调用setHeadAndPropagate（node，1），它原本所在节点被置为头节点
+
+![image-20220115191444288](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115191444288.png)
+
+下一个节点不是shared了，因此不会继续唤醒t4所在节点
+
+**t2r.unlock，t3 r.unlock t2**
+
+进入sync.releaseShared（1）中，调用tryReleaseShared（1）让计数减一，但由于计数还不为零
+
+![image-20220115191745022](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115191745022.png)
+
+t3进入sync.releaseShared（1）中，调用tryReleaseShared（1）让计数减一，这回计数为零了，进入doReleaseShared）将头节点从-1改为0并唤醒老二，即
+
+#### StampedLock
+
+该类自JDK8加入，是为了进一步优化读性能，它的特点是在使用读锁、写锁时都必须配合【戳】使用
+
+加解读锁
+
+```java
+1ong stamp=1ock.readLock(); 
+lock.unlockRead(stamp);
+```
+
+加解锁
+
+```
+long stamp=lock.writeLock();
+1ock. unlockwrite(stamp);
+```
+
+乐观读，StampedLock 支持tryoptimisticRead（）方法（乐观读），读取完毕后需要做一次戳校验如果校验通过，表示这期间确实没有写操作，数据可以安全使用，如果校验没通过，需要重新获取读锁，保证数据安全。
+
+```
+long stamp=lock.tryoptimisticRead（）；
+//验戳
+if（！lock.validate（stamp））{
+//锁升级
+}
+```
+
+注意
+
+- StampedLock不支持条件变量I
+- StampedLock不支持可重
+
+### Semaphore
+
+信号量，用来限制能同时访问共享资源的线程上限。
+
+![image-20220115194703219](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115194703219.png)
+
+- 使用Semaphore限流，在访问高峰期时，让请求线程阻塞，高峰期过去再释放许可，当然它只适合限制单机线程数量，并且仅是限制线程数，而不是限制资源数（例如连接数，请对比Tomcat LimitLatch的实现）
+- 用Semaphore实现简单连接池，对比[享元模式]下的实现（用wait notify），性能和可读性显然更好，注意下面的实现中线程数和数据库连接数是相等的
+
+
+
+#### Semaphore原理
+
+##### 加锁解锁流程
+
+Semaphore 有点像一个停车场，permits就好像停车位数量，当线程获得了permits就像是获得了停车位，然后停车场显示空余车位减一
+
+刚开始，permits（state）为3，这时5个线程来获取资源
+
+![image-20220116092801858](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116092801858.png)
+
+假设其中Thread-1，Thread-2，Thread-4cas 竞争成功，而Thread-0和Thread-3竞争失败，进入AQS队列park阻塞
+
+![image-20220116093125976](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116093125976.png)
+
+这时Thread-4释放了permits，状态如下
+
+![image-20220116093331109](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116093331109.png)
+
+接下来Thread-0竞争成功，permits 再次设置为0，设置自己为head节点，断开原来的head 节点，unpark 接下来的Thread-3节点，但由于permits是0，因此Thread-3在尝试不成功后再次进入park状态
+
+### CountdownLatch
+
+用来进行线程同步协作，等待所有线程完成倒计时。
+
+其中构造参数用来初始化等待计数值，await）用来等待计数归零，countDown0用来让计数减一
+
+不能使计数复原。
+
+![image-20220116094845026](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116094845026.png)
+
+![image-20220116095816894](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116095816894.png)
+
+### **CyclicBarrier**
+
+循环棚栏，用来进行线程协作，等待线程满足某个计数。构造时设置计数个数】，每个线程执行到某个需要同步”的时刻调用await）方法进行等待，当等待的线程数满足[计数个数】时，继续执行
+
+![image-20220116112024303](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116112024303.png)
+
+### 线程安全集合类概述
+
+![image-20220116112334234](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116112334234.png)
+
+线程安全集合类可以分为三大类：
+
+- 遗留的线程安全集合如Hashtable，Vector
+
+- 使用Collections装饰的线程安全集合，如：
+
+  - Collections.synchronizedCollection 
+  - Collections.synchronizedList
+  - Collections.synchronizedMap
+  - Collections.synchronizedSet
+  - Collections.synchronizedNavigableMap
+  - Collections.synchronizedNavigableset
+  - Collections.synchronizedSortedMap
+  - Collections.synchronizedSortedSet 
+
+  java.util.concurrent.*
+
+重点介绍java.util.concurrent.*下的线程安全集合类，可以发现它们有规律，里面包含三类关键词：
+Blocking、CopyOnWrite、Concurrent
+
+- Blocking大部分实现基于锁，并提供用来阻塞的方法
+- CopyOnWrite之类容器修改开销相对较重
+- Concurrent 类型的容器
+  - 内部很多操作使用cas优化，一般可以提供较高吞吐量
+  - 弱一致性
+    - 遍历时弱一致性，例如，当利用迭代器遍历时，如果容器发生修改，迭代器仍然可以继续进行遍历，这时内容是旧的
+    - 求大小弱一致性，size操作未必是100%准确
+    - 读取弱一致性
+
+遍历时如果发生了修改，对于非安全容器来讲，使用fail-fast机制也就是让遍历立刻失败，抛出ConcurrentModificationException，不再继续遍历
+
+### ConcurrenthashMap
+
+![image-20220116114757417](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116114757417.png)
+
+### ConcurrentHashMap原理
+
+#### 1、JDK 7 HashMap并发死链问题
+
+注意
+
+- 要在JDK7下运行，否则扩容机制和hash的计算方法都变了
+- 以下测试代码是精心准备的，不要随便改动
+
+![image-20220116115350674](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116115350674.png)
+
+![image-20220116115557705](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116115557705.png)
+
+![image-20220116115629425](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116115629425.png)
+
+![image-20220116120813964](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116120813964.png)
+
+![image-20220116121319142](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116121319142.png)
+
+![image-20220116121908145](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116121908145.png)
+
+![image-20220116122154849](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116122154849.png)
+
+![image-20220116122218571](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116122218571.png)
+
+![image-20220116122236962](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116122236962.png)
+
+![image-20220116122323038](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116122323038.png)
+
+小结
+
+- 究其原因，是因为在多线程环境下使用了非线程安全的map集合
+- JDK8虽然将扩容算法做了调整，不再将元素加入链表头（而是保持与扩容前一样的顺序），但仍不意味着能够在多线程环境下能够安全扩容，还会出现其它问题（如扩容丢数据）
+
+#### 2、JDK 8 ConcrrentHashMap
+
+##### 重要属性和内部类
+
+![](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116123241789.png)
+
+##### **重要方法**
+
+![image-20220116123325714](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116123325714.png)
+
+##### 构造器分析
+
+可以看到实现了懒惰初始化，在构造方法中仅仅计算了table的大小，以后在第一次使用时才会真正创建
+
+![image-20220116123849871](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116123849871.png)
+
+##### get流程
+
+![image-20220116124605701](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116124605701.png)
+
+##### Put流程
+
+以下数组简称（table），链表简称（bin）
+
+![image-20220116125615374](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116125615374.png)
+
+![image-20220116125711192](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116125711192.png)
+
+![image-20220116130029210](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130029210.png)
+
+![image-20220116130114844](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130114844.png)
+
+##### initTable方法
+
+![image-20220116130308628](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130308628.png)
+
+##### addCount方法
+
+![image-20220116130641689](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130641689.png)
+
+![image-20220116130902490](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130902490.png)
+
+##### Size计算流程
+
+size 计算实际发生在put，remove改变集合元素的操作之中
+
+- 没有竞争发生，向baseCount 累加计数
+- 有竞争发生，新建counterCells，向其中的一个cell累加计数
+  - counterClls初始有两个cel
+  - 如果计数竞争比较激烈，会创建新的cell 来累加计数
+
+![image-20220116131151683](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116131151683.png)
+
+#### 3、jdk 7 ConcurrentHashMap
+
+它维护了一个segment数组，每个segiment 对应一把锁
+
+- 优点：如果多个线程访问不同的segment，实际是没有冲突的，这与jdk8中是类似的
+- 缺点：Segments数组默认大小为16，这个容量初始化指定后就不能改变了，并且不是懒惰初始化
+
+##### 构造器分析
+
+![image-20220116131922761](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116131922761.png)
+
+![image-20220116131954546](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116131954546.png)
+
+![image-20220116132039332](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132039332.png)
+
+![image-20220116132230043](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132230043.png)
+
+##### put流程
+
+![image-20220116132404362](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132404362.png)
+
+segment继承了可重入锁（ReentrantLock），它的put方法为
+
+![image-20220116132654149](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132654149.png)
+
+![image-20220116132803293](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132803293.png)
+
+##### rehash 流程
+
+发生在put中，因为此时已经获得了锁，因此rehash时不需要考虑线程安全
+
+![image-20220116133130893](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116133130893.png)
+
+![image-20220116133457901](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116133457901.png)
+
+![image-20220116133746154](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116133746154.png)
+
+##### get流程
+
+![image-20220116133832482](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116133832482.png)
+
+##### Size计算流程
+
+- 计算元素个数前，先不加锁计算两次，如果前后两次结果如一样，认为个数正确返回
+- 如果不一样，进行重试，重试次数超过3，将所有segment锁住，重新计算个数返回
+
+![image-20220116134201403](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116134201403.png)
+
+![image-20220116134431565](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116134431565.png)
+
+### LinkedBlockingQueue原理
+
+#### 1.基本的入队出队
+
+![image-20220116134816066](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116134816066.png)
+
+![image-20220116140545400](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116140545400.png)
+
+![image-20220116173508785](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116173508785.png)
+
+**出队**
+
+![image-20220116173608799](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116173608799.png)
+
+![image-20220116174009475](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116174009475.png)
+
+![image-20220116174128399](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116174128399.png)
+
+![image-20220116174334691](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116174334691.png)
+
+#### 2、加锁分析
+
+一高明之处一在于用了两把锁和dummy节点
+
+- 用一把锁，同一时刻，最多只允许有一个线程（生产者或消费者，二选一）执行
+
+- 用两把锁，同一时刻，可以允许两个线程同时（一个生产者与一个消费者）执行
+
+  - 消费者与消费者线程仍然串行
+  - 生产者与生产者线程仍然串行
+
+  线程安全分析
+
+- 当节点总数大于2时（包括dummy节点），putLock保证的是last节点的线程安全，takeLock保证的是head 节点的线程安全。两把锁保证了入队和出队没有竞争
+
+- 当节点总数等于2时（即一个dummy节点，一个正常节点）这时候，仍然是两把锁锁两个对象，不会竞争
+
+- 当节点总数等于1时（就一个dummy节点）这时take线程会被notEmpty条件阻塞，有竞争，会阻塞
+
+![image-20220116175055546](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116175055546.png)
+
+put操作
+
+![image-20220116180024832](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116180024832.png)
+
+take操作
+
+![image-20220116180050140](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116180050140.png)
+
+#### 性能比较
+
+主要列举LinkedBlockingQueue 与ArmayBlockingQueue的性能比较
+
+- Linked支持有界，Array 强制有界
+- Linked 实现是链表，Array实现是数组
+- Linked是懒惰的，而Array 需要提前初始化Node数组
+- Linked每次入队会生成新Node，而Array的Node是提前创建好的
+- Linked 两把锁，Array一把锁
+
+### ConcurrentLinkedQueue
+
+ConcurrentLinkedQueue的设计与LinkedBlockingQueue非常像，也是
+
+- 两把【锁】，同一时刻，可以允许两个线程同时（一个生产者与一个消费者）执行
+
+- dummy节点的引入让两把【锁】将来锁住的是不同对象，避免竞争
+
+- 只是这【锁】使用了cas来实现
+
+  事实上，ConcurrentLinkedQueue应用还是非常广泛的
+
+例如之前讲的Tomcat的Connector 结构时，Acceptor作为生产者向Poller消费者传递事件信息时，正是采用了ConcurentLinkedQueue将SocketChannel给Poller使用
+
+![image-20220116180437903](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116180437903.png)
+
+### CopyOnWriteArrayList
+
+CopyonuriteArrayset是它的马甲
+
+底层实现采用了写入时拷贝的思想，增删改操作会将底层数组拷贝一份，更改操作在新数组上执行，这时不影响其它线程的并发读，读写分离。
+
+以新增为例：
+
+![image-20220116180658590](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116180658590.png)
+
+这里的源码版本是Java11，在Java1.8中使用的是可重入锁而不是synchronized
+
+其它读操作并未加锁，例如：
+
+![image-20220116181010378](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116181010378.png)
+
+适合[读多写少】的应用场景
+
+![image-20220116181101564](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116181101564.png)
+
+![image-20220116181557223](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116181557223.png)
