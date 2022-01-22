@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d7a8a87-f809-47c8-8987-96557071e660" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../3.二叉树.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LinkedList/DoubleLinkedLists.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hashtab/HashTab.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recursion/MiGong.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stack/Clostack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stack/PolandNotation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stack/out/production/stack/stack/Clostack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stack/out/production/stack/stack/PolandNotation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stack/out/production/stack/stack/StackDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../哈希表.md" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/binarysearchnorecursion/BinarySearchNoRecur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/dac/Hanitower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/kmp/KMPALgorithm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/kmp/ViolenceMatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/avl/AVLTreeDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../二叉树.md" beforeDir="false" afterPath="$PROJECT_DIR$/../二叉树.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/源码/com/wudidemiao/study/binarysorttree/BinarySortTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/源码/com/wudidemiao/study/binarysorttree/BinarySortTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/源码/com/wudidemiao/study/binarysorttree/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/源码/com/wudidemiao/study/binarysorttree/Node.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,13 +68,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.BinarySortTreeDemo">
-    <configuration name="BinarySortTreeDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.binarysorttree.BinarySortTreeDemo" />
+  <component name="RunManager" selected="Application.KMPALgorithm">
+    <configuration name="BinarySearchNoRecur" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.algorithm.binarysearchnorecursion.BinarySearchNoRecur" />
       <module name="源码" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wudidemiao.study.binarysorttree.*" />
+          <option name="PATTERN" value="com.wudidemiao.study.algorithm.binarysearchnorecursion.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -84,12 +82,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HeadSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.tree.HeadSort" />
+    <configuration name="Hanitower" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.algorithm.dac.Hanitower" />
       <module name="源码" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wudidemiao.study.tree.*" />
+          <option name="PATTERN" value="com.wudidemiao.study.algorithm.dac.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,12 +95,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HuffmanCode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.huffmancode.HuffmanCode" />
+    <configuration name="KMPALgorithm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.algorithm.kmp.KMPALgorithm" />
       <module name="源码" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wudidemiao.study.huffmancode.*" />
+          <option name="PATTERN" value="com.wudidemiao.study.algorithm.kmp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,12 +108,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HuffmanTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.huffmantree.HuffmanTree" />
+    <configuration name="KnapsackProblem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.algorithm.dynamic.KnapsackProblem" />
       <module name="源码" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wudidemiao.study.huffmantree.*" />
+          <option name="PATTERN" value="com.wudidemiao.study.algorithm.dynamic.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,12 +121,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadedBinaryTreeDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.tree.threadedbinarytree.ThreadedBinaryTreeDemo" />
+    <configuration name="ViolenceMatch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wudidemiao.study.algorithm.kmp.ViolenceMatch" />
       <module name="源码" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wudidemiao.study.tree.threadedbinarytree.*" />
+          <option name="PATTERN" value="com.wudidemiao.study.algorithm.kmp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -138,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BinarySortTreeDemo" />
-        <item itemvalue="Application.HuffmanCode" />
-        <item itemvalue="Application.HuffmanTree" />
-        <item itemvalue="Application.HeadSort" />
-        <item itemvalue="Application.ThreadedBinaryTreeDemo" />
+        <item itemvalue="Application.KMPALgorithm" />
+        <item itemvalue="Application.ViolenceMatch" />
+        <item itemvalue="Application.KnapsackProblem" />
+        <item itemvalue="Application.Hanitower" />
+        <item itemvalue="Application.BinarySearchNoRecur" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +158,9 @@
       <workItem from="1642479276989" duration="8827000" />
       <workItem from="1642589514999" duration="8528000" />
       <workItem from="1642643685413" duration="20277000" />
-      <workItem from="1642686246055" duration="2518000" />
+      <workItem from="1642686246055" duration="3233000" />
+      <workItem from="1642730092396" duration="17589000" />
+      <workItem from="1642821331270" duration="13108000" />
     </task>
     <servers />
   </component>
@@ -179,5 +179,28 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/kmp/KMPALgorithm.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="root.right" />
+        <watch expression="root.right" />
+        <watch expression="root.right" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DataStructure$KMPALgorithm.ic" NAME="KMPALgorithm Coverage Results" MODIFIED="1642844125995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.wudidemiao.study.algorithm.kmp.*</FILTER>
+    </SUITE>
   </component>
 </project>
