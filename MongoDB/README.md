@@ -6,8 +6,8 @@ tags:
 - mongodb
 - nosql
 categories: mongodb数据库
-thumbnail: https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220107125941342.png
-cover: https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220107125941342.png
+thumbnail: https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220107125941342.png
+cover: https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220107125941342.png
 ---
 
 

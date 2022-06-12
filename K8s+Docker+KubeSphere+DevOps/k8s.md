@@ -1,4 +1,4 @@
-![image-20211122231808549](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211122231808549.png)
+![image-20211122231808549](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211122231808549.png)
 
 https://www.bilibili.com/video/BV13Q4y1C7hS?p=30&spm_id_from=pageDriver
 
@@ -10,7 +10,7 @@ https://www.bilibili.com/video/BV13Q4y1C7hS?p=30&spm_id_from=pageDriver
 
 ## 安装kubeadm
 
-![image-20211124221922612](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211124221922612.png)
+![image-20211124221922612](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211124221922612.png)
 
 ```xshell
 # 设置主机名
@@ -36,7 +36,7 @@ EOF
 sudo sysctl --system
 ```
 
-![image-20211124223209040](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211124223209040.png)
+![image-20211124223209040](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211124223209040.png)
 
 安装kubelet、kubeadm 、kubectl
 

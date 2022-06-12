@@ -4,10 +4,9 @@
 # 数据库概念：
 - DB 数据库（database）: 存储数据的仓库。它保存了一系列有组织的数据。保存一组有组织数据的容器
 - DBMS:  数据库管理系统（Database Management System），数据库是通过DBMS创建和操作的容器![](../images/Snipaste_2021-03-07_20-32-28.png)
-- SQL  结构化查询语言  （Structure Query Language）:专门用来与DBMS通信的语言。
-1. DBMS 分为两类
-   1. 基于文件共享系统的DBMS
-   2. 基于客户机-服务器的DBMS(mysql,oracle)![](../images/Snipaste_2021-03-07_21-02-50.png)
+- SQL
+- 系统的DBMS
+1. 2. 基于客户机-服务器的DBMS(mysql,oracle)![](../images/Snipaste_2021-03-07_21-02-50.png)
 2. mysql 启动停止
    1. net stop mysql(服务名称) 
    2. net start mysql(服务名称) 
@@ -266,7 +265,7 @@
          4. ![](../images/Snipaste_2021-03-22_23-26-31.png)
          5. https://www.bilibili.com/video/BV1xW411u7ax?p=175&spm_id_from=pageDriver
 1
-       
+      
 
 
 

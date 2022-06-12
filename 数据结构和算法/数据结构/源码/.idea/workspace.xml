@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d7a8a87-f809-47c8-8987-96557071e660" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/binarysearchnorecursion/BinarySearchNoRecur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/dac/Hanitower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/kmp/KMPALgorithm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/kmp/ViolenceMatch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wudidemiao/study/avl/AVLTreeDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../二叉树.md" beforeDir="false" afterPath="$PROJECT_DIR$/../二叉树.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/源码/com/wudidemiao/study/binarysorttree/BinarySortTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/源码/com/wudidemiao/study/binarysorttree/BinarySortTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/源码/com/wudidemiao/study/binarysorttree/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/源码/com/wudidemiao/study/binarysorttree/Node.class" afterDir="false" />
-    </list>
+    <list default="true" id="4d7a8a87-f809-47c8-8987-96557071e660" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +151,8 @@
       <workItem from="1642643685413" duration="20277000" />
       <workItem from="1642686246055" duration="3233000" />
       <workItem from="1642730092396" duration="17589000" />
-      <workItem from="1642821331270" duration="13108000" />
+      <workItem from="1642821331270" duration="13792000" />
+      <workItem from="1642919509125" duration="1181000" />
     </task>
     <servers />
   </component>
@@ -181,15 +173,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/wudidemiao/study/algorithm/kmp/KMPALgorithm.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="root.right" />

@@ -100,17 +100,17 @@ logback.xml
 
 一般会将这种线程轮流使用CPU的做法称为并发，concurrent
 
-![image-20220108172335706](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220108172335706.png)
+![image-20220108172335706](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220108172335706.png)
 
 ### 并行
 
 多核cpu下，每个核（core）都可以调度运行线程，这时候线程可以是并行的了
 
-![image-20220108172605284](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220108172605284.png)
+![image-20220108172605284](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220108172605284.png)
 
 
 
-![image-20220108172506194](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220108172506194.png)
+![image-20220108172506194](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220108172506194.png)
 
 ### 总结
 
@@ -359,7 +359,7 @@ join();
 
 ### 打断方法interrupt()
 
-![image-20220109121741187](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109121741187.png)
+![image-20220109121741187](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109121741187.png)
 
 #### 两阶段终止模式
 
@@ -374,7 +374,7 @@ join();
 
 代码演示：
 
-![image-20220109122801844](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109122801844.png)
+![image-20220109122801844](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109122801844.png)
 
 ### 打断park线程
 
@@ -402,7 +402,7 @@ public class Test4 {
 
 ### 不推荐使用的方法
 
-![image-20220109124351315](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109124351315.png)
+![image-20220109124351315](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109124351315.png)
 
 ### 主线程与守护线程
 
@@ -449,7 +449,7 @@ public class DeamonTest {
 
 
 
-![image-20220109125504366](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109125504366.png)
+![image-20220109125504366](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109125504366.png)
 
 - 【初始状态】仅是在语言层面创建了线程对象，还未与操作系统线程关联
 - 【可运行状态】（就绪状态）指该线程已经被创建（与操作系统线程关联），可以由CPU调度执行
@@ -465,7 +465,7 @@ public class DeamonTest {
 
 Thread.State六种状态
 
-![image-20220109130126870](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109130126870.png)
+![image-20220109130126870](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109130126870.png)
 
 - NEW线程刚被创建，但是还没有调用start（）方法
 - RUNNABLE 当调用了start（）方法之后，注意，Java API层面的RUNNABLE状态涵盖了操作系统层面的
@@ -487,7 +487,7 @@ Thread.State六种状态
 
 **小结**
 
-![image-20220109134515644](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109134515644.png)
+![image-20220109134515644](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109134515644.png)
 
 # 共享模型之管程
 
@@ -503,7 +503,7 @@ Thread.State六种状态
 
 例子：
 
-![image-20220109141048108](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109141048108.png)
+![image-20220109141048108](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109141048108.png)
 
 ## synchronized
 
@@ -540,11 +540,11 @@ Thread.State六种状态
 
 **字节码执行流程**
 
-![image-20220109142956021](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109142956021.png)
+![image-20220109142956021](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109142956021.png)
 
-![image-20220109143514017](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109143514017.png)
+![image-20220109143514017](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109143514017.png)
 
-![image-20220109143545539](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220109143545539.png)
+![image-20220109143545539](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220109143545539.png)
 
 synchronized实际是用对象锁保证了临界区内代码的原子性，临界区内的代码对外是不可分割的，不会被线程切换所打断。
 
@@ -606,15 +606,15 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 
 **普通对象**
 
-![image-20220110103909381](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110103909381.png)
+![image-20220110103909381](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110103909381.png)
 
 **数组对象**
 
-![image-20220110103948628](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110103948628.png)
+![image-20220110103948628](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110103948628.png)
 
 **其中Mark Word结构为**
 
-![image-20220110104026361](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110104026361.png)
+![image-20220110104026361](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110104026361.png)
 
 
 
@@ -623,7 +623,7 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 **Monitor 被翻译为监视器或管程**
 		每个Java对象都可以关联一个Monitor对象，如果使用synchronized给对象上锁（重量级）之后，该对象头的Mark Word中就被设置指向 Monitor对象的指针		Monitor 结构如下
 
-![image-20220110104413846](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110104413846.png)
+![image-20220110104413846](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110104413846.png)
 
 **官方描述：**
 
@@ -638,7 +638,7 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 - synchronized必须是进入同一个对象的monitor才有上述的效果
 - 不加synchronized的对象不会关联监视器，不遵从以上规则
 
-![image-20220110105013673](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110105013673.png)
+![image-20220110105013673](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110105013673.png)
 
 过程：
 
@@ -648,7 +648,7 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
   - 然后此线程成为此锁对象的Owner
 - 又进来了一个线程，进入到加锁区域，他会去先检查这个锁有没有主人，也是Owner,这个线程被加入到锁对象的EntryList（底层链表结构）中，也叫阻塞队列或者等待队列，线程进入BLOCKED状态，等待其他线程释放Owner所有权，才会竞争执行。
 
-![image-20220110105211222](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110105211222.png)
+![image-20220110105211222](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110105211222.png)
 
 - 又进来一个线程，进入加锁区域，他会去先检查这个锁有没有主人，也是Owner，和上面一样
 - 当持有Owner的线程执行完成之后，Owner空出来了，会通知等待队列 EntryList，唤醒等待的线程，让等待的线程去竞争Owner的所有权（非公平的），抢到的线程状态变为Runnable,运行下去。其他的线程任在EntryList中等待，
@@ -657,11 +657,11 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 
 字节码指令Monitor分析
 
-![image-20220110111339884](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110111339884.png)
+![image-20220110111339884](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110111339884.png)
 
 对应字节码
 
-![image-20220110113416711](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110113416711.png)
+![image-20220110113416711](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110113416711.png)
 
 ### 轻量级锁
 
@@ -671,30 +671,30 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 
 假设有两个方法同步块，利用同一个对象加锁
 
-**![image-20220110114359658](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110114359658.png)
+**![image-20220110114359658](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110114359658.png)
 
 - 创建锁记录（Lock Record）对象，每个线程都的栈帧都会包含一个锁记录的结构，内部可以存储锁定对象的Mark Word
 
-- ![image-20220110114505902](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110114505902.png)
+- ![image-20220110114505902](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110114505902.png)
 
 - 让锁记录中Object reference 指向锁对象，并尝试用cas 替换Object的Mark Word，将Mark Word的值存入锁记录
 
-- ![image-20220110114611264](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110114611264.png)
+- ![image-20220110114611264](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110114611264.png)
 
 - 如果cas替换成功，对象头中存储了锁记录地址和状态ee，表示由该线程给对象加锁，这时图示如下
 
-- ![image-20220110114738293](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110114738293.png)
+- ![image-20220110114738293](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110114738293.png)
 
 - 如果cas失败，有两种情况
 
   - 如果是其它线程已经持有了该Object的轻量级锁，这时表明有竞争，进入锁膨胀过程
   - 如果是自己执行了synchronized锁重入，那么再添加一条Lock Record作为重入的计数
 
-  ![image-20220110114926156](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110114926156.png)
+  ![image-20220110114926156](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110114926156.png)
 
 - ·当退出synchronized代码块（解锁时）如果有取值为null的锁记录，表示有重入，这时重置锁记录，表示重入计数减一
 
-  ![image-20220110115337550](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110115337550.png)
+  ![image-20220110115337550](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110115337550.png)
 
 - 当退出synchronized代码块（解锁时）锁记录的值不为null，这时使用cas将Mark Word的值恢复给对象头
 
@@ -705,11 +705,11 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 
 如果在尝试加轻量级锁的过程中，CAS操作无法成功，这时一种情况就是有其它线程为此对象加上了轻量级锁（有竞争），这时需要进行锁膨胀，将轻量级锁变为重量级锁。
 
-![image-20220110120044621](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110120044621.png)
+![image-20220110120044621](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110120044621.png)
 
 - 当Thread-1进行轻量级加锁时，Thread-0已经对该对象加了轻量级锁
 
-  ![image-20220110120143836](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110120143836.png)
+  ![image-20220110120143836](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110120143836.png)
 
   
   
@@ -720,7 +720,7 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
   - 即为Object对象申请Monitor锁，让Object 指向重量级锁地址
   - 然后自己进入Monitor的EntryList BLOCKED
 
-  ![](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110121550534.png)
+  ![](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110121550534.png)
 
 - 当Thread-0退出同步块解锁时，使用cas 将Mark Word的值恢复给对象头，失败。这时会进入重量级解锁流程，即按照Monitor 地址找到Monitor对象，设置Owner为null，唤醒EntryList中BLOCKED线程
 
@@ -729,9 +729,9 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 重量级锁竞争的时候，还可以使用自旋来进行优化，如果当前线程自旋成功（即这时候持锁线程已经退出了同步块，释放了锁），这时当前线程就可以避免阻塞。
 自旋重试成功的情况
 
-![image-20220110124556411](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110124556411.png)
+![image-20220110124556411](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110124556411.png)
 
-![image-20220110124839902](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110124839902.png)
+![image-20220110124839902](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110124839902.png)
 
 - 在Java6之后自旋锁是自适应的，比如对象刚刚的一次自旋操作成功过，那么认为这次自旋成功的可能性会高，就多自旋几次；反之，就少自旋甚至不自旋，总之，比较智能。
 - 自旋会占用CPU时间，单核CPU自旋就是浪费，多核CPU自旋才能发挥优势。
@@ -742,27 +742,27 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 轻量级锁在没有竞争时（就自己这个线程），每次重入仍然需要执行CAS操作。
 		Java6中引入了偏向锁来做进一步优化：只有第一次使用CAS将线程ID设置到对象的Mark Word头，之后发现这个线程ID是自己的就表示没有竞争，不用重新CAS。以后只要不发生竞争，这个对象就归该线程所
 
-![image-20220110125715376](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110125715376.png)
+![image-20220110125715376](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110125715376.png)
 
-![image-20220110125738495](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110125738495.png)
+![image-20220110125738495](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110125738495.png)
 
-![image-20220110130615412](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110130615412.png)
+![image-20220110130615412](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110130615412.png)
 
 #### 偏向状态
 
 对象头格式
 
-![image-20220110190027824](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110190027824.png)
+![image-20220110190027824](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110190027824.png)
 
 
 
 ​					正常状态  hashcode值，									分代年龄，是否启用偏向锁 0未启用  1启用    01是正常      Normal 正常
 
-![image-20220110190126129](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110190126129.png)
+![image-20220110190126129](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110190126129.png)
 
 线程id						批量重偏向和批量撤销时用到
 
-![image-20220110190405380](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110190405380.png)
+![image-20220110190405380](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110190405380.png)
 
 一个对象创建时：
 
@@ -770,7 +770,7 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 - 偏向锁是默认是延迟的，不会在程序启动时立即生效，如果想避免延迟，可以加VM参数-XX:BiasedLockingstartupoelay=0来禁用延迟
 - 如果没有开启偏向锁，那么对象创建后，markword值为0x01即最后3位为001，这时它的hashcode、age都为0，第一次用到hashcode时才会赋值
 
-![image-20220110192016982](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110192016982.png)
+![image-20220110192016982](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110192016982.png)
 
 **测试禁用**
 在上面测试代码运行时在添加VM参数-XX:-useBiasedLocking禁用偏向锁
@@ -779,7 +779,7 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 
 
 
-![image-20220110192252306](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110192252306.png)
+![image-20220110192252306](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110192252306.png)
 
 
 
@@ -800,7 +800,7 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 
 输出
 
-![image-20220110193129999](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110193129999.png)
+![image-20220110193129999](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110193129999.png)
 
 #### 撤销-调用wait/notify
 
@@ -818,11 +818,11 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 
 #### 锁消除
 
-![image-20220110200233883](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110200233883.png)
+![image-20220110200233883](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110200233883.png)
 
 **禁止锁消除**
 
-![image-20220110200615124](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110200615124.png)
+![image-20220110200615124](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110200615124.png)
 
 
 
@@ -830,7 +830,7 @@ String有 replace，substring等方法【可以】改变值啊，那么这些方
 
 #### 原理之wait  notify原理
 
-![image-20220110201026282](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220110201026282.png)
+![image-20220110201026282](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220110201026282.png)
 
 - Owner 线程发现条件不满足，调用wait方法，即可进入WaitSet变为WAITING状态
 - BLOCKED和WAITING的线程都处于阻塞状态，不占用CPU时间片
@@ -871,7 +871,7 @@ sleep（1ong n）和wait（1ong n）的区别
 - JDK中，join的实现、Future的实现，采用的就是此模式
 - 因为要等待另一方的结果，因此归类到同步模式
 
-![image-20220111104817826](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111104817826.png)
+![image-20220111104817826](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111104817826.png)
 
 ```java
 package com.wudidemiao.test;
@@ -976,7 +976,7 @@ class GuardeObject {
 
 
 
-![image-20220111113251594](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111113251594.png)
+![image-20220111113251594](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111113251594.png)
 
 ```java
 package com.wudidemiao.test;
@@ -1139,7 +1139,7 @@ class GuardeObject {
 - 消息队列是有容量限制的，满时不会再加入数据，空时不会再消耗数据
 - JDK中各种阻塞队列，采用的就是这种模式
 
-![image-20220111120917747](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111120917747.png)
+![image-20220111120917747](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111120917747.png)
 
 ```java
 package com.wudidemiao.test;
@@ -1310,7 +1310,7 @@ unpark可以在park之前调用也可以在park之后调用，在之前调用会
   - 如果这时线程还在运行，那么下次他调用park时，仅是消耗掉备用干粮，不需停留继续前进
     - 因为背包空间有限，多次调用unpark仅会补充一份备用干粮
 
-![image-20220111125144508](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111125144508.png)
+![image-20220111125144508](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111125144508.png)
 
 1. 当前线程调用Unsafe.park0方法
 
@@ -1318,7 +1318,7 @@ unpark可以在park之前调用也可以在park之后调用，在之前调用会
 3. 线程进入_cond条件变量阻塞_
 4. 设置_counter=0
 
-![image-20220111125605448](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111125605448.png)
+![image-20220111125605448](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111125605448.png)
 
 1. 调用Unsafe.unpark（Thread_0）方法，设置_counter为1_
 2. _当前线程调用Unsafe.park0方法
@@ -1327,7 +1327,7 @@ unpark可以在park之前调用也可以在park之后调用，在之前调用会
 
 ## 线程状态转换
 
-![image-20220111125756443](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111125756443.png)
+![image-20220111125756443](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111125756443.png)
 
 假设有线程 Thread t
 
@@ -1415,19 +1415,19 @@ t2线程获得B对象锁，接下来想获取A对象的锁
 
 - 检测死锁可以使用jconsole工具，或者使用jps定位进程id，再用jstack定位死锁：
 
-![image-20220111191336674](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111191336674.png)
+![image-20220111191336674](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111191336674.png)
 
-![image-20220111191548876](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111191548876.png)
+![image-20220111191548876](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111191548876.png)
 
 **Jconsole**
 
-![image-20220111192917578](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111192917578.png)
+![image-20220111192917578](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111192917578.png)
 
 ### 活锁
 
 活锁出现在两个线程互相改变对方的结束条件，最后谁也无法结束，例如
 
-![image-20220111192331243](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111192331243.png)
+![image-20220111192331243](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111192331243.png)
 
 解决方案：指令时间和睡眠时间有一点的交错。
 
@@ -1436,9 +1436,9 @@ t2线程获得B对象锁，接下来想获取A对象的锁
 很多教程中把饥饿定义为，一个线程由于优先级太低，始终得不到CPU调度执行，也不能够结束，饥饿的情况不易演示，讲读写锁时会涉及饥饿问题
 	下面我讲一下我遇到的一个线程饥饿的例子，先来看看使用顺序加锁的方式解决之前的死锁问题
 
-![image-20220111192557384](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111192557384.png)
+![image-20220111192557384](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111192557384.png)
 
-![image-20220111192608446](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111192608446.png)
+![image-20220111192608446](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111192608446.png)
 
 
 
@@ -1463,7 +1463,7 @@ t2线程获得B对象锁，接下来想获取A对象的锁
 
 基本语法：
 
-![image-20220111193536052](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111193536052.png)
+![image-20220111193536052](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111193536052.png)
 
 ### 可重入
 
@@ -1547,7 +1547,7 @@ ReentrantLock默认是不公平的，本意是解决饥饿问题
 
 可以通过构造方法来设置公平与否
 
-![image-20220111195821783](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220111195821783.png)
+![image-20220111195821783](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220111195821783.png)
 
 一般没有必要，会降低并发度，
 
@@ -1643,21 +1643,21 @@ JMM体现在以下几个方面
 
 先来看一个现象，main线程对run变量的修改对于t线程不可见，导致了t线程无法停止：
 
-![image-20220112122131435](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112122131435.png)
+![image-20220112122131435](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112122131435.png)
 
 为什么呢？分析一下：
 
 1. 初始状态，t线程刚开始从主内存读取了run的值到工作内存。
 
-![image-20220112122302979](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112122302979.png)
+![image-20220112122302979](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112122302979.png)
 
 2. 因为t线程要频繁从主内存中读取run的值，IT编译器会将run的值缓存至自己工作内存中的高速缓存中，减少对主存中run的访问，提高效率
 
-![image-20220112122452845](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112122452845.png)
+![image-20220112122452845](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112122452845.png)
 
 3. 1秒之后，main线程修改了run的值，并同步至主存，而t是从自己工作内存中的高速缓存中读取这个变量的值，结果永远是旧值
 
-![image-20220112122606115](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112122606115.png)
+![image-20220112122606115](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112122606115.png)
 
 **解决方法**：
 
@@ -1675,7 +1675,7 @@ volatile（易变关键字）
 
 上例从字节码理解是这样的：
 
-![image-20220112123538795](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112123538795.png)
+![image-20220112123538795](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112123538795.png)
 
 比较一下之前我们将线程安全时举的例子：两个线程一个i+一个i-，只能保证看到最新值，不能解决指令
 
@@ -1707,25 +1707,25 @@ Balking（犹豫）模式用在一个线程发现另一个线程或本线程已�
 
 
 
-![image-20220112125346870](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112125346870.png)
+![image-20220112125346870](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112125346870.png)
 
 ## 有序性
 
 JVM会在不影响正确性的前提下，可以调整语句的执行顺序，思考下面一段代码
 
-![image-20220112130345538](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112130345538.png)
+![image-20220112130345538](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112130345538.png)
 
 ### 指令重排序优化
 
 事实上，现代处理器会设计为一个时钟周期完成一条执行时间最长的CPU指令。为什么这么做呢？可以想到指令还可以再划分成一个个更小的阶段，例如，每条指令都可以分为：取指令-指令译码-执行指令-内存访问-数据写回这5个阶段
 
-![image-20220112131211210](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112131211210.png)
+![image-20220112131211210](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112131211210.png)
 
 在不改变程序结果的前提下，这些指令的各个阶段可以通过重排序和组合来实现指令级并行，这一技术在80's中叶到90's中叶占据了计算架构的重要地位。
 			提示：
 				分阶段，分工是提升效率的关键！
 
-![image-20220112131657819](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112131657819.png)
+![image-20220112131657819](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112131657819.png)
 
 ### 支持流水线的处理器
 
@@ -1733,11 +1733,11 @@ JVM会在不影响正确性的前提下，可以调整语句的执行顺序，�
 		提示：
 		奔腾四（Pentium 4）支持高达35级流水线，但由于功耗太高被废弃
 
-![image-20220112131756492](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112131756492.png)
+![image-20220112131756492](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112131756492.png)
 
 ### 问题
 
-![image-20220112135841438](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112135841438.png)
+![image-20220112135841438](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112135841438.png)
 
 I_Result是一个对象，有一个属性rl用来保存结果，问，可能的结果有几种？
 		有同学这么分析
@@ -1763,7 +1763,7 @@ DgroupId=cn.itcast -DartifactId=ordering -Dversion=1.0
 
 经验证会出现指令重排问题，会颠倒顺序，如下图。
 
-![image-20220112175430370](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112175430370.png)
+![image-20220112175430370](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112175430370.png)
 
 ## volatile
 
@@ -1796,7 +1796,7 @@ r.r1=1；
 }
 ```
 
-![image-20220112180748628](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112180748628.png)
+![image-20220112180748628](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112180748628.png)
 
 ### 保证有序性
 
@@ -1822,20 +1822,20 @@ r.r1=1；
   }
   ```
 
-  ![image-20220112181714305](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112181714305.png)
+  ![image-20220112181714305](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112181714305.png)
 
 还是那句话，不能解决指令交错：
 
 - 写屏障仅仅是保证之后的读能够读到最新的结果，但不能保证读跑到它前面去
 - 而有序性的保证也只是保证了本线程内相关代码不被重排序
 
-![image-20220112181802771](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112181802771.png)
+![image-20220112181802771](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112181802771.png)
 
 ### double-checked locking 问题
 
 以著名的double-checked locking单例模式为例
 
-![image-20220112182142600](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112182142600.png)
+![image-20220112182142600](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112182142600.png)
 
 以上的实现特点是：
 
@@ -1845,7 +1845,7 @@ r.r1=1；
 
 但在多线程环境下，上面的代码是有问题的，getlnstance方法对应的字节码为：
 
-![image-20220112183011109](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112183011109.png)
+![image-20220112183011109](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112183011109.png)
 
 其中
 
@@ -1856,7 +1856,7 @@ r.r1=1；
 
 也许jvm会优化为：先执行24，再执行21。如果两个线程tl，t2按如下时间序列执行：
 
-![image-20220112183428608](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112183428608.png)
+![image-20220112183428608](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112183428608.png)
 
 关键在于0：getstatic这行代码在monitor控制之外，它就像之前举例中不守规则的人，可以越过monitor读取INSTANCE变量的值
 
@@ -1866,7 +1866,7 @@ r.r1=1；
 
 **解决方案**
 
-![image-20220112184029243](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184029243.png)
+![image-20220112184029243](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112184029243.png)
 
 ### happens-before 
 
@@ -1874,41 +1874,41 @@ happens-before 规定了对共享变量的写操作对其它线程的读操作�
 
 - 线程解锁m之前对变量的写，对于接下来对m加锁的其它线程对该变量的读可见
 
-![image-20220112184533480](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184533480.png)
+![image-20220112184533480](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112184533480.png)
 
 - 线程对volatile变量的写，对接下来其它线程对该变量的读可见
 
-![image-20220112184649578](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184649578.png)
+![image-20220112184649578](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112184649578.png)
 
 - 线程start 前对变量的写，对该线程开始后对该变量的读可见
 
-![image-20220112184743439](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184743439.png)
+![image-20220112184743439](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112184743439.png)
 
 - 线程结束前对变量的写，对其它线程得知它结束后的读可见（比如其它线程调用tl.isAlive）或tl.join0等待它结束）
-- ![image-20220112184830271](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184830271.png)
+- ![image-20220112184830271](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112184830271.png)
 
 - 线程tl打断t2（interrupt）前对变量的写，对于其他线程得知t2被打断后对变量的读可见（通过t2.interrupted 或t2.isInterrupted）
 
-![image-20220112184907193](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112184907193.png)
+![image-20220112184907193](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112184907193.png)
 
 - 对变量默认值（0，false，null）的写，对其它线程对该变量的读可见
 - 具有传递性，如果xhb->y并且yhb->z那么有xhb->z，配合volatile的防指令重排，有下面的例子
 
-![image-20220112185035252](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112185035252.png)
+![image-20220112185035252](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112185035252.png)
 
 
 
 
 
-![image-20220112185527974](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112185527974.png)
+![image-20220112185527974](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112185527974.png)
 
 加入readResovle(),序列化时会返回创建的单例对象 
 
-  ![image-20220112185558054](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112185558054.png)
+  ![image-20220112185558054](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112185558054.png)
 
 **小结**
 
-![image-20220112191924332](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220112191924332.png)
+![image-20220112191924332](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220112191924332.png)
 
 # 共享模型之无锁
 
@@ -1918,11 +1918,11 @@ happens-before 规定了对共享变量的写操作对其它线程的读操作�
 
 前面看到的AtomicInteger的解决方法，内部并没有用锁来保护共享变量的线程安全。那么它是如何实现的呢？
 
-![image-20220113115440350](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113115440350.png)
+![image-20220113115440350](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113115440350.png)
 
 其中的关键是compareAndSet，它的简称就是CAS（也有Compare And Swap的说法），它必须是原子操作。
 
-![image-20220113115641575](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113115641575.png)
+![image-20220113115641575](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113115641575.png)
 
 注意
 其实CAS的底层是lock cmpxchg指令（X86架构），在单核CPU和多核CPU下都能够保证【比较交换】的原子性。
@@ -1964,11 +1964,11 @@ J.U.C并发包提供了：
 - AtomicInteger
 - AtomicLong
 
-![image-20220113122859706](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113122859706.png)
+![image-20220113122859706](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113122859706.png)
 
-![image-20220113123405386](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113123405386.png)
+![image-20220113123405386](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113123405386.png)
 
-![image-20220113123927603](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113123927603.png)
+![image-20220113123927603](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113123927603.png)
 
 ## 原子引用
 
@@ -1978,13 +1978,13 @@ J.U.C并发包提供了：
 - AtomicMarkableReference
 - AtomicStampedReference
 
-![image-20220113124639427](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113124639427.png)
+![image-20220113124639427](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113124639427.png)
 
 ### A-B-A问题
 
-![image-20220113124950745](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113124950745.png)
+![image-20220113124950745](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113124950745.png)
 
-![image-20220113125009051](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113125009051.png)
+![image-20220113125009051](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113125009051.png)
 
 简述；其他线程将值由A->B再有其他线程改为B->A，而现在这个线程无法感知AtomicReference的共享值的变化，其实对业务造成不了影响，
 
@@ -1992,13 +1992,13 @@ J.U.C并发包提供了：
 
 只要有其它线程【动过了】共享变量，那么自己的cas就算失败，这时，仅比较值是不够的，需要再加一个版本号
 
-![image-20220113125601374](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113125601374.png)
+![image-20220113125601374](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113125601374.png)
 
 AtomicStampedReference可以给原子引用加上版本号，追踪原子引用整个的变化过程，如：
 		A->B->A->c，通过AtomicStampedReference，我们可以知道，引用变量中途被更改了几次。
 		但是有时候，并不关心引用变量更改了几次，只是单纯的关心是否更改过，所以就有了AtomicMarkableReference
 
-![image-20220113130743885](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113130743885.png)
+![image-20220113130743885](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113130743885.png)
 
 ## 原子数组
 
@@ -2006,13 +2006,13 @@ AtomicStampedReference可以给原子引用加上版本号，追踪原子引用�
 - AtomicLongAray
 - AtomicRefergnceArray
 
-![image-20220113134125804](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134125804.png)
+![image-20220113134125804](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113134125804.png)
 
-![image-20220113134145375](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134145375.png)
+![image-20220113134145375](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113134145375.png)
 
 
 
-![image-20220113134359901](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134359901.png)
+![image-20220113134359901](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113134359901.png)
 
 
 
@@ -2024,17 +2024,17 @@ AtomicStampedReference可以给原子引用加上版本号，追踪原子引用�
 
 利用字段更新器，可以针对对象的某个域（Field）进行原子操作，只能配合volatile修饰的字段使用，否则会出现异常
 
-![image-20220113134546869](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134546869.png)
+![image-20220113134546869](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113134546869.png)
 
-![image-20220113134917048](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113134917048.png)
+![image-20220113134917048](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113134917048.png)
 
 ## 原子累加器
 
-![image-20220113135502856](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113135502856.png)
+![image-20220113135502856](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113135502856.png)
 
 
 
-![image-20220113135844416](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113135844416.png)
+![image-20220113135844416](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113135844416.png)
 
 
 
@@ -2046,11 +2046,11 @@ LongAdder是并发大师@author Doug Lea（大哥李）的作品，设计的非�
 
 LongAdder类有几个关键域
 
-![image-20220113140333361](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113140333361.png)
+![image-20220113140333361](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113140333361.png)
 
 CAS锁
 
-![image-20220113140656680](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113140656680.png)
+![image-20220113140656680](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113140656680.png)
 
 
 
@@ -2058,15 +2058,15 @@ CAS锁
 
 其中Cell即为累加单元
 
-![image-20220113141318105](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113141318105.png)
+![image-20220113141318105](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113141318105.png)
 
 得从缓存说起
 
 缓存与内存的速度比较
 
-![image-20220113141429670](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113141429670.png)
+![image-20220113141429670](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113141429670.png)
 
-![image-20220113141458266](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113141458266.png)
+![image-20220113141458266](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113141458266.png)
 
 因为CPU与内存的速度差异很大，需要靠预读数据至缓存来提升效率。
 
@@ -2078,7 +2078,7 @@ CPU要保证数据的一致性，如果某个CPU核心更改了数据，其它CP
 
 
 
-![image-20220113141837282](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113141837282.png)
+![image-20220113141837282](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113141837282.png)
 
 因为Cell是数组形式，在内存中是连续存储的，一个Cell为24字节（16字节的对象头和8字节的value），因此缓存行可以存下2个的Cell对象。这样问题来了：
 
@@ -2089,15 +2089,15 @@ CPU要保证数据的一致性，如果某个CPU核心更改了数据，其它CP
 
 @sun.misc.Contenfled用来解决这个问题，它的原理是在使用此注解的对象或字段的前后各增加128字节大小的padding，从而让CPU将对象预读至缓存时占用不同的缓存行，这样，不会造成对方缓存行的失效
 
-![image-20220113142326887](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113142326887.png)
+![image-20220113142326887](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113142326887.png)
 
 ### add方法源码解读
 
-![image-20220113180947863](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113180947863.png)
+![image-20220113180947863](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113180947863.png)
 
 ### longAccumulate(long x,longBinaryOperator,boolean wasUncountened);解读
 
-![image-20220113181713545](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113181713545.png)
+![image-20220113181713545](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113181713545.png)
 
 
 
@@ -2192,7 +2192,7 @@ public class Test7 {
 
 另一个大家更为熟悉的String类也是不可变的，以它为例，说明一下不可变设计的要素
 
-![image-20220113193053109](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113193053109.png)
+![image-20220113193053109](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113193053109.png)
 
 **final的使用**
 
@@ -2205,11 +2205,11 @@ public class Test7 {
 
 但有同学会说，使用字符串时，也有一些跟修改相关的方法啊，比如substring等，那么下面就看一看这些方法是如何实现的，就以substring为例：
 
-![image-20220113193500091](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113193500091.png)
+![image-20220113193500091](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113193500091.png)
 
 发现其内部是调用String的构造方法创建了一个新字符串，再进入这个构造看看，是否对final char]value做出了修改：
 
-![image-20220113194236787](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113194236787.png)
+![image-20220113194236787](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113194236787.png)
 
 结果发现也没有，构造新字符串对象时，会生成新的char[]value，对内容进行复制。这种通过创建副本对象来避免共享的手段称之为【保护性拷贝（defensive copy）】
 
@@ -2375,11 +2375,11 @@ class MockConnection implements Connection {
 
 理解了volatile原理，再对比final的实现就比较简单了
 
-![image-20220113212200374](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113212200374.png)
+![image-20220113212200374](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113212200374.png)
 
 字节码
 
-![image-20220113212216033](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113212216033.png)
+![image-20220113212216033](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113212216033.png)
 
 发现final变量的赋值也会通过putfield 指令来完成，同样在这条指令之后也会加入写屏障，保证在其它线程读到它的值时不会出现为0的情况
 
@@ -2401,7 +2401,7 @@ class MockConnection implements Connection {
 
 ## 自定义线程池
 
-![image-20220113215136638](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220113215136638.png)
+![image-20220113215136638](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220113215136638.png)
 
 #### 步奏一：自定义拒绝策略
 
@@ -2692,7 +2692,7 @@ interface RejectPolicy<T> {
 
 ## ThreadPoolExecutor
 
-![image-20220114130018034](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114130018034.png)
+![image-20220114130018034](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114130018034.png)
 
 ### 线程池状态
 
@@ -2700,13 +2700,13 @@ ThreadPoolExecutor使用int的高3位来表示线程池状态，低29位表示�
 
 
 
-![image-20220114130220179](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114130220179.png)
+![image-20220114130220179](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114130220179.png)
 
 从数字上比较，TERMINATED> TIDYING>STOP> SHUTDOWN> RUNNING
 
 这些信息存储在一个原子变量ct中，目的是将线程池状态与线程个数合二为一，这样就可以用一次cas原子操作进行赋值
 
-![image-20220114130723043](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114130723043.png)
+![image-20220114130723043](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114130723043.png)
 
 ### 构造方法
 
@@ -2730,9 +2730,9 @@ ThreadPoolExecutor使用int的高3位来表示线程池状态，低29位表示�
 
 工作方式
 
-![image-20220114132727673](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114132727673.png)
+![image-20220114132727673](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114132727673.png)
 
-![image-20220114132117512](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114132117512.png)44+4444444444444444444444
+![image-20220114132117512](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114132117512.png)44+4444444444444444444444
 
 - 线程池中刚开始没有线程，当一个任务提交给线程池后，线程池会创建一个新线程来执行任务。
 - 当线程数达到corePoolSize并没有线程空闲，这时再加入任务，新加的任务会被加入workQueue队列排队，直到有空闲的线程。
@@ -2748,7 +2748,7 @@ ThreadPoolExecutor使用int的高3位来表示线程池状态，低29位表示�
   - PinPoint的实现，它使用了一个拒绝策略链，会逐一尝试策略链中每种拒绝策略
 - 当高峰过去后，超过corePoolSize的救急线程如果一段时间没有任务做，需要结束节省资源，这个时间由keepAlive Time 和unit 来控制。
 
-![image-20220114133111805](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114133111805.png)
+![image-20220114133111805](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114133111805.png)
 
 根据这个构造方法，JDK  Executors类中提供了众多工厂方法来创建各种用途的线程池
 
@@ -2773,7 +2773,7 @@ ThreadPoolExecutor使用int的高3位来表示线程池状态，低29位表示�
 
 定义线程名称，在线程工厂中
 
-![image-20220114134758181](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114134758181.png)
+![image-20220114134758181](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114134758181.png)
 
 ### newCachedThreadPool
 
@@ -2823,25 +2823,25 @@ ThreadPoolExecutor使用int的高3位来表示线程池状态，低29位表示�
 
 ### 提交任务
 
-![image-20220114140439435](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114140439435.png)
+![image-20220114140439435](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114140439435.png)
 
 ### 关闭线程池
 
 #### **shutdown**
 
-![image-20220114191647833](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191647833.png)
+![image-20220114191647833](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114191647833.png)
 
-![image-20220114191701897](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191701897.png)
+![image-20220114191701897](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114191701897.png)
 
 #### shutdownNow
 
-![image-20220114191821752](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191821752.png)
+![image-20220114191821752](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114191821752.png)
 
-![image-20220114191837201](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191837201.png)
+![image-20220114191837201](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114191837201.png)
 
 #### 其他方法
 
-![image-20220114191938656](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114191938656.png)
+![image-20220114191938656](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114191938656.png)
 
 ## 异步模式之工作模式
 
@@ -2986,13 +2986,13 @@ public class Test10 {
 
 ```
 
-![image-20220114210023810](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220114210023810.png)
+![image-20220114210023810](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220114210023810.png)
 
 ### Tomcat线程池
 
 Tomcat 在哪里用到了线程池呢
 
-![image-20220115103014554](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103014554.png)
+![image-20220115103014554](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115103014554.png)
 
 - Limitatch 用来限流，可以控制最大连接个数，类似J.U.C中的Semaphore后面再讲
 - Acceptor只负责【接收新的socket连接】
@@ -3006,15 +3006,15 @@ Tomcat线程池扩展了ThreadPoolExecutor，行为稍有不同
   - 这时不会立刻抛RejectedExecutionException异常
   - 而是再次尝试将任务放入队列(机会只有一次)，如果还失败，才抛出RejectedExecutionException异常
 
-![image-20220115103635962](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103635962.png)
+![image-20220115103635962](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115103635962.png)
 
-![image-20220115103833993](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103833993.png)
+![image-20220115103833993](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115103833993.png)
 
-![image-20220115103914571](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103914571.png)
+![image-20220115103914571](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115103914571.png)
 
-![image-20220115103955445](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115103955445.png)
+![image-20220115103955445](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115103955445.png)
 
-![image-20220115104848588](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115104848588.png)
+![image-20220115104848588](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115104848588.png)
 
 ### Fork/join
 
@@ -3102,7 +3102,7 @@ class MyTask extends RecursiveTask<Integer> {
 - tryReleaseShared
 - isHeldExclusively
 
-![image-20220115112636112](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115112636112.png)
+![image-20220115112636112](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115112636112.png)
 
 ```java
 package com.wudidemiao.aqs;
@@ -3220,7 +3220,7 @@ class MyLock implements Lock {
 
 ### ReentrantLock
 
-![image-20220115114936608](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115114936608.png)
+![image-20220115114936608](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115114936608.png)
 
 #### 非公平锁实现原理
 
@@ -3241,11 +3241,11 @@ class MyLock implements Lock {
 NonfairSync继承自AQS
 		没有竞争时
 
-![image-20220115115210442](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115115210442.png)
+![image-20220115115210442](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115115210442.png)
 
 第一个竞争出现时
 
-![image-20220115115519400](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115115519400.png)
+![image-20220115115519400](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115115519400.png)
 
 Thread-1执行了
 
@@ -3256,7 +3256,7 @@ Thread-1执行了
    - Node的创建是懒惰的
    - 其中第一个Node称为Dummy（哑元）或哨兵，用来占位，并不关联线程
 
-![image-20220115115856120](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115115856120.png)
+![image-20220115115856120](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115115856120.png)
 
 当前线程进入acquireQueued逻辑
 
@@ -3264,20 +3264,20 @@ Thread-1执行了
 2. 如果自己是紧邻着head（排第二位），那么再次tryAcquire尝试获取锁，当然这时state仍为1，失败
 3. 进入shouldParkAfterFailedAcquire逻辑，将前驱node，即head的 waitStatus改为-1，这次返回false
 
-![image-20220115120224681](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115120224681.png)
+![image-20220115120224681](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115120224681.png)
 
 再次有多个线程经历上述过程竞争失败，变成这个样子
 
 
 
-![image-20220115120513407](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115120513407.png)
+![image-20220115120513407](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115120513407.png)
 
 Thread-0释放锁，进入tryRelease流程，如果成功
 
 - 设置 exclusiveOwnerThread为null
 -  astate=0
 
-![image-20220115120600112](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115120600112.png)
+![image-20220115120600112](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115120600112.png)
 
 当前队列不为nul，并且head的waitStatus=-1，进入unparkSuccessor流程
 
@@ -3285,7 +3285,7 @@ Thread-0释放锁，进入tryRelease流程，如果成功
 
 回到Thread-1的 acquireQueued流程
 
-![image-20220115121049524](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115121049524.png)
+![image-20220115121049524](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115121049524.png)
 
 如果加锁成功（没有竞争），会设置
 
@@ -3295,7 +3295,7 @@ Thread-0释放锁，进入tryRelease流程，如果成功
 
 如果这时候有其它线程来竞争（非公平的体现），例如这时有Thread-4来了
 
-![image-20220115121417473](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115121417473.png)
+![image-20220115121417473](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115121417473.png)
 
 如果不巧又被Thread-4占了先
 
@@ -3304,9 +3304,9 @@ Thread-0释放锁，进入tryRelease流程，如果成功
 
 #### 可重入原理
 
-![image-20220115121850588](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115121850588.png)
+![image-20220115121850588](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115121850588.png)
 
-![image-20220115121927174](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115121927174.png)
+![image-20220115121927174](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115121927174.png)
 
 #### 可打断原理
 
@@ -3314,23 +3314,23 @@ Thread-0释放锁，进入tryRelease流程，如果成功
 
 在此模式下，即使它被打断，仍会驻留在AQS队列中，等获得锁后方能继续运行（是继续运行！只是打断标记被设置为true）
 
-![image-20220115122612275](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115122612275.png)
+![image-20220115122612275](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115122612275.png)
 
-![image-20220115122634920](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115122634920.png)
+![image-20220115122634920](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115122634920.png)
 
-![image-20220115122955502](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115122955502.png)
+![image-20220115122955502](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115122955502.png)
 
 ##### 可打断模式
 
-![image-20220115123042737](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115123042737.png)
+![image-20220115123042737](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115123042737.png)
 
-![image-20220115123115726](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115123115726.png)
+![image-20220115123115726](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115123115726.png)
 
 #### 非公平锁实现原理
 
-![image-20220115123803007](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115123803007.png)
+![image-20220115123803007](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115123803007.png)
 
-![image-20220115123824093](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115123824093.png)
+![image-20220115123824093](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115123824093.png)
 
 #### 条件变量实现原理
 
@@ -3342,29 +3342,29 @@ Thread-0释放锁，进入tryRelease流程，如果成功
 
 创建新的Node状态为-2（Node.CONDITION），关联Thread-0，加入等待队列尾部
 
-![image-20220115124156867](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115124156867.png)
+![image-20220115124156867](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115124156867.png)
 
 接下来进入AQS的fullyRelease流程，释放同步器上的锁
 
-![image-20220115124707613](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115124707613.png)
+![image-20220115124707613](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115124707613.png)
 
 unparkAQS队列中的下一个节点，竞争锁，假设没有其他竞争线程，那么Thread-1竞争成功
 
-![image-20220115124727633](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115124727633.png)
+![image-20220115124727633](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115124727633.png)
 
 signal流程
 
 假设Thread-1要来唤醒 Thread-0
 
-![image-20220115124917382](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115124917382.png)
+![image-20220115124917382](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115124917382.png)
 
 进入ConditionObject的doSignal流程，取得等待队列中第一个Node，即Thread-0所在Node
 
-![image-20220115125112955](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115125112955.png)
+![image-20220115125112955](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115125112955.png)
 
 执行transferForSignal 流程，将该Node加入AQS队列尾部，将Thread-0的waitStatus改为0，Thread-3的waitStatus改为-1
 
-![image-20220115130140538](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115130140538.png)
+![image-20220115130140538](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115130140538.png)
 
 Thread-1释放锁，进入unlock流程，略
 
@@ -3453,7 +3453,7 @@ class DataContainer {
 
 
 
-![image-20220115173630414](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115173630414.png)
+![image-20220115173630414](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115173630414.png)
 
 #### 缓存更新策略
 
@@ -3461,11 +3461,11 @@ class DataContainer {
 
 先清缓存
 
-![image-20220115175245439](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115175245439.png)
+![image-20220115175245439](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115175245439.png)
 
 先更新数据库
 
-![image-20220115175536545](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115175536545.png)
+![image-20220115175536545](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115175536545.png)
 
 注意
 
@@ -3484,7 +3484,7 @@ class DataContainer {
 
 1）tl成功上锁，流程与ReentrantLock加锁相比没有特殊之处，不同是写锁状态占了state的低16位，而读锁使用的是state的高16位
 
-![image-20220115181842835](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115181842835.png)
+![image-20220115181842835](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115181842835.png)
 
 
 
@@ -3494,19 +3494,19 @@ class DataContainer {
 - 0表示成功，但后继节点不会继续唤醒
 - 正数表示成功，而且数值是还有几个后继节点需要唤醒，读写锁返回1
 
-![image-20220115183743989](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115183743989.png)
+![image-20220115183743989](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115183743989.png)
 
 3）这时会进入sync.doAcquireShared（1）流程，首先也是调用addWaiter添加节点，不同之处在于节点被设置为Node.SHARED模式而非Node.EXCLUSIVE模式，注意此时t2仍处于活跃状态
 
-![image-20220115183953200](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115183953200.png)
+![image-20220115183953200](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115183953200.png)
 
 4）t2会看看自己的节点是不是老二，如果是，还会再次调用tryAcquireShared（1）来尝试获取锁
 
 5）如果没有成功，在doAcquireShared内for（；）循环一次，把前驱节点的waitStatus改为-1，再for（；）循环一次尝试tryAcquireShared（1）如果还不成功，那么在parkAndCheckInterruptO处park
 
-![image-20220115185256378](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115185256378.png)
+![image-20220115185256378](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115185256378.png)
 
-![image-20220115184057128](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115184057128.png)
+![image-20220115184057128](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115184057128.png)
 
 
 
@@ -3514,35 +3514,35 @@ class DataContainer {
 
 这种状态下，假设又有t3加读锁和t4加写锁，这期间tl仍然持有锁，就变成了下面的样子
 
-![image-20220115185347820](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115185347820.png)
+![image-20220115185347820](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115185347820.png)
 
 **t1w.unlock**
 
 这时会走到写锁的sync.release（1）流程，调用sync.tryRelease（1）成功，变成下面的样子
 
-![image-20220115185541578](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115185541578.png)
+![image-20220115185541578](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115185541578.png)
 
 接下来执行唤醒流程sync.unparkSuccessor，即让老二恢复运行，这时t2在doAcquireShared 内 parkAndCheckInterrupt）处恢复运行
 
 这回再来一次for（；；）执行tryAcquireShared成功则让读锁计数加一
 
-![image-20220115190344145](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115190344145.png)
+![image-20220115190344145](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115190344145.png)
 
 这时t2已经恢复运行，接下来t2调用setHeadAndPropagate（node，1），它原本所在节点被置为头节点
 
-![image-20220115190434454](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115190434454.png)
+![image-20220115190434454](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115190434454.png)
 
 事情还没完，在setHeadAndPropagate方法内还会检查下一个节点是否是shared，如果是则调用doReleaseShared0将head的状态从-1改为0并唤醒老二，这时3在doAcquireShared 内 parkAndCheckInterruptO处恢复运行
 
-![image-20220115191100112](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115191100112.png)
+![image-20220115191100112](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115191100112.png)
 
 这回再来一次for（；）执行tryAcquireShared成功则让读锁计数加一
 
-![image-20220115191142771](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115191142771.png)
+![image-20220115191142771](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115191142771.png)
 
 这时t3已经恢复运行，接下来t3调用setHeadAndPropagate（node，1），它原本所在节点被置为头节点
 
-![image-20220115191444288](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115191444288.png)
+![image-20220115191444288](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115191444288.png)
 
 下一个节点不是shared了，因此不会继续唤醒t4所在节点
 
@@ -3550,7 +3550,7 @@ class DataContainer {
 
 进入sync.releaseShared（1）中，调用tryReleaseShared（1）让计数减一，但由于计数还不为零
 
-![image-20220115191745022](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115191745022.png)
+![image-20220115191745022](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115191745022.png)
 
 t3进入sync.releaseShared（1）中，调用tryReleaseShared（1）让计数减一，这回计数为零了，进入doReleaseShared）将头节点从-1改为0并唤醒老二，即
 
@@ -3591,7 +3591,7 @@ if（！lock.validate（stamp））{
 
 信号量，用来限制能同时访问共享资源的线程上限。
 
-![image-20220115194703219](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220115194703219.png)
+![image-20220115194703219](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220115194703219.png)
 
 - 使用Semaphore限流，在访问高峰期时，让请求线程阻塞，高峰期过去再释放许可，当然它只适合限制单机线程数量，并且仅是限制线程数，而不是限制资源数（例如连接数，请对比Tomcat LimitLatch的实现）
 - 用Semaphore实现简单连接池，对比[享元模式]下的实现（用wait notify），性能和可读性显然更好，注意下面的实现中线程数和数据库连接数是相等的
@@ -3606,15 +3606,15 @@ Semaphore 有点像一个停车场，permits就好像停车位数量，当线程
 
 刚开始，permits（state）为3，这时5个线程来获取资源
 
-![image-20220116092801858](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116092801858.png)
+![image-20220116092801858](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116092801858.png)
 
 假设其中Thread-1，Thread-2，Thread-4cas 竞争成功，而Thread-0和Thread-3竞争失败，进入AQS队列park阻塞
 
-![image-20220116093125976](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116093125976.png)
+![image-20220116093125976](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116093125976.png)
 
 这时Thread-4释放了permits，状态如下
 
-![image-20220116093331109](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116093331109.png)
+![image-20220116093331109](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116093331109.png)
 
 接下来Thread-0竞争成功，permits 再次设置为0，设置自己为head节点，断开原来的head 节点，unpark 接下来的Thread-3节点，但由于permits是0，因此Thread-3在尝试不成功后再次进入park状态
 
@@ -3626,19 +3626,19 @@ Semaphore 有点像一个停车场，permits就好像停车位数量，当线程
 
 不能使计数复原。
 
-![image-20220116094845026](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116094845026.png)
+![image-20220116094845026](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116094845026.png)
 
-![image-20220116095816894](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116095816894.png)
+![image-20220116095816894](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116095816894.png)
 
 ### **CyclicBarrier**
 
 循环棚栏，用来进行线程协作，等待线程满足某个计数。构造时设置计数个数】，每个线程执行到某个需要同步”的时刻调用await）方法进行等待，当等待的线程数满足[计数个数】时，继续执行
 
-![image-20220116112024303](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116112024303.png)
+![image-20220116112024303](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116112024303.png)
 
 ### 线程安全集合类概述
 
-![image-20220116112334234](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116112334234.png)
+![image-20220116112334234](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116112334234.png)
 
 线程安全集合类可以分为三大类：
 
@@ -3673,7 +3673,7 @@ Blocking、CopyOnWrite、Concurrent
 
 ### ConcurrenthashMap
 
-![image-20220116114757417](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116114757417.png)
+![image-20220116114757417](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116114757417.png)
 
 ### ConcurrentHashMap原理
 
@@ -3684,25 +3684,25 @@ Blocking、CopyOnWrite、Concurrent
 - 要在JDK7下运行，否则扩容机制和hash的计算方法都变了
 - 以下测试代码是精心准备的，不要随便改动
 
-![image-20220116115350674](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116115350674.png)
+![image-20220116115350674](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116115350674.png)
 
-![image-20220116115557705](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116115557705.png)
+![image-20220116115557705](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116115557705.png)
 
-![image-20220116115629425](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116115629425.png)
+![image-20220116115629425](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116115629425.png)
 
-![image-20220116120813964](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116120813964.png)
+![image-20220116120813964](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116120813964.png)
 
-![image-20220116121319142](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116121319142.png)
+![image-20220116121319142](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116121319142.png)
 
-![image-20220116121908145](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116121908145.png)
+![image-20220116121908145](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116121908145.png)
 
-![image-20220116122154849](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116122154849.png)
+![image-20220116122154849](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116122154849.png)
 
-![image-20220116122218571](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116122218571.png)
+![image-20220116122218571](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116122218571.png)
 
-![image-20220116122236962](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116122236962.png)
+![image-20220116122236962](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116122236962.png)
 
-![image-20220116122323038](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116122323038.png)
+![image-20220116122323038](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116122323038.png)
 
 小结
 
@@ -3713,43 +3713,43 @@ Blocking、CopyOnWrite、Concurrent
 
 ##### 重要属性和内部类
 
-![](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116123241789.png)
+![](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116123241789.png)
 
 ##### **重要方法**
 
-![image-20220116123325714](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116123325714.png)
+![image-20220116123325714](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116123325714.png)
 
 ##### 构造器分析
 
 可以看到实现了懒惰初始化，在构造方法中仅仅计算了table的大小，以后在第一次使用时才会真正创建
 
-![image-20220116123849871](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116123849871.png)
+![image-20220116123849871](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116123849871.png)
 
 ##### get流程
 
-![image-20220116124605701](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116124605701.png)
+![image-20220116124605701](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116124605701.png)
 
 ##### Put流程
 
 以下数组简称（table），链表简称（bin）
 
-![image-20220116125615374](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116125615374.png)
+![image-20220116125615374](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116125615374.png)
 
-![image-20220116125711192](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116125711192.png)
+![image-20220116125711192](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116125711192.png)
 
-![image-20220116130029210](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130029210.png)
+![image-20220116130029210](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116130029210.png)
 
-![image-20220116130114844](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130114844.png)
+![image-20220116130114844](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116130114844.png)
 
 ##### initTable方法
 
-![image-20220116130308628](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130308628.png)
+![image-20220116130308628](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116130308628.png)
 
 ##### addCount方法
 
-![image-20220116130641689](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130641689.png)
+![image-20220116130641689](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116130641689.png)
 
-![image-20220116130902490](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116130902490.png)
+![image-20220116130902490](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116130902490.png)
 
 ##### Size计算流程
 
@@ -3760,7 +3760,7 @@ size 计算实际发生在put，remove改变集合元素的操作之中
   - counterClls初始有两个cel
   - 如果计数竞争比较激烈，会创建新的cell 来累加计数
 
-![image-20220116131151683](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116131151683.png)
+![image-20220116131151683](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116131151683.png)
 
 #### 3、jdk 7 ConcurrentHashMap
 
@@ -3771,66 +3771,66 @@ size 计算实际发生在put，remove改变集合元素的操作之中
 
 ##### 构造器分析
 
-![image-20220116131922761](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116131922761.png)
+![image-20220116131922761](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116131922761.png)
 
-![image-20220116131954546](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116131954546.png)
+![image-20220116131954546](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116131954546.png)
 
-![image-20220116132039332](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132039332.png)
+![image-20220116132039332](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116132039332.png)
 
-![image-20220116132230043](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132230043.png)
+![image-20220116132230043](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116132230043.png)
 
 ##### put流程
 
-![image-20220116132404362](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132404362.png)
+![image-20220116132404362](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116132404362.png)
 
 segment继承了可重入锁（ReentrantLock），它的put方法为
 
-![image-20220116132654149](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132654149.png)
+![image-20220116132654149](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116132654149.png)
 
-![image-20220116132803293](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116132803293.png)
+![image-20220116132803293](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116132803293.png)
 
 ##### rehash 流程
 
 发生在put中，因为此时已经获得了锁，因此rehash时不需要考虑线程安全
 
-![image-20220116133130893](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116133130893.png)
+![image-20220116133130893](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116133130893.png)
 
-![image-20220116133457901](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116133457901.png)
+![image-20220116133457901](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116133457901.png)
 
-![image-20220116133746154](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116133746154.png)
+![image-20220116133746154](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116133746154.png)
 
 ##### get流程
 
-![image-20220116133832482](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116133832482.png)
+![image-20220116133832482](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116133832482.png)
 
 ##### Size计算流程
 
 - 计算元素个数前，先不加锁计算两次，如果前后两次结果如一样，认为个数正确返回
 - 如果不一样，进行重试，重试次数超过3，将所有segment锁住，重新计算个数返回
 
-![image-20220116134201403](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116134201403.png)
+![image-20220116134201403](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116134201403.png)
 
-![image-20220116134431565](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116134431565.png)
+![image-20220116134431565](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116134431565.png)
 
 ### LinkedBlockingQueue原理
 
 #### 1.基本的入队出队
 
-![image-20220116134816066](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116134816066.png)
+![image-20220116134816066](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116134816066.png)
 
-![image-20220116140545400](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116140545400.png)
+![image-20220116140545400](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116140545400.png)
 
-![image-20220116173508785](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116173508785.png)
+![image-20220116173508785](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116173508785.png)
 
 **出队**
 
-![image-20220116173608799](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116173608799.png)
+![image-20220116173608799](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116173608799.png)
 
-![image-20220116174009475](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116174009475.png)
+![image-20220116174009475](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116174009475.png)
 
-![image-20220116174128399](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116174128399.png)
+![image-20220116174128399](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116174128399.png)
 
-![image-20220116174334691](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116174334691.png)
+![image-20220116174334691](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116174334691.png)
 
 #### 2、加锁分析
 
@@ -3851,15 +3851,15 @@ segment继承了可重入锁（ReentrantLock），它的put方法为
 
 - 当节点总数等于1时（就一个dummy节点）这时take线程会被notEmpty条件阻塞，有竞争，会阻塞
 
-![image-20220116175055546](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116175055546.png)
+![image-20220116175055546](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116175055546.png)
 
 put操作
 
-![image-20220116180024832](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116180024832.png)
+![image-20220116180024832](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116180024832.png)
 
 take操作
 
-![image-20220116180050140](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116180050140.png)
+![image-20220116180050140](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116180050140.png)
 
 #### 性能比较
 
@@ -3885,7 +3885,7 @@ ConcurrentLinkedQueue的设计与LinkedBlockingQueue非常像，也是
 
 例如之前讲的Tomcat的Connector 结构时，Acceptor作为生产者向Poller消费者传递事件信息时，正是采用了ConcurentLinkedQueue将SocketChannel给Poller使用
 
-![image-20220116180437903](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116180437903.png)
+![image-20220116180437903](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116180437903.png)
 
 ### CopyOnWriteArrayList
 
@@ -3895,16 +3895,16 @@ CopyonuriteArrayset是它的马甲
 
 以新增为例：
 
-![image-20220116180658590](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116180658590.png)
+![image-20220116180658590](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116180658590.png)
 
 这里的源码版本是Java11，在Java1.8中使用的是可重入锁而不是synchronized
 
 其它读操作并未加锁，例如：
 
-![image-20220116181010378](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116181010378.png)
+![image-20220116181010378](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116181010378.png)
 
 适合[读多写少】的应用场景
 
-![image-20220116181101564](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116181101564.png)
+![image-20220116181101564](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116181101564.png)
 
-![image-20220116181557223](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20220116181557223.png)
+![image-20220116181557223](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20220116181557223.png)

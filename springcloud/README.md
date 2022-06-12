@@ -1,6 +1,6 @@
 # 概述
 
-![image-20211223100513349](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223100513349.png)
+![image-20211223100513349](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223100513349.png)
 
 ## 简介
 
@@ -48,7 +48,7 @@ java 1.8
 
 ```
 
-![image-20211223102917619](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223102917619.png)
+![image-20211223102917619](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223102917619.png)
 
 # 关于cloud各种组件的停更、升级、替换
 
@@ -117,39 +117,39 @@ https://docs.spring.io/spring-boot/docs/2.2.2RELEASE/reference/htmlsingle/
 
 2. 聚合工程名字
 
-   ![image-20211223111116755](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223111116755.png)
+   ![image-20211223111116755](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223111116755.png)
 
 3. Maven选择版本
 
-   ![image-20211223111153803](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223111153803.png)
+   ![image-20211223111153803](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223111153803.png)
 
 4. 工程名字
 
-   ![image-20211223111224844](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223111224844.png)
+   ![image-20211223111224844](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223111224844.png)
 
    5. 字符编码
 
       
 
-![image-20211223111311676](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223111311676.png)
+![image-20211223111311676](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223111311676.png)
 
 6. 注解激活生效
 
    
 
-![image-20211223111537584](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223111537584.png)
+![image-20211223111537584](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223111537584.png)
 
 7. 选择java编译版本
 
    
 
-![image-20211223111830916](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223111830916.png)
+![image-20211223111830916](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223111830916.png)
 
 8. File type 过滤
 
    
 
-![image-20211223111910120](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223111910120.png)
+![image-20211223111910120](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223111910120.png)
 
 ### 父工程Pom文件
 
@@ -259,13 +259,13 @@ https://docs.spring.io/spring-boot/docs/2.2.2RELEASE/reference/htmlsingle/
 
 #### maven中的dependencyManagement 和 dependencies区别
 
-![image-20211223113324882](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223113324882.png)
+![image-20211223113324882](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223113324882.png)
 
-![image-20211223113407903](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223113407903.png)![image-20211223113609529](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223113609529.png)
+![image-20211223113407903](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223113407903.png)![image-20211223113609529](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223113609529.png)
 
 #### maven中如何跳过单元测试
 
-![image-20211223114433368](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223114433368.png)
+![image-20211223114433368](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223114433368.png)
 
 ## Rest微服务工程构建
 
@@ -285,7 +285,7 @@ https://docs.spring.io/spring-boot/docs/2.2.2RELEASE/reference/htmlsingle/
 
 5. 业务类
 
-   ![image-20211223115308791](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223115308791.png)
+   ![image-20211223115308791](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223115308791.png)
 
 ###### 1. 建名为cloud-provider-payment8001的Maven工程
 
@@ -587,7 +587,7 @@ public class PaymentService {
 
 ![image-20211223180706698](C:%5CUsers%5C86155%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211223180706698.png)
 
-![image-20211223180724828](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223180724828.png)
+![image-20211223180724828](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223180724828.png)
 
 重启idea
 
@@ -634,9 +634,9 @@ pom文件
 
 ###### RestTemplate
 
-![image-20211223182209022](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223182209022.png)
+![image-20211223182209022](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223182209022.png)
 
-![image-20211223182231507](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223182231507.png)
+![image-20211223182231507](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223182231507.png)
 
 ```
 import com.alibaba.fastjson.JSON;
@@ -793,19 +793,19 @@ public class ApplicationContextConfig {
 
 ##### 服务治理
 
-![image-20211223194417547](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223194417547.png)
+![image-20211223194417547](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223194417547.png)
 
 ##### 服务注册
 
-![image-20211223194500420](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223194500420.png)
+![image-20211223194500420](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223194500420.png)
 
 ##### Eureka两组件
 
-![image-20211223194856659](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223194856659.png)
+![image-20211223194856659](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223194856659.png)
 
 #### 单机Eureka构建步奏
 
-![image-20211223195115497](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223195115497.png)
+![image-20211223195115497](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223195115497.png)
 
 ##### Eureka server 端服务注册中心
 
@@ -815,7 +815,7 @@ cloud-eureka-server7001
 
 ###### 版本对比
 
-![image-20211223195636772](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223195636772.png)
+![image-20211223195636772](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223195636772.png)
 
 ###### pom
 
@@ -921,7 +921,7 @@ public class EurekaMain7001 {
 
 ###### 访问localhost:7001
 
-![image-20211223211615574](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223211615574.png)
+![image-20211223211615574](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223211615574.png)
 
 ##### EurekaClient 端cloud-provider-payment8001 将注册进eurekaServer 成为服务提供者provider，
 
@@ -929,7 +929,7 @@ public class EurekaMain7001 {
 
 将EurekaClient端的pom依赖引入
 
-![image-20211223212211197](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223212211197.png)
+![image-20211223212211197](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223212211197.png)
 
 ###### 启动类加注解EurekaClient   @EnableEurekaClient
 
@@ -948,7 +948,7 @@ eureka:
 
 启动项目，
 
-![image-20211223214753234](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211223214753234.png)
+![image-20211223214753234](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211223214753234.png)
 
 ##### EurekaClient 端cloud-consumer-order80将注册进EurekaServer 成为服务消费者consumer,
 
@@ -968,7 +968,7 @@ eureka:
 
 #### 高可用情况下，集群Eureka配置
 
-![image-20211224085918109](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224085918109.png)
+![image-20211224085918109](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224085918109.png)
 
 解决方法：搭建Eureka注册中心集群，实现负载均衡+故障容错
 
@@ -1057,13 +1057,13 @@ eureka:
 
 访问地址写为在eureka中注册的地址
 
-![image-20211224103106559](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224103106559.png)
+![image-20211224103106559](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224103106559.png)
 
-![image-20211224102153304](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224102153304.png)
+![image-20211224102153304](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224102153304.png)
 
 修改过后
 
-![image-20211224102943699](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224102943699.png)
+![image-20211224102943699](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224102943699.png)
 
 #### eureka中配置主机名和IP形式
 
@@ -1158,7 +1158,7 @@ public class PaymentController {
 
 @EnableDiscoveryClient
 
-![image-20211224110003257](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224110003257.png)
+![image-20211224110003257](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224110003257.png)
 
 ##### 自测
 
@@ -1166,17 +1166,17 @@ public class PaymentController {
 
 ###### 故障现象
 
-![image-20211224110527685](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224110527685.png)
+![image-20211224110527685](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224110527685.png)
 
 ###### 导致原因
 
-![image-20211224110620864](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224110620864.png)
+![image-20211224110620864](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224110620864.png)
 
-![image-20211224110759769](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224110759769.png)
+![image-20211224110759769](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224110759769.png)
 
-![image-20211224110911532](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224110911532.png)
+![image-20211224110911532](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224110911532.png)
 
-![image-20211224111018569](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224111018569.png)
+![image-20211224111018569](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224111018569.png)
 
 ###### 怎么禁止自我保存
 
@@ -1228,7 +1228,7 @@ eureka:
 
 ###### 测试
 
-![image-20211224112537737](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224112537737.png)
+![image-20211224112537737](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224112537737.png)
 
 ### Zookeeper服务和发现
 
@@ -1236,7 +1236,7 @@ eureka:
 
 
 
-![image-20211224112837828](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224112837828.png)
+![image-20211224112837828](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224112837828.png)
 
 #### springCloud 整合Zookeeper代替Eureka
 
@@ -1374,7 +1374,7 @@ public class PaymentController {
 
 修改pom版本
 
-![image-20211224122213721](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224122213721.png)
+![image-20211224122213721](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224122213721.png)
 
 ```xml
  <!-- SpringBoot整合zookeeper客户端 -->
@@ -1403,9 +1403,9 @@ public class PaymentController {
 
 打开ZooKeeper客户端：
 
-![image-20211224122440703](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224122440703.png)
+![image-20211224122440703](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224122440703.png)
 
-![image-20211224122459451](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224122459451.png)
+![image-20211224122459451](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224122459451.png)
 
 ```
 {
@@ -1510,23 +1510,23 @@ public class ZkController {
 
 测试成功
 
-![image-20211224124955193](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224124955193.png)
+![image-20211224124955193](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224124955193.png)
 
 ### Consul服务注册和发现
 
 #### 简介
 
 - 官网  https://www.consul.io/intro/index.html
-- ![image-20211224125510444](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224125510444.png)
+- ![image-20211224125510444](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224125510444.png)
 - 
-- ![image-20211224125606622](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224125606622.png)
-- ![image-20211224125659615](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224125659615.png)
+- ![image-20211224125606622](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224125606622.png)
+- ![image-20211224125659615](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224125659615.png)
 
 #### 安装和运行
 
 官网：https://www.springcloud.cc/spring-cloud-consul.html
 
-![image-20211224153756091](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211224153756091.png)
+![image-20211224153756091](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211224153756091.png)
 
 docker 安装consul 
 
@@ -1804,15 +1804,15 @@ public class ConsulController {
 
 ### 三个注册中心异同点
 
- ![image-20211225104630167](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225104630167.png)
+ ![image-20211225104630167](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225104630167.png)
 
-![image-20211225104909202](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225104909202.png)
+![image-20211225104909202](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225104909202.png)
 
-![image-20211225105059243](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225105059243.png)
+![image-20211225105059243](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225105059243.png)
 
-![image-20211225105343453](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225105343453.png)
+![image-20211225105343453](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225105343453.png)
 
-cp![image-20211225105500818](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225105500818.png)
+cp![image-20211225105500818](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225105500818.png)
 
 ## Ribbon负载均衡服务调用
 
@@ -1832,7 +1832,7 @@ Ribbon目前也进入维护模式。
 
 Ribbon未来可能被Spring Cloud LoadBalacer替代。
 
-![image-20211225110845588](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225110845588.png)
+![image-20211225110845588](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225110845588.png)
 
 #### LB负载均衡(Load Balance)是什么
 
@@ -1871,7 +1871,7 @@ Ribbon就属于进程内LB，它只是一个类库，集成于消费方进程，
 
 总结：Ribbon其实就是一个软负载均衡的客户端组件，它可以和其他所需请求的客户端结合使用，和Eureka结合只是其中的一个实例。
 
-![image-20211225111558014](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225111558014.png)
+![image-20211225111558014](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225111558014.png)
 
 Ribbon在工作时分成两步：
 
@@ -1926,7 +1926,7 @@ Ribbon在工作时分成两步：
 
 lRule：根据特定算法中从服务列表中选取一个要访问的服务
 
-![image-20211225111941592](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225111941592.png)
+![image-20211225111941592](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225111941592.png)
 
 - RoundRobinRule 轮询
 
@@ -2682,7 +2682,7 @@ Hystrix是一个用于处理分布式系统的延迟和容错的开源库，在�
 
 秒杀高并发等操作，严禁一窝蜂的过来拥挤，大家排队，一秒钟N个，有序进行。
 
-![image-20211225141039557](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225141039557.png)
+![image-20211225141039557](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225141039557.png)
 
 #### hystrix案例
 
@@ -3207,7 +3207,7 @@ public class OrderHystirxController {
 }
 ```
 
-![image-20211225194530874](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211225194530874.png)
+![image-20211225194530874](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211225194530874.png)
 
 ##### Hystrix之全局服务降级DefaultProperties
 
@@ -3374,7 +3374,7 @@ PaymentHystrixMain8001启动
 
 在Spring Cloud框架里，熔断机制通过Hystrix实现。Hystrix会监控微服务间调用的状况，当失败的调用到一定阈值，缺省是5秒内20次调用失败，就会启动熔断机制。熔断机制的注解是@HystrixCommand。
 
-![image-20211226094036388](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226094036388.png)
+![image-20211226094036388](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226094036388.png)
 
 ##### Hystrix之服务熔断案例(上)
 
@@ -3483,7 +3483,7 @@ public class PaymentController
 
 ###### Hystrix之服务熔断总结
 
-![image-20211226094612353](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226094612353.png)
+![image-20211226094612353](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226094612353.png)
 
 **熔断类型**
 
@@ -3493,11 +3493,11 @@ public class PaymentController
 
 - 熔断半开：部分请求根据规则调用当前服务，如果请求成功且符合规则则认为当前服务恢复正常，关闭熔断。
 
-  ![image-20211226094714697](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226094714697.png)
+  ![image-20211226094714697](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226094714697.png)
 
   官网步骤
 
-  ![image-20211226094833182](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226094833182.png)
+  ![image-20211226094833182](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226094833182.png)
 
   **断路器在什么情况下开始起作用**
 
@@ -3630,7 +3630,7 @@ public class PaymentController
 
 步骤说明
 
-![image-20211226105129478](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226105129478.png)
+![image-20211226105129478](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226105129478.png)
 
 #### 服务监控hystrixDashboard
 
@@ -3791,11 +3791,11 @@ http://localhost:8001/payment/circuit/-1
 
 先访问正确地址，再访问错误地址，再正确地址，会发现图示断路器都是慢慢放开的。
 
-![image-20211226111107967](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226111107967.png)
+![image-20211226111107967](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226111107967.png)
 
-![image-20211226111158087](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226111158087.png)
+![image-20211226111158087](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226111158087.png)
 
-![image-20211226111212086](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226111212086.png)
+![image-20211226111212086](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226111212086.png)
 
 ### resilience4J
 
@@ -3819,7 +3819,7 @@ Cloud全家桶中有个很重要的组件就是网关，在1.x版本中都是采
 
 但在2.x版本中，zuul的升级一直跳票，SpringCloud最后自己研发了一个网关替代Zuul，那就是SpringCloud Gateway—句话：gateway是原zuul1.x版的替代
 
-![image-20211226112030141](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226112030141.png)
+![image-20211226112030141](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226112030141.png)
 
 Gateway是在Spring生态系统之上构建的API网关服务，基于Spring 5，Spring Boot 2和Project Reactor等技术。
 
@@ -3845,11 +3845,11 @@ Spring Cloud Gateway的目标提供统一的路由方式且基于 Filter链的�
 
 - …
 
-  ![image-20211226112345801](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226112345801.png)
+  ![image-20211226112345801](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226112345801.png)
 
-  ![image-20211226112430834](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226112430834.png)
+  ![image-20211226112430834](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226112430834.png)
 
-  ![image-20211226112456168](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226112456168.png)
+  ![image-20211226112456168](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226112456168.png)
 
 #### 三大概念
 
@@ -3859,7 +3859,7 @@ Spring Cloud Gateway的目标提供统一的路由方式且基于 Filter链的�
 
 - Filter(过滤) - 指的是Spring框架中GatewayFilter的实例,使用过滤器,可以在请求被路由前或者之后对请求进行修改。
 
-  ![image-20211226112940622](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226112940622.png)
+  ![image-20211226112940622](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226112940622.png)
 
   web请求，通过一些匹配条件，定位到真正的服务节点。并在这个转发过程的前后，进行一些精细化控制。
 
@@ -3873,7 +3873,7 @@ Spring Cloud Gateway的目标提供统一的路由方式且基于 Filter链的�
 
 https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/#gateway-how-it-works
 
-![image-20211226113059806](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226113059806.png)
+![image-20211226113059806](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226113059806.png)
 
 客户端向Spring Cloud Gateway发出请求。然后在Gateway Handler Mapping 中找到与请求相匹配的路由，将其发送到GatewayWeb Handler。
 
@@ -4297,7 +4297,7 @@ The header route predicate factory takes two parameters, the header name and a r
 
 This predicate matches with a header that has the given name whose value matches the regular expression.
 
-![image-20211226123223564](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226123223564.png)
+![image-20211226123223564](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226123223564.png)
 
 测试
 ————————————————
@@ -4346,7 +4346,7 @@ https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/r
 2. 统一网关鉴权
    …
    代码案例：
-3. ![image-20211226123647990](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226123647990.png)
+3. ![image-20211226123647990](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226123647990.png)
 
 GateWay9527项目添加MyLogGateWayFilter类：
 
@@ -4418,7 +4418,7 @@ http://localhost:9527/payment/lb - 反问异常
 
 SpringCloud提供了ConfigServer来解决这个问题，我们每一个微服务自己带着一个application.yml，上百个配置文件的管理.……
 
-![image-20211226144956480](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226144956480.png)
+![image-20211226144956480](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226144956480.png)
 
 SpringCloud Config为微服务架构中的微服务提供集中化的外部配置支持，配置服务器为各个不同微服务应用的所有环境提供了一个中心化的外部配置。
 
@@ -4908,7 +4908,7 @@ Spring Cloud Bus配合Spring Cloud Config使用可以实现配置的动态刷新
 
 Spring Cloud Bus 配合Spring Cloud Config 使用可以实现配置的动态刷新。
 
-![image-20211226170705243](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226170705243.png)
+![image-20211226170705243](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226170705243.png)
 
 Spring Cloud Bus是用来将分布式系统的节点与轻量级消息系统链接起来的框架，它整合了Java的事件处理机制和消息中间件的功能。Spring Clud Bus目前支持RabbitMQ和Kafka。
 
@@ -4916,7 +4916,7 @@ Spring Cloud Bus是用来将分布式系统的节点与轻量级消息系统链�
 
 Spring Cloud Bus能管理和传播分布式系统间的消息，就像一个分布式执行器，可用于广播状态更改、事件推送等，也可以当作微服务间的通信通道。
 
-![](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226170723266.png)
+![](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226170723266.png)
 
 #### 为何被称为总线
 
@@ -5108,11 +5108,11 @@ public class ConfigClientController
 
 1.利用消息总线触发一个客户端/bus/refresh,而刷新所有客户端的配置
 
-![image-20211226171638776](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226171638776.png)
+![image-20211226171638776](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226171638776.png)
 
 2.利用消息总线触发一个服务端ConfigServer的/bus/refresh端点，而刷新所有客户端的配置
 
-![image-20211226171652139](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226171652139.png)
+![image-20211226171652139](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226171652139.png)
 
 图二的架构显然更加适合，图—不适合的原因如下：
 
@@ -5273,9 +5273,9 @@ http://localhost:3366/configInfo
 我们这里以刷新运行在3355端口上的config-client（配置文件中设定的应用名称）为例，只通知3355，不通知3366
 curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355
 
-![image-20211226181203023](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226181203023.png)
+![image-20211226181203023](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226181203023.png)
 
-![image-20211226180252189](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226180252189.png)
+![image-20211226180252189](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226180252189.png)
 
 ### Nacos
 
@@ -5317,7 +5317,7 @@ Spring Cloud Stream为一些供应商的消息中间件产品提供了个性化�
 
 **标准MQ**
 
-![image-20211226214531389](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226214531389.png)
+![image-20211226214531389](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226214531389.png)
 
 - 生产者/消费者之间靠消息媒介传递信息内容
 
@@ -5328,7 +5328,7 @@ Spring Cloud Stream为一些供应商的消息中间件产品提供了个性化�
 
   比方说我们用到了RabbitMQ和Kafka，由于这两个消息中间件的架构上的不同，像RabbitMQ有exchange，kafka有Topic和Partitions分区。
 
-  ![image-20211226215333935](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226215333935.png)
+  ![image-20211226215333935](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226215333935.png)
 
 这些中间件的差异性导致我们实际项目开发给我们造成了一定的困扰，我们如果用了两个消息队列的其中一种，后面的业务需求，我想往另外一种消息队列进行迁移，这时候无疑就是一个灾难性的，一大堆东西都要重新推倒重新做，因为它跟我们的系统耦合了，这时候Spring Cloud Stream给我们提供了—种解耦合的方式。
 
@@ -5346,7 +5346,7 @@ Stream凭什么可以统一底层差异？
 
   
 
-![image-20211226220347055](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226220347055.png)
+![image-20211226220347055](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226220347055.png)
 
 **Stream中的消息通信方式遵循了发布-订阅模式**
 
@@ -5359,9 +5359,9 @@ Topic主题进行广播
 
 **Spring Cloud Stream标准流程套路**
 
-![image-20211226220745295](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226220745295.png)
+![image-20211226220745295](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226220745295.png)
 
-![image-20211226220800347](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211226220800347.png)
+![image-20211226220800347](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211226220800347.png)
 
 - Binder - 很方便的连接中间件，屏蔽差异。
 
@@ -5745,7 +5745,7 @@ public class ReceiveMessageListenerController
 
 比如在如下场景中，订单系统我们做集群部署，都会从RabbitMQ中获取订单信息，那如果一个订单同时被两个服务获取到，那么就会造成数据错误，我们得避免这种情况。这时我们就可以使用Stream中的消息分组来解决。
 
-![image-20211227094234422](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227094234422.png)
+![image-20211227094234422](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227094234422.png)
 
 注意在Stream中处于同一个group中的多个消费者是竞争关系，就能够保证消息只会被其中一个应用消费一次。不同组是可以全面消费的(重复消费)。
 
@@ -5823,7 +5823,7 @@ group: A_Group
 
 在微服务框架中，一个由客户端发起的请求在后端系统中会经过多个不同的的服务节点调用来协同产生最后的请求结果，每一个前段请求都会形成一条复杂的分布式服务调用链路，链路中的任何一环出现高延时或错误都会引起整个请求最后的失败。
 
-![image-20211227115410208](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227115410208.png)
+![image-20211227115410208](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227115410208.png)
 
 **是什么**
 
@@ -5833,7 +5833,7 @@ group: A_Group
 
 **解决**
 
-![image-20211227115456704](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227115456704.png)
+![image-20211227115456704](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227115456704.png)
 
 Sleuth之zipkin搭建安装
 1.zipkin
@@ -5858,15 +5858,15 @@ http://localhost:9411/zipkin/
 
 表示一请求链路，一条链路通过Trace ld唯一标识，Span标识发起的请求信息，各span通过parent id关联起来
 
-![image-20211227115654192](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227115654192.png)
+![image-20211227115654192](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227115654192.png)
 
 —条链路通过Trace ld唯一标识，Span标识发起的请求信息，各span通过parent id关联起来。
 
-![image-20211227115714168](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227115714168.png)
+![image-20211227115714168](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227115714168.png)
 
 整个链路的依赖关系如下：
 
-![image-20211227115734455](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227115734455.png)
+![image-20211227115734455](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227115734455.png)
 
 名词解释
 
@@ -5969,7 +5969,7 @@ spring:
 
 5.打开浏览器访问: http://localhost:9411
 
-![image-20211227121607715](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227121607715.png)
+![image-20211227121607715](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227121607715.png)
 
 ## springcloud Alibaba
 
@@ -6092,7 +6092,7 @@ Nacos就是注册中心＋配置中心的组合 -> Nacos = Eureka+Config+Bus
 https://github.com/alibaba/nacos/releases
  官网： https://spring-cloud-alibaba-group.github.io/github-pages/greenwich/spring-cloud-alibaba.html#_spring%20cloud%20alibaba%20nacos_discovery
 
-![image-20211227161348329](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227161348329.png)
+![image-20211227161348329](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227161348329.png)
 
 据说Nacos在阿里巴巴内部有超过10万的实例运行，已经过了类似双十一等各种大型流量的考验。
 
@@ -6104,7 +6104,7 @@ https://github.com/alibaba/nacos/releases
 - 命令运行成功后直接访问http://localhost:8848/nacos，默认账号密码都是nacos
 - 结果页面
 
-![image-20211227161449719](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227161449719.png)
+![image-20211227161449719](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227161449719.png)
 
 ### Nacos之服务提供者注册
 
@@ -6246,7 +6246,7 @@ nacos服务注册中心+服务提供者9001都OK了
 9002其它步骤你懂的
 或者取巧不想新建重复体力劳动，可以利用IDEA功能，直接拷贝虚拟端口映射
 
-![image-20211227161937516](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227161937516.png)
+![image-20211227161937516](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227161937516.png)
 
 ### Nacos之服务消费者注册和负载
 
@@ -6410,17 +6410,17 @@ public class OrderNacosController {
 
 ### Nacos服务注册中心对比提升
 
-![image-20211227172848195](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227172848195.png)
+![image-20211227172848195](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227172848195.png)
 
 **Nacos和CAP**
 
 Nacos与其他注册中心特性对比
 
-![image-20211227172926903](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227172926903.png)
+![image-20211227172926903](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227172926903.png)
 
 **Nacos服务发现实例模型**
 
-![](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227173006598.png)
+![](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227173006598.png)
 
 Nacos支持AP和CP模式的切换
 
@@ -6586,19 +6586,19 @@ Nacos中的dataid的组成格式及与SpringBoot配置文件中的匹配规则
 
   https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html
 
-![image-20211227173709174](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227173709174.png)
+![image-20211227173709174](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227173709174.png)
 
 配置新增
 
-![image-20211227173735765](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227173735765.png)
+![image-20211227173735765](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227173735765.png)
 
 Nacos界面配置对应 - 设置DataId
 
-![image-20211227173751808](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227173751808.png)
+![image-20211227173751808](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227173751808.png)
 
 配置小结
 
-![image-20211227173822670](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227173822670.png)
+![image-20211227173822670](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227173822670.png)
 
 测试
 
@@ -6633,9 +6633,9 @@ Nacos界面配置对应 - 设置DataId
 
 Nacos的图形化管理界面
 
-![image-20211227181017111](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227181017111.png)
+![image-20211227181017111](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227181017111.png)
 
-![image-20211227181028742](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227181028742.png)
+![image-20211227181028742](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227181028742.png)
 
 **Namespace+Group+Data lD三者关系？为什么这么设计？**
 
@@ -6645,9 +6645,9 @@ Nacos的图形化管理界面
 
 2三者情况
 
-![image-20211227181059972](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227181059972.png)
+![image-20211227181059972](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227181059972.png)
 
-![image-20211227181142755](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227181142755.png)Nacos之DataID配置
+![image-20211227181142755](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227181142755.png)Nacos之DataID配置
 
 指定spring.profile.active和配置文件的DatalD来使不同环境下读取不同的配置
 
@@ -6655,11 +6655,11 @@ Nacos的图形化管理界面
 
 - 新建dev配置DatalD
 
-  ![image-20211227181231978](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227181231978.png)
+  ![image-20211227181231978](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227181231978.png)
 
   - 新建test配置DatalD
 
-    ![image-20211227181957928](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227181957928.png)
+    ![image-20211227181957928](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227181957928.png)
 
     通过spring.profile.active属性就能进行多环境下配置文件的读取
 
@@ -6672,31 +6672,31 @@ Nacos的图形化管理界面
 
 通过Group实现环境区分 - 新建Group
 
-![image-20211227182134776](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227182134776.png)
+![image-20211227182134776](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227182134776.png)
 
 在nacos图形界面控制台上面新建配置文件DatalD
 
-![image-20211227182158606](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227182158606.png)
+![image-20211227182158606](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227182158606.png)
 
 bootstrap+application
 
 在config下增加一条group的配置即可。可配置为DEV_GROUP或TEST GROUP
 
-![image-20211227182224420](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227182224420.png)
+![image-20211227182224420](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227182224420.png)
 
 #### Nacos之Namespace空间方案
 
 新建dev/test的Namespace
 
-![image-20211227182303489](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227182303489.png)
+![image-20211227182303489](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227182303489.png)
 
 回到服务管理-服务列表查看
 
-![image-20211227182327247](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227182327247.png)
+![image-20211227182327247](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227182327247.png)
 
 按照域名配置填写
 
-![image-20211227182344455](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227182344455.png)
+![image-20211227182344455](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227182344455.png)
 
 YML
 
@@ -6741,11 +6741,11 @@ spring:
 >
 >http://nacos.com:port/openAPI域名＋VIP模式，可读性好，而且换ip方便，推荐模式
 
-![image-20211227184115955](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227184115955.png)
+![image-20211227184115955](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227184115955.png)
 
 上图官网翻译，真实情况
 
-![image-20211227184147128](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211227184147128.png)
+![image-20211227184147128](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211227184147128.png)
 
 按照上述，**我们需要mysql数据库**。
 
@@ -6846,7 +6846,7 @@ Nacos下载Linux版
 
 SQL脚本在哪里 - 目录nacos/conf/nacos-mysql.sql
 
-![image-20211228091626005](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228091626005.png)
+![image-20211228091626005](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228091626005.png)
 
 自己Linux机器上的Mysql数据库上运行
 
@@ -6854,7 +6854,7 @@ SQL脚本在哪里 - 目录nacos/conf/nacos-mysql.sql
 
 位置
 
-![image-20211228091716894](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228091716894.png)
+![image-20211228091716894](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228091716894.png)
 
 **3.Linux服务器上nacos的集群配置cluster.conf**
 
@@ -6866,7 +6866,7 @@ SQL脚本在哪里 - 目录nacos/conf/nacos-mysql.sql
 
 复制出cluster.conf
 
-![image-20211228091820879](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228091820879.png)
+![image-20211228091820879](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228091820879.png)
 
 内容
 
@@ -6876,7 +6876,7 @@ SQL脚本在哪里 - 目录nacos/conf/nacos-mysql.sql
 192.168.111.144:5555
 ```
 
-![image-20211228091926493](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228091926493.png)
+![image-20211228091926493](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228091926493.png)
 
 平时单机版的启动，都是./startup.sh即可
 
@@ -6885,11 +6885,11 @@ SQL脚本在哪里 - 目录nacos/conf/nacos-mysql.sql
 
 修改内容
 
-![image-20211228092023113](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092023113.png)
+![image-20211228092023113](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092023113.png)
 
 执行方式 - `startup.sh - p 端口号`
 
-![image-20211228092057387](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092057387.png)
+![image-20211228092057387](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092057387.png)
 
 ##### Nacos集群配置(下)
 
@@ -6897,15 +6897,15 @@ SQL脚本在哪里 - 目录nacos/conf/nacos-mysql.sql
 
 修改nginx的配置文件 - nginx.conf
 
-![image-20211228092140926](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092140926.png)
+![image-20211228092140926](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092140926.png)
 
 修改内容
 
-![image-20211228092206364](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092206364.png)
+![image-20211228092206364](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092206364.png)
 
 按照指定启动
 
-![image-20211228092224873](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092224873.png)
+![image-20211228092224873](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092224873.png)
 
 6.截止到此处，1个Nginx+3个nacos注册中心+1个mysql
 
@@ -6929,11 +6929,11 @@ startup.sh - p 5555
 
 新建一个配置测试
 
-![image-20211228092315162](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092315162.png)
+![image-20211228092315162](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092315162.png)
 
 - 新建后，可在linux服务器的mysql新插入一条记录
 
-![image-20211228092338649](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092338649.png)
+![image-20211228092338649](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092338649.png)
 
 - 让微服务cloudalibaba-provider-payment9002启动注册进nacos集群 - 修改配置文件
 
@@ -6962,11 +6962,11 @@ management:
 - 启动微服务cloudalibaba-provider-payment9002
 - 访问nacos，查看注册结果
 
-![image-20211228092451139](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092451139.png)
+![image-20211228092451139](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092451139.png)
 
 高可用小总结
 
-![image-20211228092522886](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228092522886.png)
+![image-20211228092522886](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228092522886.png)
 
 
 
@@ -6992,7 +6992,7 @@ management:
 >
 >    #### Sentinel 的主要特性：
 >
->    ![image-20211228103354307](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228103354307.png)
+>    ![image-20211228103354307](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228103354307.png)
 >
 > [link](https://github.com/alibaba/Sentinel/wiki/%E4%BB%8B%E7%BB%8D#sentinel-%E6%98%AF%E4%BB%80%E4%B9%88)
 
@@ -7224,7 +7224,7 @@ public class FlowLimitController {
 
 - 刚启动，空空如也，啥都没有
 
-![image-20211228104901586](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228104901586.png)
+![image-20211228104901586](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228104901586.png)
 
 - Sentinel采用的懒加载说明
   - 执行一次访问即可
@@ -7234,15 +7234,15 @@ public class FlowLimitController {
 
 
 
-![image-20211228104941513](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228104941513.png)
+![image-20211228104941513](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228104941513.png)
 
 ### Sentinel流控规则简介
 
 基本介绍
 
-![image-20211228105034831](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228105034831.png)
+![image-20211228105034831](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228105034831.png)
 
-![image-20211228105114090](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228105114090.png)
+![image-20211228105114090](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228105114090.png)
 
 ### Sentinel流控-QPS直接失败
 
@@ -7252,7 +7252,7 @@ public class FlowLimitController {
 
 表示1秒钟内查询1次就是OK，若超过次数1，就直接->快速失败，报默认错误
 
-![image-20211228105149393](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228105149393.png)
+![image-20211228105149393](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228105149393.png)
 
 测试
 
@@ -7274,7 +7274,7 @@ com.alibaba.csp.sentinel.slots.block.flow.controller.DefaultController
 
 线程数：当调用该API的线程数达到阈值的时候，进行限流。
 
-![image-20211228113618665](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228113618665.png)
+![image-20211228113618665](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228113618665.png)
 
 ### Sentinel流控-关联
 
@@ -7288,15 +7288,15 @@ com.alibaba.csp.sentinel.slots.block.flow.controller.DefaultController
 
 当关联资源/testB的QPS阀值超过1时，就限流/testA的Rest访问地址，当关联资源到阈值后限制配置好的资源名。
 
-![image-20211228113705934](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228113705934.png)
+![image-20211228113705934](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228113705934.png)
 
-![image-20211228113721657](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228113721657.png)
+![image-20211228113721657](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228113721657.png)
 
-![image-20211228113749318](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228113749318.png)
+![image-20211228113749318](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228113749318.png)
 
-![image-20211228113806840](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228113806840.png)
+![image-20211228113806840](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228113806840.png)
 
-![image-20211228113823337](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228113823337.png)
+![image-20211228113823337](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228113823337.png)
 
 Run - 大批量线程高并发访问B
 
@@ -7317,7 +7317,7 @@ HOMEWORK：
 >
 > 通常冷启动的过程系统允许通过的 QPS 曲线如下图所示：
 >
-> ![image-20211228115204771](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228115204771.png)
+> ![image-20211228115204771](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228115204771.png)
 >
 > [link](https://github.com/alibaba/Sentinel/wiki/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6#warm-up)
 
@@ -7331,7 +7331,7 @@ WarmUp配置
 
 系统初始化的阀值为10/ 3约等于3,即阀值刚开始为3;然后过了5秒后阀值才慢慢升高恢复到10
 
-![image-20211228115343113](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228115343113.png)
+![image-20211228115343113](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228115343113.png)
 
 **测试**
 
@@ -7347,7 +7347,7 @@ WarmUp配置
 
 设置：/testA每秒1次请求，超过的话就排队等待，等待的超时时间为20000毫秒。
 
-![image-20211228115434494](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228115434494.png)
+![image-20211228115434494](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228115434494.png)
 
 匀速排队
 
@@ -7355,7 +7355,7 @@ WarmUp配置
 
 该方式的作用如下图所示：
 
-![image-20211228115459754](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228115459754.png)
+![image-20211228115459754](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228115459754.png)
 
 这种方式主要用于处理间隔性突发的流量，例如消息队列。想象一下这样的场景，在某一秒有大量的请求到来，而接下来的几秒则处于空闲状态，我们希望系统能够在接下来的空闲期间逐渐处理这些请求，而不是在第一秒直接拒绝多余的请求。
 
@@ -7385,7 +7385,7 @@ public class FlowLimitController {
 - Postman模拟并发密集访问testA。具体操作参考[117_Sentinel流控-关联](https://blog.csdn.net/u011863024/article/details/114298288#)
 - 后台结果
 
-![image-20211228115644663](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228115644663.png)
+![image-20211228115644663](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228115644663.png)
 
 ### Sentinel降级简介
 
@@ -7399,9 +7399,9 @@ public class FlowLimitController {
 >
 > [link](https://github.com/alibaba/Sentinel/wiki/%E7%86%94%E6%96%AD%E9%99%8D%E7%BA%A7#%E6%A6%82%E8%BF%B0)
 
-![image-20211228115757743](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228115757743.png)
+![image-20211228115757743](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228115757743.png)
 
-![image-20211228115848300](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228115848300.png)
+![image-20211228115848300](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228115848300.png)
 
 Sentinel熔断降级会在调用链路中某个资源出现不稳定状态时（例如调用超时或异常比例升高)，对这个资源的调用进行限制，让请求快速失败，避免影响到其它的资源而导致级联错误。
 
@@ -7415,9 +7415,9 @@ Sentinei的断路器是没有类似Hystrix半开状态的。(Sentinei 1.8.0 已�
 
 ### Sentinel降级-RT
 
-![image-20211228120017354](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228120017354.png)
+![image-20211228120017354](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228120017354.png)
 
-![image-20211228120032049](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228120032049.png)
+![image-20211228120032049](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228120032049.png)
 
 **测试**
 
@@ -7441,9 +7441,9 @@ public class FlowLimitController {
 }
 ```
 
-![image-20211228120109690](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228120109690.png)
+![image-20211228120109690](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228120109690.png)
 
-![image-20211228120125885](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228120125885.png)
+![image-20211228120125885](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228120125885.png)
 
 结论
 
@@ -7462,7 +7462,7 @@ public class FlowLimitController {
 
 接下来讲解Sentinel 1.7.0的。
 
-![image-20211228120950057](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228120950057.png)
+![image-20211228120950057](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228120950057.png)
 
 **测试**
 
@@ -7486,7 +7486,7 @@ public class FlowLimitController {
 
 配置
 
-![image-20211228121057116](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228121057116.png)
+![image-20211228121057116](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228121057116.png)
 
 *结论*
 
@@ -7509,7 +7509,7 @@ public class FlowLimitController {
 异常数是按照分钟统计的，时间窗口一定要大于等于60秒。
 
 
-![image-20211228121236245](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228121236245.png)
+![image-20211228121236245](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228121236245.png)
 
 **测试**
 
@@ -7531,7 +7531,7 @@ public class FlowLimitController{
 }
 ```
 
-![image-20211228121304282](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228121304282.png)
+![image-20211228121304282](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228121304282.png)
 
 访问http://localhost:8401/testE，第一次访问绝对报错，因为除数不能为零，我们看到error窗口，但是达到5次报错后，进入熔断后降级。
 
@@ -7539,7 +7539,7 @@ public class FlowLimitController{
 
 **基本介绍**
 
-![image-20211228121338493](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228121338493.png)
+![image-20211228121338493](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228121338493.png)
 
 官网
 
@@ -7551,7 +7551,7 @@ public class FlowLimitController{
 > 用户 ID 为参数，针对一段时间内频繁访问的用户 ID 进行限制
 > 热点参数限流会统计传入参数中的热点参数，并根据配置的限流阈值与模式，对包含热点参数的资源调用进行限流。热点参数限流可以看做是一种特殊的流量控制，仅对包含热点参数的资源调用生效。
 >
-> ![image-20211228121438800](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228121438800.png)
+> ![image-20211228121438800](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228121438800.png)
 >
 > Sentinel 利用 LRU 策略统计最近最常访问的热点参数，结合令牌桶算法来进行参数级别的流控。热点参数限流支持集群模式。
 >
@@ -7599,7 +7599,7 @@ public class FlowLimitController
 
 **配置**
 
-![image-20211228121541374](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228121541374.png)
+![image-20211228121541374](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228121541374.png)
 
 一
 
@@ -7630,7 +7630,7 @@ http://localhost:8401/testHotKey?p2=abc
 
 **配置**
 
-![image-20211228124443133](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228124443133.png)
+![image-20211228124443133](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228124443133.png)
 
 **测试**
 
@@ -7736,7 +7736,7 @@ public class RateLimitController {
 
 配置步骤
 
-![image-20211228124908527](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228124908527.png)
+![image-20211228124908527](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228124908527.png)
 
 图形配置和代码关系
 
@@ -7781,7 +7781,7 @@ public class RateLimitController
 
 **Sentinel控制台配置**
 
-![image-20211228125025235](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228125025235.png)
+![image-20211228125025235](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228125025235.png)
 
 测试
 
@@ -7839,7 +7839,7 @@ public class RateLimitController {
 
 Sentinel控制台配置
 
-![image-20211228125335845](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228125335845.png)
+![image-20211228125335845](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228125335845.png)
 
 启动微服务后先调用一次 - http://localhost:8401/rateLimit/customerBlockHandler。然后，多次快速刷新http://localhost:8401/rateLimit/customerBlockHandler。刷新后，我们自定义兜底方法的字符串信息就返回到前端。
 
@@ -8142,7 +8142,7 @@ public class OrderNacosMain84 {
 }
 ```
 
-![image-20211228130018151](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228130018151.png)
+![image-20211228130018151](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228130018151.png)
 
 CircleBreakerController
 
@@ -8504,7 +8504,7 @@ public class OrderNacosMain84 {
 
 测试84调用9003，此时故意关闭9003微服务提供者，**84消费侧自动降级**，不会被耗死。
 
-![image-20211228130715139](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228130715139.png)
+![image-20211228130715139](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228130715139.png)
 
 ### Sentinel持久化规则
 
@@ -8569,7 +8569,7 @@ feign:
 
 添加Nacos业务规则配置
 
-![image-20211228130848871](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228130848871.png)
+![image-20211228130848871](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228130848871.png)
 
 配置内容解析
 
@@ -8593,13 +8593,13 @@ resource：资源名称；
 		controlBehavior：流控效果，0表示快速失败，1表示Warm Up，2表示排队等待；
 		clusterMode：是否集群。
 启动8401后刷新sentinel发现业务规则有了
-![image-20211228131005158](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228131005158.png)
+![image-20211228131005158](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228131005158.png)
 
 快速访问测试接口 - http://localhost:8401/rateLimit/byUrl - 页面返回`Blocked by Sentinel (flow limiting)`
 
 停止8401再看sentinel - 停机后发现流控规则没有了
 
-![image-20211228131022092](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211228131022092.png)
+![image-20211228131022092](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211228131022092.png)
 
 重新启动8401再看sentinel
 
@@ -8618,7 +8618,7 @@ resource：资源名称；
 
 单体应用被拆分成微服务应用，原来的三个模块被拆分成三个独立的应用,分别使用三个独立的数据源，业务操作需要调用三三 个服务来完成。此时**每个服务内部的数据一致性由本地事务来保证， 但是全局的数据一致性问题没法保证**。
 
-![image-20211229103253481](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229103253481.png)
+![image-20211229103253481](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229103253481.png)
 
 一句话：**一次业务操作需要跨多个数据源或需要跨多个系统进行远程调用，就会产生分布式事务问题**。
 
@@ -8659,7 +8659,7 @@ Transaction ID XID 全局唯一的事务ID
 - TM向TC发起针对XID的全局提交或回滚决议；
 - TC调度XID下管辖的全部分支事务完成提交或回滚请求。
 
-![image-20211229103713776](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229103713776.png)
+![image-20211229103713776](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229103713776.png)
 
 
 
@@ -8677,7 +8677,7 @@ Transaction ID XID 全局唯一的事务ID
 
 **SEATA 的分布式交易解决方案**
 
-![image-20211229103756587](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229103756587.png)
+![image-20211229103756587](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229103756587.png)
 
 我们只需要使用一个 @GlobalTransactional 注解在业务方法上:
 
@@ -10021,13 +10021,13 @@ Config配置（与seata-order-service2001模块大致相同）
 下订单 -> 减库存 -> 扣余额 -> 改（订单）状态
 
 数据库初始情况：
-![image-20211229122431805](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122431805.png)
+![image-20211229122431805](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122431805.png)
 
 正常下单 - http://localhost:2001/order/create?userId=1&productId=1&count=10&money=100
 
 数据库正常下单后状况：
 
-![image-20211229122511627](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122511627.png)
+![image-20211229122511627](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122511627.png)
 
 **超时异常，没加@GlobalTransactional**
 
@@ -10062,7 +10062,7 @@ public class AccountServiceImpl implements AccountService {
 
 数据库情况
 
-![image-20211229122610069](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122610069.png)
+![image-20211229122610069](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122610069.png)
 
 故障情况
 
@@ -10105,25 +10105,25 @@ Simple Extensible Autonomous Transaction Architecture，简单可扩展自治事
 
 2020起始，用1.0以后的版本。Alina Gingertail
 
-![image-20211229122715534](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122715534.png)
+![image-20211229122715534](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122715534.png)
 
-![image-20211229122736133](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122736133.png)
+![image-20211229122736133](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122736133.png)
 
-![image-20211229122750198](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122750198.png)
+![image-20211229122750198](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122750198.png)
 
-![image-20211229122804770](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122804770.png)
+![image-20211229122804770](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122804770.png)
 
-![image-20211229122817684](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122817684.png)
+![image-20211229122817684](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122817684.png)
 
-![image-20211229122918265](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229122918265.png)
+![image-20211229122918265](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229122918265.png)
 
 ## 大厂面试第三季预告片之雪花算法(上)
 
 
 
-![image-20211229123009994](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229123009994.png)
+![image-20211229123009994](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229123009994.png)
 
-![image-20211229123026483](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229123026483.png)
+![image-20211229123026483](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229123026483.png)
 
 > All indexes other than the clustered index are known as secondary indexes. In InnoDB, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. InnoDB uses this primary key value to search for the row in the clustered index.
 >
@@ -10155,17 +10155,17 @@ REPLACE INTO t_test (stub) VALUES('b');
 SELECT LAST_INSERT_ID();
 ```
 
-![image-20211229123333809](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229123333809.png)
+![image-20211229123333809](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229123333809.png)
 
-![image-20211229123343103](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229123343103.png)
+![image-20211229123343103](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229123343103.png)
 
 ## 大厂面试第三季预告片之雪花算法(下)
 
-![image-20211229123420752](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229123420752.png)
+![image-20211229123420752](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229123420752.png)
 
-![image-20211229123438796](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229123438796.png)
+![image-20211229123438796](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229123438796.png)
 
-![image-20211229123450754](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211229123450754.png)
+![image-20211229123450754](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211229123450754.png)
 
 **源码**
 

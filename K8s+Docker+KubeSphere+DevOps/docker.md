@@ -127,7 +127,7 @@ redis:latest redis-server /usr/local/etc/redis/redis.conf
 
 ```
 
-redis 密码配置![image-20211122223816422](https://gitee.com/xu_guo_dong/images/raw/master/img/image-20211122223816422.png)
+redis 密码配置![image-20211122223816422](https://raw.githubusercontent.com/xgdwudi/images/master/img/image-20211122223816422.png)
 
 将自己应用打包镜像
 
