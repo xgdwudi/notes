@@ -2,7 +2,7 @@
 
 ------
 
-
+[详细笔记网址](http://heavy_code_industry.gitee.io/code_heavy_industry/pro002-maven/chapter10/)
 
 # 1、安装、配置
 
@@ -401,3 +401,64 @@ Maven.工程之间，A工程继承B工程
 
 
 ![image-20220708134025735](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220708134025735.png)
+
+```shell
+mvn clean install -Dmaven.test.skip=true  跳过测试
+```
+
+
+
+## 5.maven的生命周期
+
+![image-20220724175440129](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724175440129.png)
+
+![image-20220724175525912](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724175525912.png)
+
+## 5.插件和目标
+
+![image-20220724175844270](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724175844270.png)
+
+## 6、仓库
+
+![image-20220724180147234](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724180147234.png)
+
+### 深入了解pom
+
+![image-20220724182238248](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724182238248.png)
+
+![image-20220724182251876](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724182251876.png)
+
+![image-20220724182353959](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724182353959.png)
+
+![image-20220724182802365](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724182802365.png)
+
+## 7build标签
+
+在实际使用Maven的过程中，我们会发现buld标签有时候有，有时候没，这是怎么回事呢？其实通过有效POM我们能够看到，bud标签的相关配置其实一直都在，只是在我们需要定制构建过程的时候才会通过配置bud标签覆盖默认值或补充配置。这一点我们可以通过打印有效POM来看到。
+
+所以本质上来说：我们配置的build标签都是对超级POM配置的叠加。我们又为什么要在默认配置的甚础上叠加呢？很简单，在默认配置无法满足需求的时候定制构建过程。
+
+### build标签组成
+
+- 定义约定的目录结构
+
+![image-20220724183301753](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724183301753.png)
+
+![image-20220724183310413](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724183310413.png)
+
+- 备用插件管理
+
+![image-20220724183327576](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724183327576.png)
+
+![image-20220724183340834](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724183340834.png)
+
+![image-20220724183352245](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724183352245.png)
+
+- 生命周期插件
+  plugin标签存放的是默认生命周期中实际会用到的插件，这些插件想必大家都不陌生，所以抛开插件本身不谈，我们来看看plugin标签的结构：
+
+![image-20220724183458206](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724183458206.png)
+
+![image-20220724183448542](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724183448542.png)
+
+![image-20220724183629723](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220724183629723.png)
