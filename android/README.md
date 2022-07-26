@@ -97,3 +97,143 @@
 - TableLayout
 - AbsoluteLayout 绝对位置管理器（不会使用）
 - GridLayout 网格布局管理器
+
+### 1.相对布局管理器（RelativeLayout）
+
+以某个组件作为参考点，其他组件以此为参考点进行布局
+
+![image-20220726213129800](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220726213129800.png)
+
+```
+android:gravity    设置各子组件的摆放方式  
+android:ignoreGravity   用于指定那个组件不受前面的印象
+```
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center"
+    android:ignoreGravity="@id/myid">
+
+    <TextView
+        android:id="@+id/myid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</RelativeLayout>
+```
+
+RelativeLayout.LayoutParams  提供了一些属性 ，指定组件相对于参考组件的位置
+
+```shell
+android:layout_above  前
+android:layout_below  后
+android:layout_toLeftOf  左
+android:layout_toRightOf 右
+
+属性值为布尔类型
+android:layout_alignParentBottom  底对齐
+android:layout_alignParentLeft  左对齐
+android:layout_alignParentRight  右对齐
+android:layout_alignParentTop  上对齐
+
+设置组件与哪一个组件的上下左右边界对齐
+android:layout_alignBottom
+android:layout_alignLeft
+android:layout_alignRigth
+android:layout_alignTop
+
+设置组件位于布局管理器的那个位置的
+android:layout_centerHorizontal  水平居中
+android:layout_centerParent 中间位置
+android:layout_centerVertical 垂直居中
+```
+
+### 2. 线性布局管理器（LinearLayout）
+
+将放入其中的组件以水平或垂直排列下去。
+
+![image-20220726221247679](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220726221247679.png)
+
+垂直线性布局管理器（每一行只能放置一个组件）
+
+设置组件  android:orientation="vertical"
+
+水平线性布局管理器（每一列只能放置一个组件）
+
+ android:orientation="horizontal"
+
+排到窗体之外时，其他组件也不能被显示
+
+
+
+如何定义线性布局管理器
+
+<LinearLayout>标记 
+
+设置组件位置
+
+android:orientation android:gravity
+
+子组件属性
+
+ android:layout_weight 属性  设置组件所占的权重
+
+​	
+
+![image-20220726222752289](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220726222752289.png)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+<!--    水平-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:width="100dp"
+        android:text="按钮" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:width="180dp"
+        android:text="按钮" />
+
+</LinearLayout>
+```
+
+### 3.帧布局管理器（FrameLayout）
+
+![image-20220726224330488](https://raw.githubusercontent.com/xgdwudi/images/master/git-img/image-20220726224330488.png)
+
+用来显示层叠的内容，显示
+
+如何定义帧布局管理器
+
+为当前的帧布局管理器设置一个前景图像(始终位于最上层的图像)
+
+android:foregroup
+
+设置前景图像的位置
+
+android:foregroundGravity
+
+### 4.表格布局管理器
+
